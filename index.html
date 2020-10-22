@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="uk-overflow-auto">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+            });
+
+            // Set the date we're counting down to
+            var countDownDate = new Date("Jan 19, 2021").getTime();
+            
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            
+              // Get today's date and time
+              var now = new Date().getTime();
+            
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+            
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+              // Display the days in the element with id="days"
+              document.getElementById("days").innerHTML = days
+              document.getElementById("hours").innerHTML = hours
+              document.getElementById("minutes").innerHTML = minutes
+            
+              // If the count down is finished, write some text
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+        </script>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
+    </head>
+    <body class=''>
+        <div id='top_sec' uk-grid>
+            <div class='uk-width-auto'>
+                <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+            </div>  
+            <div class="uk-width-expand uk-position-relative uk-flex" uk-height-viewport="offset-bottom: 10">
+                <img class='uk-position-top' data-src='images/frontpic.jpg' style='max-height: 100%; min-height: 100%; width: 100%;' uk-img/>
+
+                <div class='uk-position-bottom uk-padding uk-margin-bottom'>
+                    <h3 class='uk-padding-small uk-text-bold uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Hwa Chong Institution Presents</h3>
+                    <h1 class='uk-heading-medium uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>International</h1>
+                    <h1 class='uk-heading-medium uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Science</h1>
+                    <h1 class='uk-heading-medium uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Youth</h1>
+                    <h1 class='uk-heading-medium uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Forum</h1>
+                    <h1 class='uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style="color: #00F390; width: max-content;">Digital</h1>
+
+                    
+                    
+                    <div class="uk-position-right uk-margin-bottom" style="width: 35%;">
+                        <div class='uk-position-bottom uk-margin-bottom '>
+                            <div class='uk-block uk-light uk-margin-bottom' style="width: 100%; text-align: right;">
+                                <span class="uk-inline-block uk-margin-remove-bottom" href="" uk-icon="icon: calendar; ratio: 2" style="color: white;"></span>
+                                <h3 class="uk-inline-block uk-margin-remove-bottom uk-margin-remove-top uk-margin-small-left uk-margin-right" style="color: white;">19 to 22 January 2021</h3>
+                            </div>
+                            <div class='uk-grid-collapse uk-child-width-expand@s uk-text-center uk-block' style="background-color: #404040; height: min-content;" uk-grid>
+                                <div>
+                                    <div class="uk-background-muted uk-padding">
+                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #00D490;' id='days'>-</h2>
+                                        <h3 class='uk-margin-remove-top uk-margin-remove-bottom' style='color: #00D490;'>Days</h3>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="uk-background-secondary uk-padding">
+                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #808080;' id='hours'>-</h2>
+                                        <h3 class='uk-margin-remove-top uk-margin-remove-bottom' style='color: #808080;'>Hours</h3>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="uk-background-secondary uk-padding">
+                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #808080;' id='minutes'>-</h2>
+                                        <h3 class='uk-margin-remove-top uk-margin-remove-bottom' style='color: #808080;'>Minutes</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-position-top uk-margin-small-left' uk-navbar>
+                    <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
+                        <ul class="uk-navbar-nav">
+                            <li class='uk-text-bold uk-active uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Home</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">About</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Programmes</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Profiles</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Media</a></li>
+                            <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
+                        <ul class="uk-iconnav">
+                            <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px;" uk-icon="facebook"></a></li>
+                            <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px;" uk-icon="instagram"></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px; padding-bottom: 11px;" uk-icon="youtube"></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="uk-position-bottom uk-background-secondary" style="width: 100%; height: 20px;"></div>
+
+            </div>
+        </div>
+        <div class='uk-height-viewport '>
+        </div>
+    </body>
+</html> 
