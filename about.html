@@ -11,36 +11,6 @@
                 //The second argument has to be at least a empty object or a object with your desired options
                 OverlayScrollbars(document.querySelectorAll("body"), { });
             });
-
-            // Set the date we're counting down to
-            var countDownDate = new Date("Jan 19, 2021").getTime();
-            
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-            
-              // Get today's date and time
-              var now = new Date().getTime();
-            
-              // Find the distance between now and the count down date
-              var distance = countDownDate - now;
-            
-              // Time calculations for days, hours, minutes and seconds
-              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-              // Display the days in the element with id="days"
-              document.getElementById("days").innerHTML = days
-              document.getElementById("hours").innerHTML = hours
-              document.getElementById("minutes").innerHTML = minutes
-            
-              // If the count down is finished, write some text
-              if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "EXPIRED";
-              }
-            }, 1000);
         </script>
 
         <style>
@@ -62,20 +32,22 @@
             <div class='uk-width-auto'>
                 <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
             </div>  
-            <div class="uk-width-expand uk-position-relative uk-flex" uk-height-viewport="offset-bottom: 10">
-                <img class='uk-position-top' data-src='images/about_image.png' style='max-height: 100%; min-height: 100%; width: 100%;' uk-img/>
+            <div class="uk-width-expand uk-position-relative uk-flex uk-background-cover" data-src='images/about_image.png' style='border-bottom: 20px solid #404040;' uk-height-viewport="offset-bottom: 10" uk-img>
 
                 <div class='uk-position-bottom uk-padding uk-margin-bottom'>
                     <h3 class='uk-padding-small uk-text-bold uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Our theme</h3>
                     <div>
-                        <div class='uk-grid'>
-                            <div class='uk-width-auto'>
-                                <div class="uk-padding-small uk-padding-remove-right uk-margin">
+                        <div class='uk-grid uk-margin-left'>
+                            <div class='uk-width-auto@m uk-padding-remove-left uk-margin-right'>
+                                <div class="uk-padding-small uk-padding-remove-left uk-padding-remove-right uk-margin">
                                     <div style="background-color: #FFB400; width: 30px; height: 30px;" ></div>
                                 </div>
                             </div>
-                            <div class="uk-padding-small">
-                                <h1 class='uk-heading-medium uk-text-bold uk-padding-remove-left uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-top uk-padding-remove-top' style='color: white; width: max-content;'>Evolving Aspirations:</h1>
+                            <div class="uk-width-expand@m uk-padding-remove-left">
+                                <div>
+                                    <h1 class='uk-inline uk-heading-medium uk-padding-remove-right uk-text-bold uk-padding-remove-left uk-padding-small uk-padding-remove-bottom uk-margin-remove-bottom uk-margin-remove-top uk-padding-remove-top' style='color: white; width: max-content;'>Evolving&nbsp;</h1>
+                                    <h1  class='uk-inline uk-heading-medium uk-text-bold uk-padding-remove-left uk-padding-small uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom uk-padding-remove-top' style='color: white; width: max-content;'>Aspirations:</h1>
+                                </div>
                                 <div class='uk-width-expand uk-padding-remove-left uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-margin'>
                                     <h1 class='uk-heading-medium uk-text-bold uk-inline-block uk-margin-remove-bottom' style='color: #FFB400; width: max-content;'>Divergent&nbsp;</h1>
                                     <h1 class='uk-heading-medium uk-text-bold uk-inline-block uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Pathways</h1>
@@ -88,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-position-top uk-margin-small-left' uk-navbar>
+                <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-position-top uk-margin-small-left uk-visible@m' uk-navbar>
                     <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
                         <ul class="uk-navbar-nav">
                             <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
@@ -108,31 +80,81 @@
                     </div>
                 </nav>
                 
-                <div class="uk-position-bottom uk-background-secondary" style="width: 100%; height: 20px;"></div>
+                <span  href="#offcanvas-slide" class="uk-button uk-hidden@m uk-padding-small" style="color: white; height: fit-content;" uk-toggle uk-icon="icon: menu; ratio: 1.5;"></span>
+
+                <div id="offcanvas-slide" uk-offcanvas>
+                    <div class="uk-offcanvas-bar">
+                        <ul class="uk-nav">
+                            <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="index.html">Home</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="about.html">About</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color:#FFB400;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="">Programmes</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="">Profiles</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="">Media</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+
+                            
+                            <ul class="uk-iconnav uk-position-bottom uk-margin-bottom uk-margin-small-left">
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                            </ul>
+
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </div>
 
-        <div id='body_content_1' class="uk-section uk-padding-remove-bottom">
-            <div class='uk-grid uk-padding uk-padding-remove-bottom uk-padding-remove-left uk-padding-remove-right'>
+        <div id='body_content_1' class="uk-section uk-margin-large-top uk-margin-large-bottom">
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
 
                 <div id='icon_left' class='uk-width-auto'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
                 </div> 
                 
-                <div class="uk-grid uk-width-expand">
-                    <div id='body_content_1_image_column' class='uk-width-auto uk-padding-remove-left'>
-                        <img class='uk-margin-large-right uk-margin-large-left uk-padding-large uk-padding-remove-top uk-padding-remove-bottom' style="max-height: 70%;" data-src="images/about_theme_image.png" uk-img/>
+                <div class="uk-grid uk-width-expand" uk-grid>
+                    <div id='body_content_1_image_column' class='uk-width-1-2@m'>
+                        <div class='uk-inline' style="width: 100%; min-height: 650px;">
+                            <img class='uk-position-top uk-position-center' data-src='images/atom.png' style='top:75px; width: 150px; height: 150px;' uk-img>
+                            <img class='uk-position-top uk-position-center' data-src='images/monkey.png' style='top:175px; width: 200px; height: 200px;' uk-img>
+                            <img class='uk-position-top uk-position-center' data-src='images/person.png' style='top:308px; width: 250px; height: 250px;' uk-img>
+                            <img class='uk-position-top uk-position-center' data-src='images/robot.png' style='top:475px; width: 300px; height: 300px;' uk-img>
+                        </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-expand'>
-                        <div>
-                            <div class='uk-margin-top'>
+                    <div id='body_content_1_text_column' class='uk-width-1-2@m'>
+                        <div class='uk-inline'>
+                            <div style='border-bottom: 20px solid transparent; border-right: 20px solid transparent;' class='uk-margin-top uk-margin-bottom uk-margin-right'>
                                 <h1 class='uk-text-bold uk-margin-remove-top'>About this year's theme</h1>
                                 <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
                                 <p class='uk-text-break uk-margin-remove-bottom'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
                             </div>
-                            <div class='uk-height-max-small' style="height: 50px; border-right: 20px solid #FFB400; border-bottom: 20px solid #FFB400;"></div>
+                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 15%; width: 100%;" ></div>
                         </div>
                     </div>
                 </div>
@@ -150,18 +172,111 @@
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
                 </div> 
 
-                <div class='uk-width-expand'>
+                <div class='uk-width-expand uk-padding-remove-left'>
                     <div>
                         <h2 class='uk-text-bold'>Subthemes</h2>
-                        <div class="uk-grid-collapse uk-child-width-expand@s uk-text-center" uk-grid>
-                            <div>
-                                <div class="uk-background-secondary uk-padding uk-light" style="border-bottom: 20px solid #404040;">Item</div>
+                        <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+                            <div class="uk-background-secondary uk-padding" style="border-bottom: 20px solid #404040;">
+                                <div>
+                                    <div class='uk-inline uk-margin-small-right' style="background-color: #FFB400; width: 20px; height: 20px;" ></div>
+                                    <h3 class="uk-inline uk-text-bold uk-margin-remove-top uk-margin-remove-bottom" style="color: #FFB400;">Manifesting Science</h3>
+                                </div>
+                                <p class="uk-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
                             </div>
-                            <div>
-                                <div class="uk-background-secondary uk-padding uk-light" style="border-bottom: 20px solid #404040;">Item</div>
+                            <div class="uk-background-secondary uk-padding" style="border-bottom: 20px solid #404040;">
+                                <div>
+                                    <div class='uk-inline uk-margin-small-right' style="background-color: white; width: 20px; height: 20px;" ></div>
+                                    <h3 class="uk-inline uk-text-bold uk-margin-remove-top uk-margin-remove-bottom" style="color: white;">Bridging Science and Society</h3>
+                                </div>
+                                <p class="uk-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
                             </div>
-                            <div>
-                                <div class="uk-padding uk-dark" style="border-bottom: 20px solid #404040;">Item</div>
+                            <div class="uk-padding" style="border-bottom: 20px solid #404040;">
+                                <div>
+                                    <div class='uk-inline uk-margin-small-right' style="background-color: #404040; width: 20px; height: 20px;" ></div>
+                                    <h3 class="uk-inline uk-text-bold uk-margin-remove-top uk-margin-remove-bottom">Science Now and Then</h3>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='body_content_3' class="uk-section uk-padding-remove-top">
+            
+            <div class='uk-grid uk-padding uk-padding-remove-top uk-padding-remove-left uk-padding-remove-right'>
+
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+
+                <div class='uk-width-expand uk-padding-remove-left'>
+                    <div>
+                        <h2 class='uk-text-bold'>Objectives</h2>
+                        <div class='uk-grid-collapse' uk-grid>
+                            <div class='uk-width-1-2@m uk-background-secondary uk-margin-bottom'>
+                                <div>
+                                    <div class="uk-section" style="background-color: #ffb400;">
+                                        <div class="uk-container">
+                                            <h3 class='uk-text-bold'>Inspire Passion for Science Among Youth</h3>
+                                            <div>
+                                                <p style="color: #404040;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="uk-section uk-section-secondary uk-light">
+                                        <div class="uk-container">
+                                            <h3 class='uk-text-bold'>Establish Cooperation and Friendship Amongst Young Science Talents</h3>
+                                            <div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="uk-section" style="background-color: #ffb400;">
+                                        <div class="uk-container">
+                                            <h3 class='uk-text-bold'>Build Capacities of Science Educators</h3>
+                                            <div>
+                                                <p style="color: #404040;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="uk-section uk-section-secondary uk-light">
+                                        <div class="uk-container">
+                                            <h3 class='uk-text-bold'>Establish Singapore as a Hub for Science Education and Research</h3>
+                                            <div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='uk-width-1-2@m'>
+                                <div class="uk-section uk-padding-remove-top">
+                                    <div class="uk-inline uk-margin-medium-left">
+                                        <img class='uk-padding-large' style='border: 20px solid transparent;' data-src='images/objectives_icon.png' uk-img>
+                                        <div class='uk-position-bottom-left' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-left: 20px solid #FFB400; height: 15%; width: 40%;" ></div>
+                                        <div class='uk-position-top-right' style="background-color: transparent; border-top: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 15%; width: 40%;" ></div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-section uk-padding-remove-top">
+                                    <div class="uk-inline uk-margin-medium-left">
+                                        <img style='border-bottom: 20px solid transparent; border-left: 20px solid transparent;' data-src='images/obj1.png' uk-img>
+                                        <div class='uk-position-bottom-left' style="background-color: transparent; border-bottom: 20px solid #404040; border-left: 20px solid #404040; height: 65%; width: 70%;" ></div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-section uk-padding-remove-top uk-padding-remove-bottom">
+                                    <div class="uk-inline uk-margin-medium-left">
+                                        <img style='border-bottom: 20px solid transparent; border-right: 20px solid transparent;' data-src='images/obj2.png' uk-img>
+                                        <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 45%; width: 60%;" ></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
