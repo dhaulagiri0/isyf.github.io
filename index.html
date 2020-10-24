@@ -62,7 +62,7 @@
             <div class='uk-width-auto'>
                 <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
             </div>  
-            <div class="uk-width-expand uk-position-relative uk-flex uk-background-cover" data-src='images/frontpic.jpg' style='border-bottom: 20px solid #404040;' uk-height-viewport="offset-bottom: 10" uk-img>
+            <div class="uk-width-expand uk-position-relative uk-flex uk-background-cover" data-src='images/frontpic.jpg' style='border-bottom: 20px solid #404040; background-color: #404040;' uk-height-viewport="offset-bottom: 10" uk-parallax='bgx: 70' uk-img>
                 
                 <!-- <img class='uk-position-top uk-overflow-hidden' src='images/frontpic.jpg' style='border-bottom: 20px solid #404040; height: 100%; width: 100%;'/> -->
 
@@ -86,19 +86,19 @@
                             <div class='uk-grid-collapse uk-child-width-expand@s uk-text-center uk-block' style="min-width: fit-content; background-color: #404040; height: min-content;" uk-grid>
                                 <div>
                                     <div class="uk-background-muted uk-padding">
-                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #00D490;' id='days'>-</h2>
+                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #00D490;' id='days'>--</h2>
                                         <h3 class='uk-margin-remove-top uk-margin-remove-bottom' style='color: #00D490;'>Days</h3>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="uk-background-secondary uk-padding">
-                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #808080;' id='hours'>-</h2>
+                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #808080;' id='hours'>--</h2>
                                         <h3 class='uk-margin-remove-top uk-margin-remove-bottom' style='color: #808080;'>Hours</h3>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="uk-background-secondary uk-padding">
-                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #808080;' id='minutes'>-</h2>
+                                        <h2 class='uk-text-bold uk-heading-small uk-margin-remove-bottom' style='color: #808080;' id='minutes'>--</h2>
                                         <h3 class='uk-margin-remove-top uk-margin-remove-bottom' style='color: #808080;'>Minutes</h3>
                                     </div>
                                 </div>
@@ -175,63 +175,125 @@
 
             </div>
         </div>
-        <div id='body_content_1' class='uk-grid uk-margin-large-top uk-padding  uk-padding-remove-left uk-padding-remove-right'>
-
-            <div id='icon_left' class='uk-width-auto'>
-                <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
-            </div> 
-            
-            <div class="uk-grid uk-width-expand">
-                <div id='body_content_1_image_column' class='uk-width-1-3@m uk-padding-remove-left'>
-                    <div class='uk-inline'>
-                        <img style='border-bottom: 30px solid transparent; border-right: 30px solid transparent;'  data-src="images/welcome_image.png" uk-img/>
-                        <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 30px solid #00D490; border-right: 30px solid #00D490; height: 65%; width: 70%;" ></div>
-                    </div>
-                </div>
-
-                <div id='body_content_1_text_column' class='uk-width-2-3@m'>
-                    <div class='uk-margin-top'>
-                        <h2 class='uk-text-bold uk-margin-small-bottom' style="color: #00D490;">Welcome</h2>
-                        <h1 class='uk-text-bold uk-margin-remove-top'>About ISYF</h1>
-                        <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                        <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                <div class="uk-inline">
+        <div id='body_content_1' class='uk-section uk-margin-large-top uk-margin-large-bottom uk-visible@m'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-3@m uk-padding-remove-left' uk-parallax='y: 120px;'>
+                        <div class='uk-inline'>
+                            <img style='border-bottom: 30px solid transparent; border-right: 30px solid transparent;'  data-src="images/welcome_image.png" uk-img/>
+                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 30px solid #00D490; border-right: 30px solid #00D490; height: 65%; width: 70%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-2-3@m' uk-scrollspy='cls: uk-animation-slide-right;'>
+                        <div class='uk-margin-top'>
+                            <h2 class='uk-text-bold uk-margin-small-bottom' style="color: #00D490;">Welcome</h2>
+                            <h1 class='uk-text-bold uk-margin-remove-top'>About ISYF</h1>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
                 </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
             </div> 
         </div>
 
-        <div id='body_content_2' class='uk-grid uk-margin-large-top uk-padding  uk-padding-remove-left uk-padding-remove-right'>
+        <div id='body_content_1_s' class='uk-section uk-margin-large-top uk-hidden@m'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-3@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img style='border-bottom: 30px solid transparent; border-right: 30px solid transparent;'  data-src="images/welcome_image.png" uk-img/>
+                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 30px solid #00D490; border-right: 30px solid #00D490; height: 65%; width: 70%;" ></div>
+                        </div>
+                    </div>
 
-            <div id='icon_left' class='uk-width-auto'>
-                <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    <div id='body_content_1_text_column' class='uk-width-2-3@m' uk-scrollspy='cls: uk-animation-slide-right;'>
+                        <div class='uk-margin-top'>
+                            <h2 class='uk-text-bold uk-margin-small-bottom' style="color: #00D490;">Welcome</h2>
+                            <h1 class='uk-text-bold uk-margin-remove-top'>About ISYF</h1>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
             </div> 
-            
-            <div class="uk-grid uk-width-expand">
-                <div id='body_content_2_text_column' class='uk-width-2-3@m  uk-padding-remove-left'>
-                    <div>
-                        <h1 class='uk-text-bold uk-text-right uk-margin-remove-top' style="color: #7494FF;">Meet our mascot, Stella!</h1>
-                        <p class='uk-text-break uk-text-right'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                        <p class='uk-text-break uk-text-right'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+        </div>
+
+        <div id='body_content_2' class='uk-section uk-margin-large-top uk-visible@m'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand" uk-grid>
+                    <div id='body_content_2_text_column' class='uk-width-2-3@m uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-left;'>
+                        <div>
+                            <h1 class='uk-text-bold uk-text-right uk-margin-remove-top' style="color: #7494FF;">Meet our mascot, Stella!</h1>
+                            <p class='uk-text-break uk-text-right'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break uk-text-right'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
+
+                    <div id='body_content_2_image_column' class='uk-width-1-3@m' uk-parallax='y: -120px;'>
+                        <div class='uk-inline'>
+                            <img style='border-top: 39px solid transparent; border-left: 39px solid transparent;' data-src='images/mascot_image.png' uk-img>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 40px solid #7494FF; border-left: 40px solid #7494FF; height: 65%; width: 70%;" ></div>
+                        </div>
                     </div>
                 </div>
 
-                <div id='body_content_2_image_column' class='uk-width-1-3@m'>
-                    <div class='uk-inline'>
-                        <img style='border-top: 39px solid transparent; border-left: 39px solid transparent;' data-src='images/mascot_image.png' uk-img>
-                        <div class='uk-position-top-left' style="background-color: transparent; border-top: 40px solid #7494FF; border-left: 40px solid #7494FF; height: 65%; width: 70%;" ></div>
-                    </div>
-                </div>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
             </div>
+        </div>
+        
+        <div id='body_content_2_s' class='uk-section uk-hidden@m'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand" uk-grid>
+                    <div id='body_content_2_image_column' class='uk-width-1-3@m'>
+                        <div class='uk-inline'>
+                            <img style='border-top: 39px solid transparent; border-left: 39px solid transparent;' data-src='images/mascot_image.png' uk-img>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 40px solid #7494FF; border-left: 40px solid #7494FF; height: 65%; width: 70%;" ></div>
+                        </div>
+                    </div>
+                    <div id='body_content_2_text_column' class='uk-width-2-3@m uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-left;'>
+                        <div>
+                            <h1 class='uk-text-bold uk-text-right uk-margin-top' style="color: #7494FF;">Meet our mascot, Stella!</h1>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
-            </div> 
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>    
         </div>
         
         <div class='uk-margin-medium-top' style="background-color: #404040; height: 5%;"></div>
