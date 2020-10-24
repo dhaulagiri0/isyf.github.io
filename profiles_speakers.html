@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="uk-overflow-auto">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+            });
+        </script>
+
+        <style>
+            .disable-select {
+                user-select: none; /* supported by Chrome and Opera */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+            }
+        </style>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
+    </head>
+    <body class='disable-select'>
+        <div id='top_sec' uk-grid>
+            <div class='uk-width-auto'>
+                <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+            </div>  
+            <div class="uk-width-expand uk-padding-remove-left" style='background-color: #404040;'>
+
+                <nav class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' uk-navbar>
+                    <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
+                        <ul class="uk-navbar-nav">
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Programmes</a></li>
+                            <li class='uk-text-bold uk-active uk-margin-large-right'><a style='text-transform: capitalize; border-color: #FF006E;' href="profiles_speakers.html">Profiles</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Media</a></li>
+                            <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
+                        <ul class="uk-iconnav">
+                            <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                            <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; padding-bottom: 11px; background-color:#BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <nav class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' uk-navbar>
+                    <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                        <ul class="uk-nav uk-inline">
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Invited Speakers</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color:#FF006E;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Participating School</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <span  href="#offcanvas-slide" class="uk-button uk-hidden@m uk-padding-small" style="color: white; height: fit-content;" uk-toggle uk-icon="icon: menu; ratio: 1.5;"></span>
+
+                <div id="offcanvas-slide" uk-offcanvas>
+                    <div class="uk-offcanvas-bar">
+                        <ul class="uk-nav uk-nav-default">
+                            <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="index.html">Home</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="about.html">About</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="">Programmes</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="profiles_speakers.html">Profiles</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color:#FF006E;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="">Media</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+
+                            <li class="uk-nav-divider"></li>
+
+                            <li class='uk-active uk-margin-small-top'><a href="#">Invited Speakers</a></li>
+
+                            <li class='uk-margin-small-top'><a href="#">Participating Schools</a></li>
+
+                            <ul class="uk-iconnav uk-position-bottom uk-margin-bottom uk-margin-small-left">
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                            </ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='body_content_1' class='uk-section'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Professor Ada Yonath.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FF006E; border-left: 70px solid #FF006E; height: 60%; width: 60%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Professor Ada Yonath</h1>
+                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #FF006E;">Nobel Prize in Chemistry (2009)</h2>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div id='body_content_1' class='uk-section'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Sir Konstantin Novoselov.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #00D490; border-left: 70px solid #00D490; height: 60%; width: 60%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Professor Ada Yonath</h1>
+                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #00D490;">Nobel Prize in Physics (2010)</h2>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div id='body_content_1' class='uk-section'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Sir Tim Hunt.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FFB400; border-left: 70px solid #FFB400; height: 60%; width: 60%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Sir Tim Hunt</h1>
+                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #FFB400;">Nobel Prize in Physiology or Medicine (2001)</h2>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class='uk-margin-medium-top' style="background-color: #404040; height: 5%;"></div>
+    </body>
+</html> 
