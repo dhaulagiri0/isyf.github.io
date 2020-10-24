@@ -32,7 +32,7 @@
             <div class='uk-width-auto'>
                 <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
             </div>  
-            <div class="uk-width-expand uk-position-relative uk-flex uk-background-cover" data-src='images/about_image.png' style='border-bottom: 20px solid #404040;' uk-height-viewport="offset-bottom: 10" uk-img>
+            <div class="uk-width-expand uk-position-relative uk-flex uk-background-cover" data-src='images/about_image.png' style='border-bottom: 20px solid #404040;' uk-height-viewport="offset-bottom: 10" uk-parallax='bgy: -200' uk-img>
 
                 <div class='uk-position-bottom uk-padding uk-margin-bottom'>
                     <h3 class='uk-padding-small uk-text-bold uk-padding-remove-bottom uk-margin-remove-top uk-margin-remove-bottom' style='color: white; width: max-content;'>Our theme</h3>
@@ -140,28 +140,28 @@
                 <div class="uk-grid uk-width-expand" uk-grid>
                     <div id='body_content_1_image_column' class='uk-width-1-2@m'>
                         <div class='uk-inline uk-visible@m' style="width: 100%; min-height: 650px;">
-                            <img class='uk-position-top uk-position-center' data-src='images/atom.png' style='top:75px; width: 150px; height: 150px;' uk-img>
-                            <img class='uk-position-top uk-position-center' data-src='images/monkey.png' style='top:175px; width: 200px; height: 200px;' uk-img>
-                            <img class='uk-position-top uk-position-center' data-src='images/person.png' style='top:308px; width: 250px; height: 250px;' uk-img>
-                            <img class='uk-position-top uk-position-center' data-src='images/robot.png' style='top:475px; width: 300px; height: 300px;' uk-img>
+                            <img class='uk-position-top uk-position-center' src='images/atom.png' style='top:75px; width: 150px; height: 150px;'  uk-scrollspy="cls:uk-animation-fade;">
+                            <img class='uk-position-top uk-position-center' src='images/monkey.png' style='top:175px; width: 200px; height: 200px;' uk-scrollspy="cls:uk-animation-fade;">
+                            <img class='uk-position-top uk-position-center' src='images/person.png' style='top:308px; width: 250px; height: 250px;' uk-scrollspy="cls:uk-animation-fade;">
+                            <img class='uk-position-top uk-position-center' src='images/robot.png' style='top:475px; width: 300px; height: 300px;' uk-scrollspy="cls:uk-animation-fade;">
                         </div>
 
                         <div class='uk-inline uk-hidden@m' style="width: 100%; min-height: 350px;">
-                            <img class='uk-position-top uk-position-center' data-src='images/atom.png' style='top:33px; width: 75px; height: 75px;' uk-img>
-                            <img class='uk-position-top uk-position-center' data-src='images/monkey.png' style='top:88px; width: 100px; height: 100px;' uk-img>
-                            <img class='uk-position-top uk-position-center' data-src='images/person.png' style='top:154px; width: 125px; height: 125px;' uk-img>
-                            <img class='uk-position-top uk-position-center' data-src='images/robot.png' style='top:237px; width: 150px; height: 150px;' uk-img>
+                            <img class='uk-position-top uk-position-center' src='images/atom.png' style='top:33px; width: 75px; height: 75px;' uk-scrollspy="cls:uk-animation-fade;">
+                            <img class='uk-position-top uk-position-center' src='images/monkey.png' style='top:88px; width: 100px; height: 100px;' uk-scrollspy="cls:uk-animation-fade;">
+                            <img class='uk-position-top uk-position-center' src='images/person.png' style='top:154px; width: 125px; height: 125px;' uk-scrollspy="cls:uk-animation-fade;">
+                            <img class='uk-position-top uk-position-center' src='images/robot.png' style='top:237px; width: 150px; height: 150px;' uk-scrollspy="cls:uk-animation-fade;">
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-1-2@m'>
+                    <div id='body_content_1_text_column' class='uk-width-1-2@m' uk-scrollspy='cls:uk-animation-slide-right;'>
                         <div class='uk-inline'>
                             <div style='border-bottom: 20px solid transparent; border-right: 20px solid transparent;' class='uk-margin-top uk-margin-bottom uk-margin-right'>
                                 <h1 class='uk-text-bold uk-margin-remove-top'>About this year's theme</h1>
                                 <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
                                 <p class='uk-text-break uk-margin-remove-bottom'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
                             </div>
-                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 15%; width: 100%;" ></div>
+                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 15%; width: 100%;" uk-scrollspy='cls:uk-animation-slide-top;'></div>
                         </div>
                     </div>
                 </div>
@@ -181,23 +181,23 @@
 
                 <div class='uk-width-expand uk-padding-remove-left'>
                     <div>
-                        <h2 class='uk-text-bold'>Subthemes</h2>
-                        <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
-                            <div class="uk-background-secondary uk-padding" style="border-bottom: 20px solid #404040;">
+                        <h2 class='uk-text-bold' uk-scrollspy="cls:uk-animation-slide-left;">Subthemes</h2>
+                        <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid uk-scrollspy="cls: uk-animation-slide-bottom; target: .card; delay: 300;">
+                            <div class="uk-background-secondary uk-padding card" style="border-bottom: 20px solid #404040;">
                                 <div>
                                     <div class='uk-inline uk-margin-small-right' style="background-color: #FFB400; width: 20px; height: 20px;" ></div>
                                     <h3 class="uk-inline uk-text-bold uk-margin-remove-top uk-margin-remove-bottom" style="color: #FFB400;">Manifesting Science</h3>
                                 </div>
                                 <p class="uk-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
                             </div>
-                            <div class="uk-background-secondary uk-padding" style="border-bottom: 20px solid #404040;">
+                            <div class="uk-background-secondary uk-padding card" style="border-bottom: 20px solid #404040;">
                                 <div>
                                     <div class='uk-inline uk-margin-small-right' style="background-color: white; width: 20px; height: 20px;" ></div>
                                     <h3 class="uk-inline uk-text-bold uk-margin-remove-top uk-margin-remove-bottom" style="color: white;">Bridging Science and Society</h3>
                                 </div>
                                 <p class="uk-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
                             </div>
-                            <div class="uk-padding" style="border-bottom: 20px solid #404040;">
+                            <div class="uk-padding card" style="border-bottom: 20px solid #404040;">
                                 <div>
                                     <div class='uk-inline uk-margin-small-right' style="background-color: #404040; width: 20px; height: 20px;" ></div>
                                     <h3 class="uk-inline uk-text-bold uk-margin-remove-top uk-margin-remove-bottom">Science Now and Then</h3>
@@ -220,9 +220,9 @@
 
                 <div class='uk-width-expand uk-padding-remove-left'>
                     <div>
-                        <h2 class='uk-text-bold'>Objectives</h2>
+                        <h2 class='uk-text-bold' uk-scrollspy="cls:uk-animation-slide-left;">Objectives</h2>
                         <div class='uk-grid-collapse' uk-grid>
-                            <div class='uk-width-1-2@m uk-background-secondary uk-margin-bottom'>
+                            <div class='uk-width-1-2@m uk-margin-bottom'>
                                 <div>
                                     <div class="uk-section" style="background-color: #ffb400;">
                                         <div class="uk-container">
@@ -264,7 +264,7 @@
 
                             <div class='uk-width-1-2@m'>
                                 <div class="uk-section uk-padding-remove-top">
-                                    <div class="uk-inline uk-margin-medium-left uk-margin-medium-right" >
+                                    <div class="uk-inline uk-margin-medium-left uk-margin-medium-right"  uk-scrollspy='cls: uk-animation-scale-up; delay:200;'>
                                         <img class='uk-padding-large' style='border: 20px solid transparent;' data-src='images/objectives_icon.png' uk-img>
                                         <div class='uk-position-bottom-left' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-left: 20px solid #FFB400; height: 15%; width: 40%;" ></div>
                                         <div class='uk-position-top-right' style="background-color: transparent; border-top: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 15%; width: 40%;" ></div>
@@ -272,14 +272,14 @@
                                 </div>
 
                                 <div class="uk-section uk-padding-remove-top">
-                                    <div class="uk-inline uk-margin-medium-left uk-margin-medium-right">
+                                    <div class="uk-inline uk-margin-medium-left uk-margin-medium-right" uk-scrollspy='cls: uk-animation-scale-up; delay:200;'>
                                         <img style='border-bottom: 20px solid transparent; border-left: 20px solid transparent;' data-src='images/obj1.png' uk-img>
                                         <div class='uk-position-bottom-left' style="background-color: transparent; border-bottom: 20px solid #404040; border-left: 20px solid #404040; height: 65%; width: 70%;" ></div>
                                     </div>
                                 </div>
 
                                 <div class="uk-section uk-padding-remove-top uk-padding-remove-bottom">
-                                    <div class="uk-inline uk-margin-medium-left uk-margin-medium-right">
+                                    <div class="uk-inline uk-margin-medium-left uk-margin-medium-right" uk-scrollspy='cls: uk-animation-scale-up; delay:200;'>
                                         <img style='border-bottom: 20px solid transparent; border-right: 20px solid transparent;' data-src='images/obj2.png' uk-img>
                                         <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 20px solid #FFB400; border-right: 20px solid #FFB400; height: 45%; width: 60%;" ></div>
                                     </div>
@@ -303,7 +303,7 @@
                 </div> 
                 
                 <div class="uk-grid uk-width-expand uk-padding-remove-left" uk-grid>
-                    <div id='body_content_1_image_column' class='uk-width-1-3@m uk-visible@m uk-padding-remove-left'>
+                    <div id='body_content_1_image_column' class='uk-width-1-3@m uk-visible@m uk-padding-remove-left' uk-scrollspy="cls: uk-animation-slide-bottom;">
                         <div class="uk-section uk-padding-remove-top">
                             <div class="uk-inline uk-margin-medium-left uk-margin-medium-right">
                                 <img style='border-bottom: 40px solid transparent; border-right: 40px solid transparent;' data-src='images/mascot_about.png' uk-img>
@@ -320,10 +320,10 @@
                             </div>
                             <div class='uk-grid' uk-grid>
                                 <div class='uk-width-auto'>
-                                    <div style="background-color: #7494FF; border-radius: 20px; height: 65%; width: 10px;"></div>
+                                    <div style="background-color: #7494FF; border-radius: 20px; height: 65%; width: 10px;" uk-parallax='y: 100px;'></div>
                                 </div>
-                                <div class='uk-width-expand'>
-                                    <div class='uk-inline-block uk-margin-small-bottom'>
+                                <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                    <div class='uk-inline-block uk-margin-small-bottom' >
                                         <img class='uk-inline uk-margin-right' data-src='images/student.png' width='100px' uk-img/>
                                         <h3 class='uk-inline uk-text-bold uk-margin-remove-bottom uk-margin-small-top'>Students</h3>
                                     </div>
@@ -341,9 +341,9 @@
                             </div>
                             <div class='uk-grid' uk-grid>
                                 <div class='uk-width-auto'>
-                                    <div style="background-color: #7494FF; border-radius: 20px; height: 65%; width: 10px;"></div>
+                                    <div style="background-color: #7494FF; border-radius: 20px; height: 65%; width: 10px;" uk-parallax='y: 100px;'></div>
                                 </div>
-                                <div class='uk-width-expand'>
+                                <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
                                     <div class='uk-inline-block uk-margin-small-bottom'>
                                         <img class='uk-inline uk-margin-right' data-src='images/educator_icon_about.png' width='100px' uk-img/>
                                         <h3 class='uk-inline uk-text-bold uk-margin-remove-bottom uk-margin-small-top'>Educators</h3>
@@ -364,17 +364,17 @@
         </div>
 
         <div class='uk-margin-medium-top uk-padding-large uk-padding-remove-left uk-padding-remove-right' style="background-color: #404040;">
-            <div class='uk-grid' uk-grid>
+            <div class='uk-grid uk-height-viewport uk-margin-large-top uk-padding-large uk-padding-remove-left uk-padding-remove-right' uk-grid>
                 <div id='icon_left' class='uk-width-auto'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
                 </div>
 
-                <div class='uk-width-expand uk-padding-medium uk-padding-remove-left uk-padding-remove-right'>
+                <div class='uk-width-expand uk-padding-medium uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom'>
                     <div>
                         <h2 class='uk-text-bold' style="color: white;">Organisers</h2>
                         <h4 class='uk-text-bold uk-light uk-margin-small-top'>International Science Youth Forum (ISYF) @ Singapore is organised by Hwa Chong Institution with the support of the Ministry of Education (MOE).</h4>
                     </div>
-                    <div class='uk-grid uk-margin-left uk-margin-remove-left' style="background-color: white;" uk-grid>
+                    <div class='uk-grid uk-margin-medium-top uk-margin-left uk-margin-remove-left uk-padding-large uk-padding-remove-left uk-padding-remove-right' style="background-color: white;" uk-grid>
                         <div class='uk-width-1-2@m uk-margin-remove-bottom uk-padding-remove-left uk-position-relative' style="min-height: 250px;"><img class='uk-position-center uk-padding' data-src='images/hwachonglogo.png' style="width: 100%; height: auto;" uk-img></div>
                         <div class='uk-width-1-2@m uk-padding uk-align-center uk-margin-remove-top uk-margin-remove-bottom'><img class='uk-align-center' data-src='images/moelogo.png' style="width: 60%; height: auto;" uk-img></div>
                     </div>
