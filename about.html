@@ -84,7 +84,7 @@
 
                 <div id="offcanvas-slide" uk-offcanvas>
                     <div class="uk-offcanvas-bar">
-                        <ul class="uk-nav uk-nav-default">
+                        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
                             <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
                                     <a class='uk-inline' style='text-transform: capitalize;' href="index.html">Home</a>
@@ -94,7 +94,7 @@
                             <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
                                     <a class='uk-inline' style='text-transform: capitalize;' href="about.html">About</a>
-                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color:#FFB400;"></div>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color: #FFB400;"></div>
                                 </div>
                             </li>
                             <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
@@ -103,11 +103,28 @@
                                     <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
                                 </div>
                             </li>
-                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
-                                <div class='uk-inline-block'>
-                                    <a class='uk-inline' style='text-transform: capitalize;' href="profiles_speakers.html">Profiles</a>
-                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
-                                </div>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom uk-parent'>
+                                <a style='text-transform: capitalize; color: white;' href="#">Profiles</a>
+                                <ul class="uk-nav-sub uk-margin-small-top">
+                                    <li>
+                                        <div class='uk-inline-block'>
+                                            <a href="profiles_speakers.html">Invited Speakers</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href='#'>Participating Schools</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href='#'>Organising Committee</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
@@ -116,7 +133,6 @@
                                 </div>
                             </li>
 
-                            
                             <ul class="uk-iconnav uk-position-bottom uk-margin-bottom uk-margin-small-left">
                                 <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
                                 <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
