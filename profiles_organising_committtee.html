@@ -5,12 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
         <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
+        <script src="node_modules\packery\dist\packery.pkgd.min.js"></script>
+
         <script>
+
             document.addEventListener("DOMContentLoaded", function() {
                 //The first argument are the elements to which the plugin shall be initialized
                 //The second argument has to be at least a empty object or a object with your desired options
                 OverlayScrollbars(document.querySelectorAll("body"), { });
             });
+
         </script>
 
         <style>
@@ -21,6 +25,16 @@
                 -moz-user-select: none; /* Firefox */
                 -ms-user-select: none; /* Internet Explorer/Edge */
             }
+            .grid-item {
+                width: 19%;
+                height: 30%;
+                background: #e6e5e4;
+                border: 2px solid transparent;
+            }
+
+            .grid-item--width2 { width: 40%; }
+            .grid-item--height2 { height: 60%; }
+            .grid-item--square { height: 120px; width: 120px;}
         </style>
 
         <script>
@@ -162,22 +176,25 @@
             </div>
         </div>
 
-        <div class='uk-section uk-background-secondary uk-margin-medium-top'>
-            <div class='uk-container uk-position-relative uk-padding uk-align-center uk-height-viewport ' style="width: 80%;">
-                <div class='uk-position-top-left' style="width: 30%;">
+        <!-- <div class='uk-section uk-background-secondary uk-margin-medium-top uk-padding-large'>
+            <div class="grid" style="height: 500px;" data-packery='{ "itemSelector": ".grid-item", "gutter": 10 }' > -->
+                <!-- <div class='uk-container'>
                     <h2 class='uk-text-bold' style="color: #FF006E;">Admin and Operations</h2>
                     <p class='uk-light uk-text-bold'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus.</p>
+                </div> -->
+                <!-- <div class='grid-item grid-item--width2 uk-margin-left' style="background-color: transparent;">
+                    <h2 class='uk-text-bold' style="color: white;">Admin and Operations</h2>
                 </div>
-                <div class='' style="background-color: #FF006E; width: 150px; height: 250px;"></div>
-                <div class='' style="background-color: #FF006E; width: 150px; height: 250px;"></div>
-                <div class='' style="background-color: #FF006E; width: 150px; height: 150px;"></div>
-                <div class='' style="background-color: #FF006E; width: 150px; height: 150px;"></div>
-                <div class='' style="background-color: #FF006E; width: 250px; height: 150px;"></div>
-                <div class='' style="background-color: #FF006E; width: 170px; height: 250px;"></div>
-                <div class='' style="background-color: #FF006E; width: 140px; height: 170px;"></div>
-                <div class='' style="background-color: #FF006E; width: 100px; height: 180px;"></div>
+                <div class='grid-item uk-margin-large-left uk-margin-large-top' style="background-color:  #FF006E;"></div>
+                <div class='grid-item' style="width: 15%; margin-top: 15%; margin-left: 2%; "></div>
+                <div class='grid-item' style="background-color:  #FF006E; width: 17%; margin-top: 10%;"></div>
+                <div class='grid-item grid-item--height2 uk-margin-top' style="background-color: #FF006E; width: 25%; height: 30%; margin-left: 2%; margin-right: 2%;"></div>
+                <div class='grid-item' style="background-color:  #FF006E; margin-top: 3%; width: 15%; margin-right: 2%;"></div>
+                <div class='grid-item' style="background-color:  #FF006E; margin-top: 3%;"></div>
+                <div class='grid-item' style="background-color:  #FF006E; width: 15%; margin-left: 2%; margin-top: 3%;"></div>
+                <div class='grid-item' style="background-color:  #FF006E; margin-top: 3%; wid th: 25%; margin-left: 2%;"></div>
             </div>
-        </div>
+        </div> -->
 
 
         <div class='uk-margin-medium-top' style="background-color: #404040; height: 100px;"></div>
