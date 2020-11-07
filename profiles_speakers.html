@@ -24,7 +24,20 @@
                     }
                 }
 
-                window.onscroll = function() {scrollFunction()};
+
+                window.onscroll = function() {
+                    var h = document.documentElement, 
+                    b = document.body,
+                    st = 'scrollTop',
+                    sh = 'scrollHeight';
+
+                    var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight);
+                    if (percent > 0.11) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
+                };
             });
 
         </script>
