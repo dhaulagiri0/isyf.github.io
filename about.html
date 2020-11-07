@@ -16,20 +16,10 @@
             function showProfiles() {
                 document.getElementById("top_nav_container").style.backgroundColor = '#404040'
                 document.getElementById('profilesBar').style.visibility = 'visible'
-                var c = document.getElementById('icon_list').children;
-                for(i=0; i < c.length; i++) {
-                    c[i].children[0].style.backgroundColor = '#BFBFBF'
-                    c[i].children[0].style.color = '#404040'
-                }
             }
             function hideProfiles() {
                 document.getElementById("top_nav_container").style.backgroundColor = null
                 document.getElementById('profilesBar').style.visibility = 'hidden'
-                var c = document.getElementById('icon_list').children;
-                for(i=0; i < c.length; i++) {
-                    c[i].children[0].style.backgroundColor = '#404040'
-                    c[i].children[0].style.color = null
-                }
             }
         </script>
 
@@ -96,9 +86,9 @@
                         </div>
                         <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
                             <ul id='icon_list' class="uk-iconnav">
-                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px;" uk-icon="facebook"></a></li>
-                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px;" uk-icon="instagram"></a></li>
-                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px; padding-bottom: 11px;" uk-icon="youtube"></a></li>
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color: #BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color: #BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; padding-bottom: 11px; background-color: #BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
                             </ul>
                         </div>
                     </nav>
