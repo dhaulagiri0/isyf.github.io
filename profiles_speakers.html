@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="uk-overflow-auto">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,8 +9,24 @@
             document.addEventListener("DOMContentLoaded", function() {
                 //The first argument are the elements to which the plugin shall be initialized
                 //The second argument has to be at least a empty object or a object with your desired options
-                OverlayScrollbars(document.querySelectorAll("body"), { });
+                var mybutton = document.getElementById("js-scroll-up");
+
+                // When the user scrolls down 20px from the top of the document, show the button
+
+                var instance = OverlayScrollbars(document.querySelectorAll("body"), { callbacks : {onScroll : function() {scrollFunction()}}});
+                
+                function scrollFunction() {
+                    console.log(123)
+                    if (instance.scroll().ratio.y > 0.11) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
+                }
+
+                window.onscroll = function() {scrollFunction()};
             });
+
         </script>
 
         <style>
@@ -26,6 +42,16 @@
                 -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
                 filter: grayscale(100%);
             }
+
+            #js-scroll-up:hover {
+                color:white ;
+                background-color: #FF006E;
+            }
+
+            #js-scroll-up {
+                color: white;
+                background-color: #404040;
+            }
         </style>
 
         <script src="js/uikit.min.js"></script>
@@ -33,6 +59,9 @@
         <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
     <body class='disable-select'>
+
+        <a id="js-scroll-up" class="uk-position-fixed uk-position-bottom-right uk-margin-bottom uk-margin-right" href="#speakers" style="display: none; z-index: 99; border-radius: 100px; padding: 5px;" uk-scroll uk-icon="icon: chevron-up; ratio: 2;"></a>
+        
         <div id='top_sec' uk-grid>
             <div class='uk-width-auto'>
                 <img style='padding-top: 5px;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
@@ -148,214 +177,677 @@
             </div>
         </div>
 
-        <div id='body_content_1' class='uk-section'>
+        <div id='speakers' class='uk-section'>
+            <div class='uk-visible@s'>
+                <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                    <div id='icon_left' class='uk-width-auto uk-visible@s'>
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div> 
+
+                    <div class='uk-grid uk-width-expand' uk-grid>
+                        <div class='uk-width-1-4@m uk-card uk-card-default uk-background-secondary uk-card-body'>
+                            <h3 class="uk-text-bold" style="color: white;">Invited Speakers</h3>
+                            <p class='uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. <br><br></p>
+                            <p class='uk-text-bold uk-light'>Click on each speaker to find out more</p>                
+                        </div>
+                        <div class='uk-width-expand@m uk-child-width-1-4@m uk-child-width-1-3 uk-grid' uk-grid="masonry: true">
+                            <a class="uk-text-center" href='#section1' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class="blacknwhite" data-src="images/speakers/-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Sir Konstantin Novoselov</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 20%;"><div style="height: 100%; background-color: #FF006E;"></div></div>
+                            <a class="uk-text-center" href='#section3' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Professor Lu Wei</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="uk-text-center" href='#section2' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Loh Kai Chee</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 10%;"><div style="height: 100%; background-color: #FFB400;"></div></div>
+                            <a class="uk-text-center" href='#section6' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Sanjay H. Chotirmall</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="uk-text-center" href='#section5' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Phua Ghee Chee</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 10%;"><div style="height: 100%; background-color: #00D490;"></div></div>
+                            <a class="uk-text-center" href='#section7' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Saif A. Khan</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="uk-text-center" href='#section4' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Patrick Helean</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 10%;"><div style="height: 100%; background-color:  #FF006E;"></div></div>
+                            <a class="uk-text-center" href='#section8' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Tan Meng How</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
+                        <div class="uk-inline">
+                            <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+            <div class='uk-hidden@s'>
+                <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+
+                    <div class='uk-grid uk-width-expand uk-margin-left uk-margin-remove-left' uk-grid>
+                        <div class='uk-width-1-4@m uk-card uk-card-default uk-background-secondary uk-card-body'>
+                            <h3 class="uk-text-bold" style="color: white;">Invited Speakers</h3>
+                            <p class='uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>                
+                        </div>
+                        <div class='uk-width-expand@m uk-child-width-1-4@m uk-child-width-1-2 uk-grid' uk-grid="masonry: true">
+                            <a class="uk-text-center" href='#section1' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class="blacknwhite" data-src="images/speakers/-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Sir Konstantin Novoselov</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 20%;"><div style="height: 100%; background-color: #FF006E;"></div></div>
+                            <a class="uk-text-center" href='#section3' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Professor Lu Wei</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="uk-text-center" href='#section2' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Loh Kai Chee</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 10%;"><div style="height: 100%; background-color: #FFB400;"></div></div>
+                            <a class="uk-text-center" href='#section6' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Sanjay H. Chotirmall</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="uk-text-center" href='#section5' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Phua Ghee Chee</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 10%;"><div style="height: 100%; background-color: #00D490;"></div></div>
+                            <a class="uk-text-center" href='#section7' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Saif A. Khan</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="uk-text-center" href='#section4' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Patrick Helean</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="height: 10%;"><div style="height: 100%; background-color:  #FF006E;"></div></div>
+                            <a class="uk-text-center" href='#section8' uk-scroll>
+                                <div class="uk-inline-clip uk-transition-toggle">
+                                    <img class='blacknwhite' data-src="images\speakers\-.png" uk-img/>
+                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary uk-padding-small">
+                                        <p class="uk-margin-remove">Dr Tan Meng How</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id='section1' class='uk-section'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
                 </div> 
                 
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                </div> 
+
                 <div class="uk-grid uk-width-expand">
-                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-width-1-1 uk-padding-remove-left'>
                         <div class='uk-inline'>
-                            <img style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Sir Konstantin Novoselov.png" uk-img/>
+                            <img style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
                             <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FF006E; border-left: 70px solid #FF006E; height: 60%; width: 60%;" ></div>
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
                         <div style="margin-top: 50px;">
                             <h1 class='uk-text-bold'>Sir Konstantin Novoselov</h1>
-                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #FF006E;">Nobel Prize in Physics (2010)</h2>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FF006E;">Nobel Prize in Physics (2010)</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Sir Konstantin Novoselov</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FF006E;">Nobel Prize in Physics (2010)</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
                     <div class="uk-inline">
                         <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                     </div>
                 </div> 
             </div> 
         </div>
 
-        <div id='body_content_1' class='uk-section'>
+        <div id='section2' class='uk-section'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                 </div> 
                 
                 <div class="uk-grid uk-width-expand">
                     <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
                         <div class='uk-inline'>
-                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Loh Kai Chee.png" uk-img/>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
                             <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #00D490; border-left: 70px solid #00D490; height: 60%; width: 60%;" ></div>
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
                         <div style="margin-top: 50px;">
-                            <h1 class='uk-text-bold'>Loh Kai Chee</h1>
-                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #00D490;">Associate Professor Chemical and Biomolecular Engineering</h2>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <h1 class='uk-text-bold'>Dr Loh Kai Chee</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #00D490;">Associate Professor Chemical and Biomolecular Engineering</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Loh Kai Chee</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #00D490;">Associate Professor Chemical and Biomolecular Engineering</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
                     <div class="uk-inline">
                         <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                     </div>
                 </div> 
             </div> 
         </div>
 
-        <div id='body_content_1' class='uk-section'>
+        <div id='section3' class='uk-section'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
                 </div> 
                 
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                </div> 
+
                 <div class="uk-grid uk-width-expand">
                     <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
                         <div class='uk-inline'>
-                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Prof Lu Wei.png" uk-img/>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
                             <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FFB400; border-left: 70px solid #FFB400; height: 60%; width: 60%;" ></div>
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
                         <div style="margin-top: 50px;">
                             <h1 class='uk-text-bold'>Professor Lu Wei</h1>
-                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #FFB400;">Associate Head of Pillar for Information Systems Technology and Design (ISTD) and Design and Artificial Intelligence (DAI)</h2>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FFB400;">Associate Head of Pillar for Information Systems Technology and Design (ISTD) and Design and Artificial Intelligence (DAI)</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Professor Lu Wei</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FFB400;">Associate Head of Pillar for Information Systems Technology and Design (ISTD) and Design and Artificial Intelligence (DAI)</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
                     <div class="uk-inline">
                         <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                     </div>
                 </div> 
             </div> 
         </div>
 
-        <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-            <div id='icon_left' class='uk-width-auto'>
-                <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
-            </div> 
-            
-            <div class="uk-grid uk-width-expand">
-                <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
-                    <div class='uk-inline'>
-                        <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/PhuaGheeChee.png" uk-img/>
-                        <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FF006E; border-left: 70px solid #FF006E; height: 60%; width: 60%;" ></div>
-                    </div>
-                </div>
-
-                <div id='body_content_1_text_column' class='uk-width-3-4@m'>
-                    <div style="margin-top: 50px;">
-                        <h1 class='uk-text-bold'>Dr Phua Ghee Chee</h1>
-                        <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #FF006E;">Head of the department of Respiratory and Critical Care Medicine at the Singapore General Hospital</h2>
-                        <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                        <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                        <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                        <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                <div class="uk-inline">
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
-                </div>
-            </div> 
-        </div> 
-
-
-        <div id='body_content_1' class='uk-section'>
+        <div id='section4' class='uk-section'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                 </div> 
                 
                 <div class="uk-grid uk-width-expand">
                     <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
                         <div class='uk-inline'>
-                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Sanjay Chotirmall.png" uk-img/>
-                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #00D490; border-left: 70px solid #00D490; height: 60%; width: 60%;" ></div>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FF006E; border-left: 70px solid #FF006E; height: 60%; width: 60%;" ></div>
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
                         <div style="margin-top: 50px;">
-                            <h1 class='uk-text-bold'>Sanjay H. Chotirmall</h1>
-                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #00D490;">
-                                Assistant Professor of Molecular Medicine Provost’s Chair in Molecular Medicine Principal Investigator, Translational Respiratory Research Laboratory Honorary Senior Clinical Lecturer, Imperial College London
-                                </h2>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <h1 class='uk-text-bold'>Patrick Helean</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FF006E;">
+                                Actor/Director/Science Communicator Co-ordinator
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Patrick Helean</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FF006E;">
+                                Actor/Director/Science Communicator Co-ordinator
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
                     <div class="uk-inline">
                         <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+
+        <div id='section5' class='uk-section'></div>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #00D490; border-left: 70px solid #00D490; height: 60%; width: 60%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Phua Ghee Chee</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #00D490;">Head of the department of Respiratory and Critical Care Medicine at the Singapore General Hospital</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Phua Ghee Chee</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #00D490;">Head of the department of Respiratory and Critical Care Medicine at the Singapore General Hospital</h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+
+        <div id='section6' class='uk-section'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FFB400; border-left: 70px solid #FFB400; height: 60%; width: 60%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Sanjay H. Chotirmall</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FFB400;">
+                                Assistant Professor of Molecular Medicine Provost’s Chair in Molecular Medicine Principal Investigator, Translational Respiratory Research Laboratory Honorary Senior Clinical Lecturer, Imperial College London
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Sanjay H. Chotirmall</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FFB400;">
+                                Assistant Professor of Molecular Medicine Provost’s Chair in Molecular Medicine Principal Investigator, Translational Respiratory Research Laboratory Honorary Senior Clinical Lecturer, Imperial College London
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div id='section7' class='uk-section'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
+                </div> 
+                
+                <div class="uk-grid uk-width-expand">
+                    <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
+                        <div class='uk-inline'>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FF006E; border-left: 70px solid #FF006E; height: 60%; width: 60%;" ></div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Saif A. Khan</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FF006E;">
+                                Associate Professor, Deputy Head (Research and External Relations) Chemical and Biomolecular Engineering
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Saif A. Khan</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #FF006E;">
+                                Associate Professor, Deputy Head (Research and External Relations) Chemical and Biomolecular Engineering
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                     </div>
                 </div> 
             </div> 
         </div>
 
         
-        <div id='body_content_1' class='uk-section'>
+        <div id='section8' class='uk-section'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@s'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div id='icon_left' class='uk-width-auto uk-hidden@s'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                 </div> 
                 
                 <div class="uk-grid uk-width-expand">
                     <div id='body_content_1_image_column' class='uk-width-1-4@m uk-padding-remove-left'>
                         <div class='uk-inline'>
-                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/Tan Meng How.png" uk-img/>
-                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #FFB400; border-left: 70px solid #FFB400; height: 60%; width: 60%;" ></div>
+                            <img class='blacknwhite' style='border-top: 50px solid transparent; border-left: 70px solid transparent;'  data-src="images/speakers/-.png" uk-img/>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 51px solid #00d490; border-left: 70px solid #00d490; height: 60%; width: 60%;" ></div>
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column' class='uk-width-3-4@m'>
+                    <div id='body_content_1_text_column' class='uk-width-3-4@m uk-visible@s'>
                         <div style="margin-top: 50px;">
-                            <h1 class='uk-text-bold'>Tan Meng How</h1>
-                            <h2 class='uk-margin-small-bottom uk-margin-remove-top' style="color: #FFB400;">
+                            <h1 class='uk-text-bold'>Dr Tan Meng How</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #00d490;">
                                 Assistant Professor School of Chemical and Biomedical Engineering Nanyang Technological University Genome Institute of Singapore Agency for Science, Technology and Research
-                                </h2>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='body_content_1_text_column' class='uk-padding-remove-left uk-hidden@s'>
+                        <div style="margin-top: 50px;">
+                            <h1 class='uk-text-bold'>Dr Tan Meng How</h1>
+                            <h2 class='uk-margin-bottom uk-margin-remove-top' style="color: #00d490;">
+                                Assistant Professor School of Chemical and Biomedical Engineering Nanyang Technological University Genome Institute of Singapore Agency for Science, Technology and Research
+                            </h2>
+                            <div class='uk-column-1-2@s uk-column-divider'>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@s'>
                     <div class="uk-inline">
                         <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+                    </div>
+                </div> 
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-hidden@s'>
+                    <div class="uk-inline">
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_pink.png' height='20px' width="20px" uk-img>
                     </div>
                 </div> 
             </div> 
         </div>
 
         <div class='uk-margin-medium-top' style="background-color: #404040; height: 100px;"></div>
+    
     </body>
 </html> 
