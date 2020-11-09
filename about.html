@@ -31,6 +31,12 @@
                 -moz-user-select: none; /* Firefox */
                 -ms-user-select: none; /* Internet Explorer/Edge */
             }
+
+            .sweep {
+                animation: sweep 5s infinite linear;
+            }
+
+            @keyframes sweep { to { transform: rotate(360deg); } }
         </style>
 
         <script src="js/uikit.min.js"></script>
@@ -192,9 +198,9 @@
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
                 
-                <div class="uk-grid uk-width-expand uk-margin-left" uk-grid>
+                <div class="uk-grid uk-width-expand uk-margin-left uk-padding-remove-left" uk-grid>
                     <div id='body_content_1_image_column' class='uk-width-1-2@m uk-padding-remove-left'>
-                        <div class='uk-inline uk-visible@m' style="width: 100%; min-height: 650px;">
+                        <!-- <div class='uk-inline uk-visible@m' style="width: 100%; min-height: 650px;">
                             <img class='uk-position-top uk-position-center' src='images/atom.png' style='top:75px; width: 150px; height: 150px;'  uk-scrollspy="cls:uk-animation-fade;">
                             <img class='uk-position-top uk-position-center' src='images/monkey.png' style='top:175px; width: 200px; height: 200px;' uk-scrollspy="cls:uk-animation-fade;">
                             <img class='uk-position-top uk-position-center' src='images/person.png' style='top:308px; width: 250px; height: 250px;' uk-scrollspy="cls:uk-animation-fade;">
@@ -206,6 +212,59 @@
                             <img class='uk-position-top uk-position-center' src='images/monkey.png' style='top:88px; width: 100px; height: 100px;' uk-scrollspy="cls:uk-animation-fade;">
                             <img class='uk-position-top uk-position-center' src='images/person.png' style='top:154px; width: 125px; height: 125px;' uk-scrollspy="cls:uk-animation-fade;">
                             <img class='uk-position-top uk-position-center' src='images/robot.png' style='top:237px; width: 150px; height: 150px;' uk-scrollspy="cls:uk-animation-fade;">
+                        </div> -->
+
+                        
+                        <div class='uk-container uk-inline uk-padding-remove-left uk-padding-remove-right uk-visible@m' style="width: 100%; height: 100%;">
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img data-src='images\theme_asset\background.png' style='width: 100%;' alt='' uk-img/>
+                            </div>
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img class='sweep' data-src='images\theme_asset\radar_sweep.png' style='width: 100%;' alt='' uk-img uk-scrollspy='cls: uk-animation-fade; delay: 600;'/>
+                            </div>
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img data-src='images\theme_asset\radar_lines.png' style='width: 100%;' alt='' uk-img/>
+                                <div class='uk-contaier uk-position-center' style='width: 90%; height: 100%;'>
+                                    <img class='uk-position-top-right' data-src="images\theme_asset\DNA.png" style='width: 15%; border: 5px solid #ffb400; background: #FFB400; border-radius: 100%; top: 20%; right: 20%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 200;'>
+                                    <img class='uk-position-top-left' data-src="images\theme_asset\atom.png" style='width: 20%; top: 20%; left: 20%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 400;'>
+                                    <img class='uk-position-bottom-left' data-src="images\theme_asset\infinity.png" style='width: 23%; border: 8px solid #ffb400; border-radius: 100%; background: #FFB400; bottom: 25%; left: 10%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 600;'>
+                                    <img class='uk-position-bottom-right' data-src="images\theme_asset\Nut.png" style='width: 23%; bottom: 12%; right: 25%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 800;'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-container uk-inline uk-padding-remove-left uk-padding-remove-right uk-visible@s uk-hidden@m' style="width: 100%; height: 100%; min-height: 800px;">
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img data-src='images\theme_asset\background.png' style='width: 100%;' alt='' uk-img/>
+                            </div>
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img class='sweep' data-src='images\theme_asset\radar_sweep.png' style='width: 100%;' alt='' uk-img uk-scrollspy='cls: uk-animation-fade; delay: 600;'/>
+                            </div>
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img data-src='images\theme_asset\radar_lines.png' style='width: 100%;' alt='' uk-img/>
+                                <div class='uk-contaier uk-position-center' style='width: 90%; height: 100%;'>
+                                    <img class='uk-position-top-right' data-src="images\theme_asset\DNA.png" style='width: 15%; border: 5px solid #ffb400; background: #FFB400; border-radius: 100%; top: 20%; right: 20%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 200;'>
+                                    <img class='uk-position-top-left' data-src="images\theme_asset\atom.png" style='width: 20%; top: 20%; left: 20%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 400;'>
+                                    <img class='uk-position-bottom-left' data-src="images\theme_asset\infinity.png" style='width: 23%; border: 8px solid #ffb400; border-radius: 100%; background: #FFB400; bottom: 25%; left: 10%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 600;'>
+                                    <img class='uk-position-bottom-right' data-src="images\theme_asset\Nut.png" style='width: 23%; bottom: 12%; right: 25%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 800;'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-container uk-inline uk-padding-remove-left uk-padding-remove-right uk-hidden@s' style="width: 100%; height: 100%; min-height: 500px;">
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img data-src='images\theme_asset\background.png' style='width: 100%;' alt='' uk-img/>
+                            </div>
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img class='sweep' data-src='images\theme_asset\radar_sweep.png' style='width: 100%;' alt='' uk-img uk-scrollspy='cls: uk-animation-fade; delay: 600;'/>
+                            </div>
+                            <div class='uk-position-center' style='width: 90%;'>
+                                <img data-src='images\theme_asset\radar_lines.png' style='width: 100%;' alt='' uk-img/>
+                                <div class='uk-contaier uk-position-center' style='width: 90%; height: 100%;'>
+                                    <img class='uk-position-top-right' data-src="images\theme_asset\DNA.png" style='width: 15%; border: 5px solid #ffb400; background: #FFB400; border-radius: 100%; top: 20%; right: 20%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 200;'>
+                                    <img class='uk-position-top-left' data-src="images\theme_asset\atom.png" style='width: 20%; top: 20%; left: 20%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 400;'>
+                                    <img class='uk-position-bottom-left' data-src="images\theme_asset\infinity.png" style='width: 23%; border: 8px solid #ffb400; border-radius: 100%; background: #FFB400; bottom: 25%; left: 10%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 600;'>
+                                    <img class='uk-position-bottom-right' data-src="images\theme_asset\Nut.png" style='width: 23%; bottom: 12%; right: 25%;' uk-img uk-img uk-scrollspy='cls: uk-animation-scale-up; delay: 800;'>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
