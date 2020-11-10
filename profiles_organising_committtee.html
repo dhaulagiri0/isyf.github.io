@@ -25,20 +25,42 @@
                 -moz-user-select: none; /* Firefox */
                 -ms-user-select: none; /* Internet Explorer/Edge */
             }
-            .grid-item {
-                width: 19%;
-                height: 30%;
-                background: #e6e5e4;
-                border: 2px solid transparent;
-            }
 
-            .grid-item--width2 { width: 40%; }
-            .grid-item--height2 { height: 60%; }
-            .grid-item--square { height: 120px; width: 120px;}
+            .pin-button {
+                box-shadow: 1px 1px 3px #404040; 
+                border-radius: 100%; 
+                color: white; 
+                padding: 5px; 
+                width: fit-content; 
+                height: fit-content;
+            }
 
         </style>
 
         <script>
+            function loadIndividualProfiles() {
+                var path = './images/org/';
+                
+                for(i=0; i<8; i++) {
+                    var appendDiv = document.getElementById('p_1_div');
+                    var profileTemp = document.getElementById('p_1_temp');
+                    var px = profileTemp.cloneNode(true);
+
+                    px.id = 'p_1_' + i
+
+                    var dp = px.childNodes[1];
+                    dp.src = path + 'p_1_' + i + '.png'
+
+                    var name = px.childNodes[2].childNodes[1]
+                    console.log(name)
+
+                    var des = px.childNodes[2].childNodes[2]
+                    console.log(des)
+
+                    appendDiv.appendChild(px)
+                };
+            }
+
             function show(obj) {
                 var path = './images/org/'
 
@@ -62,7 +84,7 @@
         <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
 
-    <body class='disable-select t' onload='loadLogos()'>
+    <body class='disable-select t' onload='loadIndividualProfiles()'>
         <div id='top_sec t' uk-grid>
             <div class='uk-width-auto'>
                 <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
@@ -183,72 +205,16 @@
 
         <div id='body_content_1' class='uk-section uk-margin-top'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
                 
-                <div class="uk-width-expand">
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
                     <div class='uk-grid' style="border-bottom: 20px solid #FF006E;" uk-grid>
-                        <div class='uk-width-1-4 uk-background-secondary uk-padding-remove-left'>
-                            <div class='uk-padding uk-inline'>
-                                <div id='p_1_1' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
+                        <div class='uk-width-1-4@m uk-background-secondary uk-padding-remove-left uk-visible@m'>
+                            <div id='p_1_div' class='uk-padding uk-inline'>
+                                <div id='p_1_temp' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
                                     <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #FF006E; border: 5px solid #FF006E" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_2' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #ff539e; border: 5px solid #ff539e" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_3' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #ffa2ca; border: 5px solid #ffa2ca" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_4' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #9f4bff; border: 5px solid #9f4bff" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_5' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #b77afd; border: 5px solid #b77afd" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_6' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #d0aafa; border: 5px solid #d0aafa" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_7' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #5755ff; border: 5px solid #5755ff" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_8' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #7f7dff; border: 5px solid #7f7dff" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <div id='p_1_9' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #a19ffc; border: 5px solid #a19ffc" uk-img/>
                                     <div class='uk-align-center' style="width: 80%;">
                                         <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
                                         <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
@@ -258,27 +224,44 @@
                                 <p class='uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
                             </div>
                         </div>
-                        <div class='uk-inline uk-padding-remove-left uk-width-expand'>
+                        <div class='uk-width-1-4@m uk-background-secondary uk-hidden@m'>
+                            <div id='p_1_div_s' class='uk-padding uk-inline' style="min-height: 200px;">
+                                <div id='p_1_temp' class='uk-position-center uk-background-secondary uk-animation-fade uk-animation-fast uk-padding' style="width: 100%; height: 100%; display: none;">
+                                    <div class='uk-grid uk-position-center uk-margin-left uk-margin-remove-left' uk-grid>
+                                        <div class='uk-width-1-3'>
+                                            <img data-src='images/profile_pic_template.png' style="width: 100%; border-radius: 100%; background: #FF006E; border: 5px solid #FF006E" uk-img/>
+                                        </div>
+                                        <div class='uk-width-2-3' style="height: 80%;">
+                                            <h3 class='uk-text-bold uk-margin-small-bottom' style="color: white;">Default Name</h3>
+                                            <p class='uk-light uk-margin-remove-top' style="font-size: 3.5vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class='uk-text-bold uk-margin-top' style="color: white;">Admin and Operations</h3>
+                                <p class='uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-inline uk-padding-remove-left uk-width-expand@m uk-margin-left'>
                             <div style="height: fit-content;">
                                 <img class='uk-padding-remove-left' data-src="images/team_template.png" style="width: 100%; visibility: hidden;" uk-img>
                                 <div class='uk-padding-remove-left uk-position-center' style="width: 100%; height: fit-content;">
                                     <img class='uk-padding-remove-left' data-src="images/team_template.png" style="width: 100%;" uk-img>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_1_button' class="uk-icon-button uk-position-fixed uk-transition-toggle" style="box-shadow: 1px 1px 3px #404040; background-color: #FF006E; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 25%; left: 6%;" uk-icon="icon: info" uk-transition-toggle="target: #p_1_1;"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_2_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #ff539e; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 27%; left: 24%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_3_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #ffa2ca; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 25%; left: 36%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_4_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #9f4bff; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 32%; left: 44%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_5_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #b77afd; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 25%; left: 54%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_6_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #d0aafa; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 35%; left: 62%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_7_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #5755ff; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 25%; left: 74%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_8_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #7f7dff; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 28%; left: 82%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_9_button' class="uk-icon-button uk-position-fixed" style="box-shadow: 1px 1px 3px #404040; background-color: #a19ffc; border-radius: 100%; color: white; padding: 5px; width: fit-content; height: fit-content; top: 26%; left: 90%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_1_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #FF006E; top: 25%; left: 6%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_2_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #ff539e; top: 27%; left: 24%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_3_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #ffa2ca; top: 25%; left: 36%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_4_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #9f4bff; top: 32%; left: 44%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_5_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #b77afd; top: 25%; left: 54%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_6_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #d0aafa; top: 35%; left: 62%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_7_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #5755ff; top: 25%; left: 74%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_8_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #7f7dff; top: 28%; left: 82%;" uk-icon="icon: info"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_9_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #a19ffc; top: 26%; left: 90%;" uk-icon="icon: info"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
             </div>
