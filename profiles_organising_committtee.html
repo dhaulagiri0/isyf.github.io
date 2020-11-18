@@ -26,6 +26,11 @@
                 -ms-user-select: none; /* Internet Explorer/Edge */
             }
 
+            .blacknwhite {
+                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+                filter: grayscale(100%);
+            }
+
             .pin-button {
                 box-shadow: 1px 1px 3px #404040; 
                 border-radius: 100%; 
@@ -35,45 +40,120 @@
                 height: fit-content;
             }
 
+            .pin-button:hover {
+                padding: 7px; 
+                color: white; 
+            }
+
+            .pin-button:click {
+                padding: 7px; 
+                color: white; 
+            }
+
+            .const:before {
+                content: '■ ';
+                position: relative;
+                bottom: .1em;
+            }
+
         </style>
 
         <script>
+            var colors = [['#b37e00', '#cc9000', '#e6a200', '#ffb400', '#ffbc19', '#ffbc19', '#ffc333', '#ffcb4d', '#ffd266'], ['#800037', '#990042', '#b3004d', '#cc0058', '#e60063', '#ff006e', '#ff197d', '#ff338b', '#ff4d9a', '#ff66a8', '#ff80b7', '#ff99c5', '#ffb8d6'], ['#007f56', '#00aa73', '#00d490', '#33dda6', '#66e5bc', '#99eed3'], ['#004866', '#006d99', '#0091cc', '#00b5ff', '#33c4ff', '#66d3ff', '#99e1ff', '#b3e9ff']]
+            var names = [['Weihan', 'Shao Jun', 'Bernard', 'Sean', 'Jiaqi', 'Jadie', 'Xiao En', 'Jerry'], ['Stephanie', 'See Min', 'Beatrice', 'Celeste', 'Joel', 'Jing Heng', 'Wenhao', 'Wei Sheng', 'Ruoxin', 'Weiting', 'Levina', 'Qiyu'], ['Rachael', 'Alson', 'Zhiheng', ' Huiyan', 'Brandon', 'Xavier'], ['Wei Shuen', 'Yiqin', ' Junwei', 'Mavryk', 'Rae Ann', 'Ee Hseun', 'Nanette', 'Yihan']]
+
+            var numCommittees = 4
+            var committeeMemCnt = [7, 12, 6, 8]
+
+            function loadButtonColors() {
+                console.log('called1')
+                for (i=1; i<=numCommittees; i++) {
+                    for(j=1; j<=committeeMemCnt[i - 1]; j++) {
+                        var btn = document.getElementById('p_' + i + '_' + j + '_button')
+                        btn.style.backgroundColor = colors[i - 1][j - 1]
+                        console.log(btn)
+                    }
+                }
+            }
+
             function loadIndividualProfiles() {
+
                 var path = './images/org/';
-                
-                for(i=0; i<8; i++) {
-                    var appendDiv = document.getElementById('p_1_div');
-                    var profileTemp = document.getElementById('p_1_temp');
-                    var px = profileTemp.cloneNode(true);
 
-                    px.id = 'p_1_' + i
+                for (i=1; i<=numCommittees; i++) {
+                    for(j=1; j<=committeeMemCnt[i - 1]; j++) {
+                        var appendDiv = document.getElementById('p_' + i + '_div');
+                        var profileTemp = document.getElementById('p_' + i + '_temp');
+                        var px = profileTemp.cloneNode(true);
 
-                    var dp = px.childNodes[1];
-                    dp.src = path + 'p_1_' + i + '.png'
+                        px.id = 'p_' + i + '_' + j
 
-                    var name = px.childNodes[2].childNodes[1]
-                    console.log(name)
+                        // var px = document.getElementById('p_1_' + i);
 
-                    var des = px.childNodes[2].childNodes[2]
-                    console.log(des)
+                        var dp = px.childNodes[1]
+                        dp.src = path + 'p_' + i + '_' + j + '.png';
+                        dp.style.borderColor = colors[i - 1][j - 1]
+                        dp.style.background = colors[i - 1][j - 1]
 
-                    appendDiv.appendChild(px)
-                };
+                        px.childNodes[3].childNodes[1].textContent = names[i - 1][j - 1]
+
+                        console.log(px)
+                        appendDiv.appendChild(px);
+                    }
+                }
+            }
+
+            function loadIndividualProfilesS() {
+
+                var path = './images/org/';
+
+                for (i=1; i<=numCommittees; i++) {
+                    for(j=1; j<=committeeMemCnt[i - 1]; j++) {
+                        console.log(i, j)
+                        var appendDiv = document.getElementById('p_' + i + '_div_s');
+                        var profileTemp = document.getElementById('p_' + i + '_temp_s');
+
+                        var px = profileTemp.cloneNode(true);
+                        px.id = 'p_' + i + '_' + j + '_s'
+
+                        // var px = document.getElementById('p_1_' + i);
+
+                        var dp = px.childNodes[1].childNodes[1].childNodes[1]
+
+                        dp.src = path + 'p_' + i + '_' + j + '.png';
+                        dp.style.borderColor = colors[i - 1][j - 1]
+                        dp.style.background = colors[i - 1][j - 1]
+
+                        px.childNodes[1].childNodes[3].childNodes[1].childNodes[1].textContent = names[i - 1][j - 1]
+
+                        console.log(px)
+                        appendDiv.appendChild(px);
+                    }
+                }
             }
 
             function show(obj) {
-                var path = './images/org/'
+                var idEle = obj.id.split("_");
+                var target = 'p_' + idEle[1] + '_' + idEle[2]
 
-                var target = obj.id.substring(0, 5);
                 var profile = document.getElementById(target);
-                profile.style.display = 'block';
+                profile.style.display = 'inline';   
 
-                var dp = profile.childNodes[1];
-                dp.src = path + target + '.png'
+                var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
 
+                var profile = document.getElementById(target);
+                profile.style.display = 'inline';
             }
+
             function hide(obj) {
-                var target = obj.id.substring(0, 5);
+                var idEle = obj.id.split("_");
+                var target = 'p_' + idEle[1] + '_' + idEle[2]
+
+                var profile = document.getElementById(target);
+                profile.style.display = 'none';
+
+                var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
+
                 var profile = document.getElementById(target);
                 profile.style.display = 'none';
             }
@@ -84,10 +164,10 @@
         <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
 
-    <body class='disable-select t' onload='loadIndividualProfiles()'>
+    <body class='disable-select t' onload='loadIndividualProfilesS(), loadIndividualProfiles(), loadButtonColors()'>
         <div id='top_sec t' uk-grid>
             <div class='uk-width-auto'>
-                <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                <img style='padding-top: 5px;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
             </div>  
             <div class="uk-width-expand uk-padding-remove-left" style='background-color: #404040;'>
             <div>
@@ -203,58 +283,88 @@
             </div>
         </div>
 
-        <div id='body_content_1' class='uk-section uk-margin-top'>
+        <div id='heading_1' class='uk-section uk-margin-top uk-padding-remove-top uk-padding-remove-bottom'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left uk-padding-remove-left uk-visible@m">
+                    <h2 class='uk-text-bold'>Student Committees</h2>
+                </div>
+
+                <div class="uk-width-expand uk-margin-left uk-hidden@m">
+                    <h2 class='uk-text-bold'>Student Committees</h2>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_2' class='uk-section uk-margin-top uk-padding-remove-top uk-margin-remove-top'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
                 <div id='icon_left' class='uk-width-auto uk-visible@m'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
                 
                 <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
-                    <div class='uk-grid' style="border-bottom: 20px solid #FF006E;" uk-grid>
-                        <div class='uk-width-1-4@m uk-background-secondary uk-padding-remove-left uk-visible@m'>
-                            <div id='p_1_div' class='uk-padding uk-inline'>
-                                <div id='p_1_temp' class='uk-position-center uk-background-secondary uk-inline uk-padding uk-animation-fade uk-animation-fast' style="height: 100%; width: 100%; display: none;">
-                                    <img class='uk-align-center' data-src='images/profile_pic_template.png' style="width: 60%; border-radius: 100%; background: #FF006E; border: 5px solid #FF006E" uk-img/>
-                                    <div class='uk-align-center' style="width: 80%;">
-                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
-                                        <p class='uk-text-justify uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                    </div>
-                                </div>
-                                <h3 class='uk-text-bold uk-margin-top' style="color: white;">Admin and Operations</h3>
-                                <p class='uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                    <div id='p2_container' class='uk-grid' uk-grid>
+                        <div class='uk-background-secondary uk-hidden@m'>
+                            <div class='uk-padding uk-inline'>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Activities</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
                             </div>
                         </div>
-                        <div class='uk-width-1-4@m uk-background-secondary uk-hidden@m'>
-                            <div id='p_1_div_s' class='uk-padding uk-inline' style="min-height: 200px;">
-                                <div id='p_1_temp' class='uk-position-center uk-background-secondary uk-animation-fade uk-animation-fast uk-padding' style="width: 100%; height: 100%; display: none;">
-                                    <div class='uk-grid uk-position-center uk-margin-left uk-margin-remove-left' uk-grid>
-                                        <div class='uk-width-1-3'>
-                                            <img data-src='images/profile_pic_template.png' style="width: 100%; border-radius: 100%; background: #FF006E; border: 5px solid #FF006E" uk-img/>
-                                        </div>
-                                        <div class='uk-width-2-3' style="height: 80%;">
-                                            <h3 class='uk-text-bold uk-margin-small-bottom' style="color: white;">Default Name</h3>
-                                            <p class='uk-light uk-margin-remove-top' style="font-size: 3.5vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 class='uk-text-bold uk-margin-top' style="color: white;">Admin and Operations</h3>
-                                <p class='uk-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
-                            </div>
-                        </div>
-                        <div class='uk-inline uk-padding-remove-left uk-width-expand@m uk-margin-left'>
+                        <div class='uk-inline uk-width-expand@m' style="border-bottom: 20px solid #FF006E;">
                             <div style="height: fit-content;">
-                                <img class='uk-padding-remove-left' data-src="images/team_template.png" style="width: 100%; visibility: hidden;" uk-img>
-                                <div class='uk-padding-remove-left uk-position-center' style="width: 100%; height: fit-content;">
-                                    <img class='uk-padding-remove-left' data-src="images/team_template.png" style="width: 100%;" uk-img>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_1_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #FF006E; top: 25%; left: 6%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_2_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #ff539e; top: 27%; left: 24%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_3_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #ffa2ca; top: 25%; left: 36%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_4_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #9f4bff; top: 32%; left: 44%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_5_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #b77afd; top: 25%; left: 54%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_6_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #d0aafa; top: 35%; left: 62%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_7_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #5755ff; top: 25%; left: 74%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_8_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #7f7dff; top: 28%; left: 82%;" uk-icon="icon: info"></a>
-                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_9_button' class="uk-icon-button uk-position-fixed pin-button" style="background-color: #a19ffc; top: 26%; left: 90%;" uk-icon="icon: info"></a>
+                                <img class='uk-padding-remove-left uk-margin-left uk-visible@m' data-src="images/org/AnO.png" style="width: 100%; visibility: hidden;" uk-img>
+                                <img class='uk-padding-remove-left uk-margin-left uk-hidden@m' data-src="images/org/Acts.png" style="width: 100%; visibility: hidden;" uk-img>
+                                <div class='uk-position-bottom' style="width: 100%; height: fit-content;">
+                                    <img class='uk-padding-remove-left uk-align-center uk-margin-remove-bottom' data-src="images/org/Acts.png" style="width: 95%;" uk-img>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_1_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #FF006E; top: 39%; left: 4%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_2_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #FF006E; top: 43%; left: 11%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_3_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ff539e; top: 42%; left: 18%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_4_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 36%; left: 25%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_5_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 32%; left: 32%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_6_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 43%; left: 45%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_7_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 25%; left: 47%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_8_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 31%; left: 57%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_9_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #b77afd; top: 40%; left: 69%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_10_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #d0aafa; top: 41%; left: 78%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_11_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #5755ff; top: 31%; left: 85%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_2_12_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #5755ff; top: 33%; left: 92%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-4@m uk-background-secondary uk-padding-remove-left uk-visible@m' style="border-bottom: 20px solid #FF006E;">
+                            <div id='p_2_div' class='uk-padding uk-inline'>
+                                <div id='p_2_temp' class='uk-position-center uk-background-secondary uk-overlay uk-padding uk-animation-fade' style="height: 100%; width: 100%; display: none;">
+                                    <img class='uk-align-center' src='images/profile_pic_template.png' style="width: 75%; border-radius: 100%; background: #FF006E; border: 5px solid #FF006E"/>
+                                    <div class='uk-align-center uk-margin-remove-top' style="width: 80%;">
+                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
+                                        <p class='uk-text-center uk-light' style="font-size: 1vw;">Facil Group: xxxxxx</p>
+                                    </div>
+                                </div>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Activities</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-background-secondary uk-hidden@m uk-visible@s uk-margin-remove-top'>
+                            <div id='p_2_div_s'>
+                                <div id='p_2_temp_s' class='uk-animation-fade uk-padding uk-padding-remove-left uk-margin-remove-left uk-padding-remove-bottom' style="width: 100%; height: 100%; display: none;">
+                                    <div class='uk-grid uk-margin-left uk-margin-remove-left uk-padding uk-padding-remove-left' style="width: 100%; height: 100%;" uk-grid>
+                                        <div class='uk-width-1-3' style="height: 100%;">
+                                            <img src='images/profile_pic_template.png' style="width: 80%; border-radius: 100%; background: #FF006E; border: 5px solid #FF006E"/>
+                                        </div>
+                                        <div class='uk-width-2-3 uk-position-relative'>
+                                            <div class='uk-margin-right' style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+                                                <h2 class='uk-text-bold uk-margin-small-bottom' style="color: white;">Default Name</h2>
+                                                <p class='uk-light uk-margin-remove-top' style="font-size: 2.5vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
+                                            </div>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -267,6 +377,1713 @@
             </div>
         </div>
 
-        <div class='uk-margin-medium-top' style="background-color: #404040; height: 100px;"></div>
+        <div id='body_content_1' class='uk-section uk-margin-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div id='p1_container' class='uk-grid' uk-grid>
+                        <div class='uk-width-1-4@m uk-background-secondary uk-padding-remove-left uk-visible@m' style="border-bottom: 20px solid #FFB400;">
+                            <div id='p_1_div' class='uk-padding uk-inline'>
+                                <div id='p_1_temp' class='uk-position-center uk-background-secondary uk-overlay uk-padding uk-animation-fade' style="height: 100%; width: 100%; display: none;">
+                                    <img class='uk-align-center' src='images/profile_pic_template.png' style="width: 75%; border-radius: 100%; background: #FFB400; border: 5px solid #FFB400"/>
+                                    <div class='uk-align-center uk-margin-remove-top' style="width: 80%;">
+                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
+                                        <p class='uk-text-center uk-light' style="font-size: 1vw;">Facil Group: xxxxxx</p>
+                                    </div>
+                                </div>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Admin and Operations</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-background-secondary uk-hidden@m'>
+                            <div class='uk-padding uk-inline'>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Admin and Operations</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-inline uk-padding-left uk-width-expand@m' style="border-bottom: 20px solid #FFB400;">
+                            <div style="height: fit-content;">
+                                <img class='uk-padding-remove-left uk-margin-left' data-src="images/org/AnO.png" style="width: 100%; visibility: hidden;" uk-img>
+                                <div class='uk-position-bottom uk-margin-left' style="width: 100%; height: fit-content;">
+                                    <img class='uk-padding-remove-left' data-src="images/org/AnO.png" style="width: 100%;" uk-img>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_1_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #FF006E; top: 30%; left: 8%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_2_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ff539e; top: 32%; left: 22%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_3_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 27%; left: 36%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_4_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 32%; left: 55%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_5_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #b77afd; top: 41%; left: 68%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_6_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #d0aafa; top: 35%; left: 78%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_1_7_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #5755ff; top: 35%; left: 88%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-background-secondary uk-hidden@m uk-visible@s uk-margin-remove-top'>
+                            <div id='p_1_div_s'>
+                                <div id='p_1_temp_s' class='uk-animation-fade uk-padding uk-padding-remove-left uk-margin-remove-left uk-padding-remove-bottom' style="width: 100%; height: 100%; display: none;">
+                                    <div class='uk-grid uk-margin-left uk-margin-remove-left uk-padding uk-padding-remove-left' style="width: 100%; height: 100%;" uk-grid>
+                                        <div class='uk-width-1-3' style="height: 100%;">
+                                            <img src='images/profile_pic_template.png' style="width: 80%; border-radius: 100%; background: #FFB400; border: 5px solid #FFB400"/>
+                                        </div>
+                                        <div class='uk-width-2-3 uk-position-relative'>
+                                            <div class='uk-margin-right' style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+                                                <h2 class='uk-text-bold uk-margin-small-bottom' style="color: white;">Default Name</h2>
+                                                <p class='uk-light uk-margin-remove-top' style="font-size: 2.5vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_3' class='uk-section uk-margin-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div id='p3_container' class='uk-grid' uk-grid>
+                        <div class='uk-background-secondary uk-hidden@m'>
+                            <div class='uk-padding uk-inline'>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Dialogue and Discussion</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-inline uk-width-expand@m uk-padding-remove-left' style="border-bottom: 20px solid #00D490;">
+                            <div style="height: fit-content;">
+                                <img class='uk-padding-remove-left uk-margin-left' data-src="images/org/AnO.png" style="width: 100%; visibility: hidden;" uk-img>
+                                <div class='uk-position-bottom uk-margin-right ' style="width: 100%; height: fit-content;">
+                                    <img class='uk-padding-remove-left uk-align-center uk-margin-remove-bottom' data-src="images/org/DnD.png" style="width: 96%;" uk-img>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_3_1_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ff539e; top: 40%; left: 16%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_3_2_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 35%; left: 33%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_3_3_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 36%; left: 47%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_3_4_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 32%; left: 61%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_3_5_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 36%; left: 76%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_3_6_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 38%; left: 91%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-4@m uk-background-secondary uk-padding-remove-left uk-visible@m' style="border-bottom: 20px solid  #00D490;">
+                            <div id='p_3_div' class='uk-padding uk-inline'>
+                                <div id='p_3_temp' class='uk-position-center uk-background-secondary uk-overlay uk-padding uk-animation-fade' style="height: 100%; width: 100%; display: none;">
+                                    <img class='uk-align-center' src='images/profile_pic_template.png' style="width: 75%; border-radius: 100%; background: #00D490; border: 5px solid  #00D490"/>
+                                    <div class='uk-align-center uk-margin-remove-top' style="width: 80%;">
+                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
+                                        <p class='uk-text-center uk-light' style="font-size: 1vw;">Facil Group: xxxxxx</p>
+                                    </div>
+                                </div>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Dialogue and Discussion</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-background-secondary uk-hidden@m uk-visible@s uk-margin-remove-top'>
+                            <div id='p_3_div_s'>
+                                <div id='p_3_temp_s' class='uk-animation-fade uk-padding uk-padding-remove-left uk-margin-remove-left uk-padding-remove-bottom' style="width: 100%; height: 100%; display: none;">
+                                    <div class='uk-grid uk-margin-left uk-margin-remove-left uk-padding uk-padding-remove-left' style="width: 100%; height: 100%;" uk-grid>
+                                        <div class='uk-width-1-3' style="height: 100%;">
+                                            <img src='images/profile_pic_template.png' style="width: 80%; border-radius: 100%; background: #00D490; border: 5px solid #00D490"/>
+                                        </div>
+                                        <div class='uk-width-2-3 uk-position-relative'>
+                                            <div class='uk-margin-right' style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+                                                <h2 class='uk-text-bold uk-margin-small-bottom' style="color: white;">Default Name</h2>
+                                                <p class='uk-light uk-margin-remove-top' style="font-size: 2.5vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_4' class='uk-section uk-margin-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div id='p4_container' class='uk-grid' uk-grid>
+                        <div class='uk-width-1-4@m uk-background-secondary uk-padding-remove-left uk-visible@m' style="border-bottom: 20px solid #00b5ff;">
+                            <div id='p_4_div' class='uk-padding uk-inline'>
+                                <div id='p_4_temp' class='uk-position-center uk-background-secondary uk-overlay uk-padding uk-animation-fade' style="height: 100%; width: 100%; display: none;">
+                                    <img class='uk-align-center' src='images/profile_pic_template.png' style="width: 75%; border-radius: 100%; background: #00b5ff; border: 5px solid #00b5ff"/>
+                                    <div class='uk-align-center uk-margin-remove-top' style="width: 80%;">
+                                        <h3 class='uk-text-bold uk-text-center' style="color: white;">Default Name</h3>
+                                        <p class='uk-text-center uk-light' style="font-size: 1vw;">Facil Group: xxxxxx</p>
+                                    </div>
+                                </div>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Media and Publicity</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-background-secondary uk-hidden@m'>
+                            <div class='uk-padding uk-inline'>
+                                <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Media and Publicity</h3>
+                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                            </div>
+                        </div>
+                        <div class='uk-inline uk-padding-left uk-width-expand@m' style="border-bottom: 20px solid #00b5ff;">
+                            <div style="height: fit-content;">
+                                <img class='uk-margin-left' data-src="images/org/AnO.png" style="width: 100%; visibility: hidden;" uk-img>
+                                <div class='uk-position-bottom uk-margin-left' style="width: 100%; height: fit-content;">
+                                    <img class='uk-align-center uk-margin-remove-bottom' data-src="images/org/MnP.png" style="width: 95%;" uk-img>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_1_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #FF006E; top: 37%; left: 6%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_2_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ff539e; top: 36%; left: 26%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_3_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #ffa2ca; top: 27%; left: 38%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_4_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #9f4bff; top: 39%; left: 45%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_5_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #b77afd; top: 43%; left: 57%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_6_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #d0aafa; top: 39%; left: 66%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_7_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #5755ff; top: 45%; left: 82%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                    <a onmouseover="show(this)" onmouseout="hide(this)" id='p_4_8_button' class="uk-position-absolute pin-button uk-visible@s" style="background-color: #5755ff; top: 36%; left: 90%;" uk-icon="icon: plus; ratio: 0.8;"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-background-secondary uk-hidden@m uk-visible@s uk-margin-remove-top'>
+                            <div id='p_4_div_s'>
+                                <div id='p_4_temp_s' class='uk-animation-fade uk-padding uk-padding-remove-left uk-margin-remove-left uk-padding-remove-bottom' style="width: 100%; height: 100%; display: none;">
+                                    <div class='uk-grid uk-margin-left uk-margin-remove-left uk-padding uk-padding-remove-left' style="width: 100%; height: 100%;" uk-grid>
+                                        <div class='uk-width-1-3' style="height: 100%;">
+                                            <img src='images/profile_pic_template.png' style="width: 80%; border-radius: 100%; background: #00b5ff; border: 5px solid #00b5ff"/>
+                                        </div>
+                                        <div class='uk-width-2-3 uk-position-relative'>
+                                            <div class='uk-margin-right' style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+                                                <h2 class='uk-text-bold uk-margin-small-bottom' style="color: white;">Default Name</h2>
+                                                <p class='uk-light uk-margin-remove-top' style="font-size: 2.5vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem.</p>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='heading_2' class='uk-section uk-margin-top uk-background-secondary'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left uk-padding-remove-left uk-visible@m">
+                    <h2 class='uk-text-bold' style="color: white;">Group Facilitators</h2>
+                    <p class="uk-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                </div>
+
+                <div class="uk-width-expand uk-margin-left uk-hidden@m">
+                    <h2 class='uk-text-bold uk-light' style="color: white;">Group Facilitators</h2>
+                    <p class="uk-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_5' class='uk-section uk-background-secondary uk-padding-remove-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Aquila</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Aquila.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Aquila</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Aquila.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Alson_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Alson_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Alson
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/RaeAnn_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/RaeAnn_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Rae Ann
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Maegan_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Maegan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Maegan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Wenhao_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Wenhao_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Wenhao
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Alson_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Alson_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Alson
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/RaeAnn_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/RaeAnn_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Rae Ann
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Maegan_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Maegan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Maegan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Wenhao_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Wenhao_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Wenhao
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_6' class='uk-section uk-background-secondary'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Columba</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Columba.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-padding-remove-left uk-padding uk-padding-remove-bottom uk-padding-remove-top uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Zen_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Zen_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Zen
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/SeeMin_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/SeeMin_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                See Min
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Sean_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Sean_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Sean
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Nanette_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Nanette_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Nanette
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Zen_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Zen_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Zen
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/SeeMin_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/SeeMin_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                See Min
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Sean_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Sean_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Sean
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Nanette_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Nanette_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Nanette
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Columba.png' uk-img/>
+                                    </div>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Columba</h3></div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-text-right uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-text-right uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_7' class='uk-section uk-background-secondary uk-padding-remove-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Draco</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Draco.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Draco</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Draco.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Ruoxin_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Ruoxin_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Ruoxin
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Jerry_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Jerry_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jerry
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Brandon_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Brandon_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Brandon
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip' style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Brandon_F.png" uk-img/>
+                                        <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Brandon_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, 1);"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Ruoxin_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Ruoxin_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Ruoxin
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Jerry_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Jerry_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jerry
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Brandon_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Brandon_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Brandon
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip">
+                                    <img class="blacknwhite" data-src="images/org/Brandon_F.png" uk-img/>
+                                    <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Brandon_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, 1);"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+
+        <div id='body_content_8' class='uk-section uk-background-secondary'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Equuleus</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Equuleus.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-padding-remove-left uk-padding uk-padding-remove-bottom uk-padding-remove-top uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Yihan_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Yihan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Yihan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Xavier_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Xavier_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Xavier
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Weihan_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Weihan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Weihan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Qiyu_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Qiyu_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Qiyu
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Yihan_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Yihan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Yihan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Xavier_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Xavier_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Xavier
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Weihan_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Weihan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Weihan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Qiyu_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Qiyu_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Qiyu
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Equuleus.png' uk-img/>
+                                    </div>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Equuleus</h3></div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-text-right uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-text-right uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_9' class='uk-section uk-background-secondary uk-padding-remove-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Hercules</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Hercules.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Hercules</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Hercules.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Bernard_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Bernard_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Bernard
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Celeste_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Celeste_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Celeste
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Junwei_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Junwei_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Junwei
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Weiting_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Weiting_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Weiting
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Bernard_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Bernard_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Bernard
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Celeste_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Celeste_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Celeste
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Junwei_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Junwei_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Junwei
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Weiting_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Weiting_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                Weiting
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_10' class='uk-section uk-background-secondary'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Lyra</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Lyra.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-padding-remove-left uk-padding uk-padding-remove-bottom uk-padding-remove-top uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Beatrice_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Beatrice_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Beatrice
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/ShaoJun_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/ShaoJun_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Shao Jun
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/WeiShuen_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/WeiShuen_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Wei Shuen
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip' style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/WeiShuen_F.png" uk-img/>
+                                        <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/WeiShuen_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, 1);"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Beatrice_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Beatrice_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Beatrice
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/ShaoJun_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/ShaoJun_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Shao Jun
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/WeiShuen_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/WeiShuen_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Wei Shuen
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip">
+                                    <img class="blacknwhite" data-src="images/org/WeiShuen_F.png" uk-img/>
+                                    <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/WeiShuen_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, 1);"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Lyra.png' uk-img/>
+                                    </div>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Lyra</h3></div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-text-right uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-text-right uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_11' class='uk-section uk-background-secondary uk-padding-remove-top'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Monoceros</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Monoceros.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Monoceros</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Monoceros.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/WeiSheng_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/WeiSheng_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Wei Sheng
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Stephanie_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Stephanie_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Stephanie
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Mavryk_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Mavryk_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Mavryk
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Jiaqi_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Jiaqi_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jiaqi
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/WeiSheng_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/WeiSheng_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Wei Sheng
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Stephanie_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Stephanie_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Stephanie
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Mavryk_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Mavryk_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Mavryk
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Jiaqi_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Jiaqi_IF.png" uk-img/>
+                                            <div class="uk-position-cover" style="background-color: rgba(255, 180, 32, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jiaqi
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div>
+        </div>
+
+        <div id='body_content_12' class='uk-section uk-background-secondary'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                
+                <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                    <div class='uk-grid' style="height: max-content;" uk-grid>
+                        <div class='uk-width-1-3@m uk-hidden@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Orion</h3></div>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Orion.png' uk-img/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="uk-width-2-3 uk-padding-remove-left uk-padding uk-padding-remove-bottom uk-padding-remove-top uk-visible@m">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Levina_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Levina_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Levina
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/JingHeng_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/JingHeng_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jing Heng
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Jadie_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Jadie_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jadie
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4" style="height: 100%;">
+                                    <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                        <img class="blacknwhite" data-src="images/org/Huiyan_F.png" uk-img/>
+                                        <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                            <img class="blacknwhite" data-src="images/org/Huiyan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Huiyan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                            <div style="height: 100%;" uk-grid>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Levina_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Levina_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Levina
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/JingHeng_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/JingHeng_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jing Heng
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Jadie_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Jadie_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Jadie
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                    <img class="blacknwhite" data-src="images/org/Huiyan_F.png" uk-img/>
+                                    <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                        <div class='uk-overflow-hidden uk-inline-clip'>
+                                            <img class="blacknwhite" data-src="images/org/Huiyan_IF.png" uk-img/>
+                                            <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 181, 255, .2);"></div>
+                                            <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                Huiyan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                            <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                <div class='uk-grid' uk-grid>
+                                    <div class="uk-width-expand">
+                                        <img style="width: 100%;" data-src='images/constellations/Orion.png' uk-img/>
+                                    </div>
+                                    <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Orion</h3></div>
+                                </div>
+                                <div>
+                                    <img data-src='' style="width: 100%;" uk-img/>
+                                    <p class='uk-text-bold uk-text-right uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                    <p class='uk-light uk-text-right uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div id='body_content_13' class='uk-section uk-background-secondary uk-padding-remove-top'>
+                    <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                        <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                            <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                        </div> 
+                        
+                        <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                            <div class='uk-grid' style="height: max-content;" uk-grid>
+                                <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                                    <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                        <div class='uk-grid' uk-grid>
+                                            <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Pegasus</h3></div>
+                                            <div class="uk-width-expand">
+                                                <img style="width: 100%;" data-src='images/constellations/Pegasus.png' uk-img/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img data-src='' style="width: 100%;" uk-img/>
+                                            <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                            <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='uk-width-1-3@m uk-hidden@m'>
+                                    <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                        <div class='uk-grid' uk-grid>
+                                            <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Pegasus</h3></div>
+                                            <div class="uk-width-expand">
+                                                <img style="width: 100%;" data-src='images/constellations/Pegasus.png' uk-img/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img data-src='' style="width: 100%;" uk-img/>
+                                            <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                            <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="uk-width-2-3 uk-visible@m">
+                                    <div style="height: 100%;" uk-grid>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/Zhiheng_F.png" uk-img/>
+                                                <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/Zhiheng_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                        Zhiheng
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/Yiqin_F.png" uk-img/>
+                                                <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/Yiqin_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                        Yiqin
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/XiaoEn_F.png" uk-img/>
+                                                <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/XiaoEn_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                        Xiao En
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip' style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/XiaoEn_F.png" uk-img/>
+                                                <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/XiaoEn_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, 1);"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                                    <div style="height: 100%;" uk-grid>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                            <img class="blacknwhite" data-src="images/org/Zhiheng_F.png" uk-img/>
+                                            <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/Zhiheng_IF.png" uk-img/>
+                                                    <div class="uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                        Zhiheng
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                            <img class="blacknwhite" data-src="images/org/Yiqin_F.png" uk-img/>
+                                            <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/Yiqin_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                        Yiqin
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                            <img class="blacknwhite" data-src="images/org/XiaoEn_F.png" uk-img/>
+                                            <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/XiaoEn_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
+                                                        Xiao En
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip">
+                                            <img class="blacknwhite" data-src="images/org/XiaoEn_F.png" uk-img/>
+                                            <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/XiaoEn_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, 1);"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                            <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                        </div> 
+                    </div>
+                </div>
+        
+                <div id='body_content_14' class='uk-section uk-background-secondary'>
+                    <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+                        <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                            <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                        </div> 
+                        
+                        <div class="uk-width-expand uk-margin-left uk-margin-remove-left">
+                            <div class='uk-grid' style="height: max-content;" uk-grid>
+                                <div class='uk-width-1-3@m uk-hidden@m'>
+                                    <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                        <div class='uk-grid' uk-grid>
+                                            <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Vela</h3></div>
+                                            <div class="uk-width-expand">
+                                                <img style="width: 100%;" data-src='images/constellations/Vela.png' uk-img/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <img data-src='' style="width: 100%;" uk-img/>
+                                            <p class='uk-text-bold uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 2vh;">Hover over facilitator to find out more</p>   
+                                            <p class='uk-light uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: 1.6vh;">On touch screens, long press for brief credentials</p>                
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="uk-width-2-3 uk-padding-remove-left uk-padding uk-padding-remove-bottom uk-padding-remove-top uk-visible@m">
+                                    <div style="height: 100%;" uk-grid>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/Rachael_F.png" uk-img/>
+                                                <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/Rachael_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                        Rachael
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/Joel_F.png" uk-img/>
+                                                <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/Joel_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                        Joel
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/EeShuen_F.png" uk-img/>
+                                                <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/EeShuen_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                        Ee Shuen
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4" style="height: 100%;">
+                                            <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip' style="height: 100%;">
+                                                <img class="blacknwhite" data-src="images/org/EeShuen_F.png" uk-img/>
+                                                <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
+                                                    <img class="blacknwhite" data-src="images/org/EeShuen_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, 1);"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-hidden@m uk-margin-left uk-margin-right">
+                                    <div style="height: 100%;" uk-grid>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                            <img class="blacknwhite" data-src="images/org/Rachael_F.png" uk-img/>
+                                            <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/Rachael_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                        Rachael
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                            <img class="blacknwhite" data-src="images/org/Joel_F.png" uk-img/>
+                                            <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/Joel_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                        Joel
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
+                                            <img class="blacknwhite" data-src="images/org/EeShuen_F.png" uk-img/>
+                                            <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/EeShuen_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, .2);"></div>
+                                                    <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%;">
+                                                        Ee Shuen
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip">
+                                            <img class="blacknwhite" data-src="images/org/EeShuen_F.png" uk-img/>
+                                            <div class="uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
+                                                <div class='uk-overflow-hidden uk-inline-clip'>
+                                                    <img class="blacknwhite" data-src="images/org/EeShuen_IF.png" uk-img/>
+                                                    <div class="uk-overlay uk-position-cover" style="background-color: rgba(0, 212, 144, 1);"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='uk-width-1-3 uk-padding-remove-left uk-visible@m'>
+                                    <div class='uk-card uk-card-default uk-card-body' style="color: white;">
+                                        <div class='uk-grid' uk-grid>
+                                            <div class="uk-width-expand">
+                                                <img style="width: 100%;" data-src='images/constellations/Vela.png' uk-img/>
+                                            </div>
+                                            <div class='uk-width-auto'><h3 class='const' style="writing-mode: vertical-rl;">Vela</h3></div>
+                                        </div>
+                                        <div>
+                                            <img data-src='' style="width: 100%;" uk-img/>
+                                            <p class='uk-text-bold uk-text-right uk-light uk-margin-remove-bottom uk-dark uk-text-muted' style="font-size: 1vw;">Hover over facilitator to find out more</p>   
+                                            <p class='uk-light uk-text-right uk-margin-remove-top uk-text-muted uk-margin-remove-bottom' style="font-size: .8vw;">On touch screens, long press for brief credentials</p>                
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+        
+                        <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                            <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                        </div> 
+                    </div>
+                </div>
+
+        <div class='' style="background-color: #404040; height: 100px;"></div>
     </body>
 </html> 

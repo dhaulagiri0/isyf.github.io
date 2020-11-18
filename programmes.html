@@ -5,6 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
         <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+            });
+        </script>
+        <script>
+            function showProfiles() {
+                document.getElementById("top_nav_container").style.backgroundColor = '#404040'
+                document.getElementById('profilesBar').style.visibility = 'visible'
+            }
+            function hideProfiles() {
+                document.getElementById("top_nav_container").style.backgroundColor = null
+                document.getElementById('profilesBar').style.visibility = 'hidden'
+            }
+        </script>
 
         <style>
             .disable-select {
@@ -23,35 +40,65 @@
     <body class='disable-select'>
         <div id='top_sec' uk-grid>
             <div class='uk-width-auto'>
-                <img style='padding-top: 5px;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                <img style='padding-top: 5px;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
             </div>  
-            <div class="uk-width-expand uk-position-relative uk-flex uk-background-cover"  style='border-bottom: 20px solid #404040; background-color: #404040;'>
+            <div class="uk-width-expand uk-position-relative uk-background-cover" style='border-bottom: 0px solid #404040; background-color: #404040;' uk-height-viewport="offset-bottom: 70" uk-parallax='bgx: 70'>
                 
                 <!-- <img class='uk-position-top uk-overflow-hidden' src='images/frontpic.jpg' style='border-bottom: 20px solid #404040; height: 100%; width: 100%;'/> -->
-                <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-position-top uk-margin-small-left uk-visible@m' uk-navbar>
-                <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
-                        <ul class="uk-navbar-nav">
-                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
-                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
-                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize; border-color: #7494FF;' href="programmes.html">Programmes</a></li>
-                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html">Profiles</a></li>
-                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Media</a></li>
-                            <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
-                        </ul>
-                    </div>
-                    <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
-                        <ul class="uk-iconnav">
-                            <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px;" uk-icon="facebook"></a></li>
-                            <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px;" uk-icon="instagram"></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right uk-background-secondary" style="padding: 10px; border-radius: 15px; padding-bottom: 11px;" uk-icon="youtube"></a></li>
-                        </ul>
-                    </div>
-                </nav>
+                <div id='top_nav_container' class='uk-position-top uk-visible@m'>
+                    <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
+                            <ul class="uk-navbar-nav">
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
+                                <li class='uk-text-bold uk-margin-large-right uk-active'><a style='text-transform: capitalize; border-color: #00b5ff;' href="programmes.html">Programmes</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html"  onmouseover='showProfiles()'>Profiles</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="media.html">Media</a></li>
+                                <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
+                            </ul>
+                        </div>
+                        <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
+                            <ul id='icon_list' class="uk-iconnav">
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color: #BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color: #BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; padding-bottom: 11px; background-color: #BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                            </ul>
+                        </div>
 
-           <span  href="#offcanvas-slide" class="uk-button uk-hidden@m uk-padding-small" style="color: white; height: fit-content;" uk-toggle uk-icon="icon: menu; ratio: 1.5;"></span>
+                    </nav>
+
+
+                    <nav id='profilesBar' onmouseleave="hideProfiles()" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' style="visibility: hidden;" uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                            <ul class="uk-nav uk-inline">
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_speakers.html">Invited Speakers</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_participating_schools.html">Participating School</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Organising Committee</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <span  href="#offcanvas-slide" class="uk-button uk-hidden@m uk-padding-small" style="color: white; height: fit-content;" uk-toggle uk-icon="icon: menu; ratio: 1.5;"></span>
+
                 <div id="offcanvas-slide" uk-offcanvas>
                     <div class="uk-offcanvas-bar">
-                        <ul class="uk-nav uk-nav-default">
+                        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
                             <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
                                     <a class='uk-inline' style='text-transform: capitalize;' href="index.html">Home</a>
@@ -61,20 +108,37 @@
                             <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
                                     <a class='uk-inline' style='text-transform: capitalize;' href="about.html">About</a>
-                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color: #7494FF"></div>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
                                 </div>
                             </li>
                             <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
                                     <a class='uk-inline' style='text-transform: capitalize;' href="programmes.html">Programmes</a>
-                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color: #00b5ff;"></div>
                                 </div>
                             </li>
-                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
-                                <div class='uk-inline-block'>
-                                    <a class='uk-inline' style='text-transform: capitalize;' href="profiles_speakers.html">Profiles</a>
-                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
-                                </div>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom uk-parent'>
+                                <a style='text-transform: capitalize; color: white;' href="#">Profiles</a>
+                                <ul class="uk-nav-sub uk-margin-small-top">
+                                    <li>
+                                        <div class='uk-inline-block'>
+                                            <a href="profiles_speakers.html">Invited Speakers</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href='profiles_participating_schools.html'>Participating Schools</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href='#'>Organising Committee</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
                                 <div class='uk-inline-block'>
@@ -92,140 +156,235 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div id='body_content_1' class='uk-section uk-margin-large-top uk-margin-large-bottom uk-visible@m'>
-            <h2 class="uk-text-bold uk-margin-large-left">Programme Details</h2>
-            <h4 class="uk-text-break uk-margin-large-left uk-margin-remove-top" style="color:#7494FF">Things to Look Forward to </h4>
+        <h2 class='uk-text-bold uk-margin-large-left'>Key events at a glance</h2>
+        <p class='uk-text-large uk-text-bold uk-margin-large-left'><span>Monday</span><span style='margin-left: 140px'>Tuesday</span><span style='margin-left: 160px'>Wednesday</span><span style='margin-left: 130px'>Thursday</span><span style='margin-left: 130px'>Friday</span></p>
+        <div class='uk-section uk-width-expand uk-position-relative uk-padding-remove-top' style='min-width: 1500px;'>
+            <div class='uk-grid uk-width-expand uk-padding-remove' uk-grid>
+                <div class='uk-width-expand uk-flex'>
+                    <div class='uk-grid uk-child-width-1-5@m uk-width-expand uk-padding-remove uk-margin-left' uk-grid>
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #00b5ff; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand uk-margin-small-bottom uk-margin-small-left uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list uk-padding-remove-left">
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white; '>Team Bonding Activites</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white; font-size: 20px'>Introduction to Team Project Challenge</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Amazing Race</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #404040; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand uk-margin-small-left uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list">
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #404040;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 1</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #404040;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 2</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #404040;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 3</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #00b5ff; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand uk-margin-small-left uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list">
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 1</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 2</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 3</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #404040; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand uk-margin-small-left uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list">
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #404040;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 1</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #404040;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 2</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #404040;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 3</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #00b5ff; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand uk-margin-small-left uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list">
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 1</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 2</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class='uk-card-small uk-card-hover uk-card-body' style='background-color: #00b5ff;'>
+                                                <h3 class='uk-text-bold uk-text-middle' style='color: white'>Activity 3</h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='uk-margin-small-top uk-margin-large-left uk-padding uk-padding-remove-left' style="background-color: #404040; height: 30px;"><h3 class='uk-margin-left uk-text-middle uk-text-bold' style='color: white'>Download the full programme outline <a style='color: white' href=""><u style='text-decoration-color: #00b5ff; border-bottom: 10px'>Here</u></a></h3></div>
+        <h2 class='uk-margin-medium-top uk-margin-large-left uk-text-bold'>Programme Details</h2>
+        <h3 class='uk-margin-remove-top uk-margin-large-left uk-text-bold' style='color: #00b5ff'>Things to look forward to!</h3>
+        <!--1st Body Para-->
+        <div class='uk-section uk-remove-margin-top uk-padding-remove-top uk-padding-remove-bottom uk-margin-large-bottom uk-visible@m'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
                 <div id='icon_left' class='uk-width-auto'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
-                
                 <div class="uk-grid uk-width-expand">
-                    <div id='body_content_1_image_column' class='uk-width-1-3@m uk-padding-remove-left' uk-parallax='y: 120px;'>
+                    <div class='uk-width-1-3@m uk-padding-remove-left' uk-parallax='y: 120px;'>
                         <div class='uk-inline'>
-                            <img style='border-bottom: 30px solid transparent; border-right: 30px solid transparent;'  data-src="images/welcome_image.png" uk-img/>
-                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 30px solid #7494ff; border-right: 30px solid #7494FF; height: 65%; width: 70%;" ></div>
+                            <img style='border-bottom: 30px solid transparent; border-right: 30px solid transparent;'  data-src="images/dialogue.jpg" uk-img/>
+                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 30px solid #00b5ff; border-right: 30px solid #00b5ff; height: 50%; width: 50%;" ></div>
                         </div>
                     </div>
 
                     <div id='body_content_1_text_column' class='uk-width-2-3@m' uk-scrollspy='cls: uk-animation-slide-right;'>
                         <div class='uk-margin-top'>
-                            <h2 class='uk-text-bold uk-margin-small-bottom' style="color: #7494ff;">Welcome</h2>
-                            <h1 class='uk-text-bold uk-margin-remove-top'>About ISYF</h1>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <h1 class='uk-text-bold uk-margin-remove-top' style='color: #00b5ff'>Dialogue Sessions</h1>
+                            <div class="uk-column-1-2 uk-column-divider">
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div class='uk-width-auto uk-padding-remove-left'>
                     <div class="uk-inline">
-                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                     </div>
                 </div> 
             </div> 
         </div>
-
-
-        <div id='body_content_2' class='uk-section uk-margin-large-top uk-visible@m'>
-            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
+        <!--2nd Body Para-->
+        <div class='uk-section uk-visible@m uk-padding-remove-top uk-margin-remove-adjacent'>
+            <div class='uk-grid uk-margin-remove-top uk-padding uk-padding-remove-top uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
                 <div id='icon_left' class='uk-width-auto'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
                 
                 <div class="uk-grid uk-width-expand" uk-grid>
                     <div id='body_content_2_text_column' class='uk-width-2-3@m uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-left;'>
                         <div>
-                            <h2 class='uk-text-bold uk-text-right uk-margin-small-bottom'>Welcome</h2>
-                            <h1 class='uk-text-bold uk-text-right uk-margin-remove-top'>Meet our mascot, Stella!</h1>
-                            <p class='uk-text-break uk-text-right'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break uk-text-right'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
+                            <h1 class='uk-text-bold uk-text-right uk-margin-remove-top' style="color: #404040;">Team Project Challenge</h1>
+                            <div class="uk-column-1-2 uk-column-divider">
+                                <p class='uk-text-break uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. </p>
+                                <p class='uk-text-break uk-text-justify'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar.</p>
+                            </div>
                         </div>
                     </div>
 
                     <div id='body_content_2_image_column' class='uk-width-1-3@m' uk-parallax='y: -120px;'>
                         <div class='uk-inline'>
-                            <img style='border-top: 39px solid transparent; border-left: 39px solid transparent;' data-src='images/mascot_image.png' uk-img>
-                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 40px solid; border-left: 40px solid; height: 65%; width: 70%;" ></div>
+                            <img style='border-top: 39px solid transparent; border-left: 39px solid transparent;' width='500' height='500' data-src='images/project.jpg' uk-img>
+                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 40px solid #404040; border-left: 40px solid #404040; height: 65%; width: 50%;" ></div>
                         </div>
                     </div>
                 </div>
 
                 <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
             </div>
         </div>
-
-        <!--Repeating stuff-->
-
-        <div id='body_content_1' class='uk-section uk-margin-large-top uk-margin-large-bottom uk-visible@m'>
-            <h2 class="uk-text-bold uk-margin-large-left">Programme Details</h2>
-            <h4 class="uk-text-break uk-margin-large-left uk-margin-remove-top" style="color:#7494FF">Things to Look Forward to </h4>
-            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
-                </div> 
-                
-                <div class="uk-grid uk-width-expand">
-                    <div id='body_content_1_image_column' class='uk-width-1-3@m uk-padding-remove-left' uk-parallax='y: 120px;'>
-                        <div class='uk-inline'>
-                            <img style='border-bottom: 30px solid transparent; border-right: 30px solid transparent;'  data-src="images/welcome_image.png" uk-img/>
-                            <div class='uk-position-bottom-right' style="background-color: transparent; border-bottom: 30px solid #7494ff; border-right: 30px solid #7494FF; height: 65%; width: 70%;" ></div>
-                        </div>
-                    </div>
-
-                    <div id='body_content_1_text_column' class='uk-width-2-3@m' uk-scrollspy='cls: uk-animation-slide-right;'>
-                        <div class='uk-margin-top'>
-                            <h2 class='uk-text-bold uk-margin-small-bottom' style="color: #7494ff;">Welcome</h2>
-                            <h1 class='uk-text-bold uk-margin-remove-top'>About ISYF</h1>
-                            <p class='uk-text-break'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                    <div class="uk-inline">
-                        <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
-                    </div>
-                </div> 
-            </div> 
-        </div>
-
-        <div id='body_content_2' class='uk-section uk-margin-large-top uk-visible@m'>
-            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
-                </div> 
-                
-                <div class="uk-grid uk-width-expand" uk-grid>
-                    <div id='body_content_2_text_column' class='uk-width-2-3@m uk-padding-remove-left' uk-scrollspy='cls: uk-animation-slide-left;'>
-                        <div>
-                            <h2 class='uk-text-bold uk-text-right uk-margin-small-bottom'>Welcome</h2>
-                            <h1 class='uk-text-bold uk-text-right uk-margin-remove-top'>Meet our mascot, Stella!</h1>
-                            <p class='uk-text-break uk-text-right'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo. </p>
-                            <p class='uk-text-break uk-text-right'>Aliquam id rutrum nisl, in porttitor arcu. In eu urna mattis, dapibus nisl et, dapibus est. Quisque feugiat euismod eros, nec cursus ex congue non. Pellentesque fringilla nulla ut massa eleifend, nec mattis magna porta. Proin varius molestie sodales. Quisque eleifend ante in consequat efficitur. Aliquam tristique mauris vel ullamcorper bibendum. Phasellus velit magna, mattis a tempus ut, blandit vitae eros. Nullam convallis velit sed hendrerit pulvinar. Nunc pretium dolor non egestas lacinia. Fusce euismod arcu aliquet lacus pharetra hendrerit. Vivamus gravida ullamcorper nunc. Pellentesque sollicitudin ligula quis enim fermentum consectetur. Proin fringilla viverra porta.</p>
-                        </div>
-                    </div>
-
-                    <div id='body_content_2_image_column' class='uk-width-1-3@m' uk-parallax='y: -120px;'>
-                        <div class='uk-inline'>
-                            <img style='border-top: 39px solid transparent; border-left: 39px solid transparent;' data-src='images/mascot_image.png' uk-img>
-                            <div class='uk-position-top-left' style="background-color: transparent; border-top: 40px solid; border-left: 40px solid; height: 65%; width: 70%;" ></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logo.png' height='75px' width="75px" uk-img>
-                </div> 
-            </div>
-        </div>
-
-        <div class='uk-margin-medium-top' style="background-color: #404040; height: 5%;"></div>
+        <div class='uk-margin-large-top uk-position-bottom uk-position-relative' style="background-color: #404040; height: 100px;"></div>
     </body>
 </html> 
