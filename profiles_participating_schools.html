@@ -27,8 +27,8 @@
         <script>
             function loadLogos() {
                 var path = './images/school_logos/'
-                var c = 21
-                for(i=1; i<=c; i++) {
+                var c = 34
+                for(i=2; i<=c; i++) {
                    var grid = document.getElementById('school_logo_grid')
                    var logoImg = document.getElementById('logo_1')
                    var clone = logoImg.cloneNode(true)
@@ -98,7 +98,10 @@
                     </div>
                 </nav>
 
-                <img class='uk-align-center uk-margin-remove-top uk-margin-remove-bottom uk-padding uk-padding-remove-left uk-padding-remove-bottom uk-padding-remove-top' style="width: 100%;" data-src='images/world_text.png' uk-img/>
+                <!-- <div class="uk-margin-small-left">
+                        <img class='uk-margin-remove-top uk-margin-remove-bottom' style="width: 60%;" data-src='images/map.png' uk-img/>
+                    </div>
+                </div> -->
             </div>
 
                 <div id="offcanvas-slide" uk-offcanvas>
@@ -200,12 +203,65 @@
                                 <div style="background-color: #FF006E; border-radius: 20px; height: 100%; width: 10px;"></div>
                             </div>
                             <div class='uk-width-expand uk-margin-small-bottom' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Australia</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Presbyterian Ladies’ College, Sydney</li>
+                                </ul>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Brunei</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Brunei MOE‐Gifted Education Branch</li>
+                                </ul>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">China</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>The High School Affliated to Xi'An Jiaotong University</li>
+                                    <li>The Second High School Attached to Beijing Normal University</li>
+                                </ul>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Hong Kong SAR</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Diocesan Girls' School</li>
+                                </ul>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Indonesia</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Avicenna Cinere Senior High School</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #404040; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>SMA Negeri 4 Denpasar High School</li>
+                                    <li>SMA Lazuardi Global Compassionate School</li>
+                                </ul>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Japan</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Ichinomiya High School</li>
+                                </ul>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Malaysia</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Chung Ling High School</li>
+                                    <li>Sekolah Sultan Alam Shah</li>
+                                </ul>
                                 <h3 class='uk-text-bold' style="color: #FF006E;">Singapore</h3>
                                 <ul class="uk-list uk-list-large uk-margin-small-top">
                                     <li>Anglican High School</li>
+                                    <li>CHIJ St Theresa Convent</li>
                                     <li>CHIJ St. Nicholas Girls' School</li>
                                     <li>Crescent Girls' School</li>
                                     <li>Dunman High School</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #FF006E; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
                                     <li>Hwa Chong Institution</li>
                                     <li>Methodist Girls' School</li>
                                     <li>Nan Chiau High School</li>
@@ -221,47 +277,30 @@
                                     <li>St. Margaret's Secondary School</li>
                                     <li>Temasek Junior College</li>
                                     <li>Victoria Junior College</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class='uk-grid uk-margin-top' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #404040; border-radius: 20px; height: 100%; width: 10px;"></div>
+                            </div>
+                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <ul class="uk-list">
                                     <li>Xinmin Secondary School</li>
                                     <li>Zhonghua Secondary School</li>
                                 </ul>
-                            </div>
-                        </div>
-
-                        <div class='uk-grid uk-margin-top' uk-grid>
-                            <div class='uk-width-auto'>
-                                <div style="background-color: #404040; border-radius: 20px; height: 100%; width: 10px;"></div>
-                            </div>
-                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
-                                <ul class="uk-list">
-                                    <li>List item 1</li>
-                                    <li>List item 2</li>
-                                    <li>List item 3</li>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">South Korea</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Korea Science Academy of KAIST</li>
                                 </ul>
-                            </div>
-                        </div>
-
-                        <div class='uk-grid uk-margin-top' uk-grid>
-                            <div class='uk-width-auto'>
-                                <div style="background-color: #FF006E; border-radius: 20px; height: 100%; width: 10px;"></div>
-                            </div>
-                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
-                                <ul class="uk-list">
-                                    <li>List item 1</li>
-                                    <li>List item 2</li>
-                                    <li>List item 3</li>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Taiwan</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Taipei Municipal Jianguo High School</li>
                                 </ul>
-                            </div>
-                        </div>
-
-                        <div class='uk-grid uk-margin-top' uk-grid>
-                            <div class='uk-width-auto'>
-                                <div style="background-color: #404040; border-radius: 20px; height: 100%; width: 10px;"></div>
-                            </div>
-                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
-                                <ul class="uk-list">
-                                    <li>List item 1</li>
-                                    <li>List item 2</li>
-                                    <li>List item 3</li>
+                                <h3 class='uk-text-bold' style="color: #FF006E;">Thailand</h3>
+                                <ul class="uk-list uk-list-large uk-margin-small-top">
+                                    <li>Mahidol Wittayanusorn School</li>
                                 </ul>
                             </div>
                         </div>
