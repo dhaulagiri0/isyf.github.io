@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="uk-overflow-auto">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+            });
+        </script>
+        <script>
+            var navs = ['profilesBar', 'mediaBar']
+            function showProfiles(id) {
+                document.getElementById("top_nav_container").style.backgroundColor = '#404040'
+                document.getElementById(id).style.display = 'block'
+                for (i=0; i < navs.length; i++) {
+                    console.log(navs[i])
+                    if (navs[i] != id) {
+                        document.getElementById(navs[i]).style.display = 'none'
+                    }
+                }
+            }
+            function hideProfiles(id) {
+                document.getElementById("top_nav_container").style.backgroundColor = null
+                document.getElementById(id).style.display = 'none'
+            }
+        </script>
+
+        <style>
+            .disable-select {
+                user-select: none; /* supported by Chrome and Opera */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+            }
+
+            .question:hover {
+                color: white;
+            }
+
+            .question:focus {
+                color: #BBBDBF;
+            }
+
+            .question:visited {
+                color: BBBDBF;
+            }
+        </style>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
+    </head>
+    <body class='disable-select'>
+        <div id='top_sec' uk-grid>
+            <div class='uk-width-auto'>
+                <img style='padding-top: 5px;' data-src='images/logos/logo_beige.png' height='75px' width="75px" uk-img>
+            </div>  
+            <div class="uk-width-expand uk-position-relative uk-background-cover" style='border-bottom: 0px solid #404040; background-color: #404040;' uk-parallax='bgx: 70'>
+                <div class='uk-visible@m uk-margin-medium-top uk-margin-small-left' style="background-color: #404040; height: 15vh; margin-left: -40px"></div>
+                <!-- <img class='uk-position-top uk-overflow-hidden' src='images/frontpic.jpg' style='border-bottom: 20px solid #404040; height: 100%; width: 100%;'/> -->
+                <div id='top_nav_container' class='uk-position-top uk-visible@m'>
+                    <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
+                            <ul class="uk-navbar-nav">
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="programmes.html">Programmes</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html"  onmouseover='showProfiles("profilesBar")'>Profiles</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#" onmouseover='showProfiles("mediaBar")'>Media</a></li>
+                                <li class='uk-text-bold uk-active'><a style='text-transform: capitalize; border-color: #BC9C91;' href="#">Info</a></li>
+                            </ul>
+                        </div>
+                        <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
+                            <ul id='icon_list' class="uk-iconnav">
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color: #BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color: #BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; padding-bottom: 11px; background-color: #BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                            </ul>
+                        </div>
+
+                    </nav>
+
+
+                    <nav id='profilesBar' onmouseleave="hideProfiles('profilesBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left  uk-visible@m' style="display: none;" uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                            <ul class="uk-nav uk-inline">
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_speakers.html">Invited Speakers</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_participating_schools.html">Participating School</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_organising_committee.html">Organising Committee</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <nav id='mediaBar' onmouseleave="hideProfiles('mediaBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' style="display: none;" uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                            <ul class="uk-nav uk-inline">
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Gallery</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Poster Exhibition</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <span  href="#offcanvas-slide" class="uk-button uk-hidden@m uk-padding-small" style="color: white; height: fit-content;" uk-toggle uk-icon="icon: menu; ratio: 1.5;"></span>
+
+                <div id="offcanvas-slide" uk-offcanvas>
+                    <div class="uk-offcanvas-bar">
+                        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
+                            <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="index.html">Home</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="about.html">About</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="programmes.html">Programmes</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom uk-parent'>
+                                <a style='text-transform: capitalize; color: white;' href="#">Profiles</a>
+                                <ul class="uk-nav-sub uk-margin-small-top">
+                                    <li>
+                                        <div class='uk-inline-block'>
+                                            <a href="profiles_speakers.html">Invited Speakers</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href='profiles_participating_schools.html'>Participating Schools</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href='#'>Organising Committee</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom uk-parent'>
+                                <a class='uk-inline' style='text-transform: capitalize;' href="">Media</a>
+                                <ul class="uk-nav-sub uk-margin-small-top">
+                                    <li>
+                                        <div class='uk-inline-block'>
+                                            <a href="">Gallery</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href="">Poster Exhibition</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="">Info</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color: #BC9C91;"></div>
+                                </div>
+                            </li>
+
+                            <ul class="uk-iconnav uk-position-bottom uk-margin-bottom uk-margin-small-left">
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                            </ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div id='body_content_1' class='uk-section uk-margin-top uk-padding-remove-bottom uk-visible@s'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img/>
+                </div> 
+                
+                <div class="uk-width-expand@s uk-padding-remove-left"> 
+                    <div>
+                        <div class='uk-grid uk-child-width-1-4@m uk-child-width-1-2@s uk-child-width-1-1' uk-grid='masonry: true'>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div> 
+        </div>
+
+        <div id='body_content_1_s' class='uk-section uk-margin-top uk-padding-remove-bottom uk-hidden@s'>
+                <div class="uk-width-4-5 uk-padding-remove-left uk-align-center">
+                    <div>
+                        <div class='uk-grid uk-child-width-1-4@m uk-child-width-1-2@s uk-child-width-1-1' uk-grid='masonry: true'>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="background-color: #404040;">
+                                    <div class="uk-card-body">
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-border-circle" width="40" height="40" src="images\theme_asset\DNA.png">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h3 class="uk-card-title uk-margin-remove-bottom" style="color: white;">Currency</h3>
+                                            </div>
+                                        </div>
+                                        <p>The local currency is Singapore dollars and cents. The currency code is SGD, and 1 US dollar is worth approximately 1.4 Singapore dollar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div id='body_content_2' class='uk-section uk-margin-remove-top uk-visible'>
+            <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img/>
+                </div> 
+
+                <div class="uk-width-1-4 uk-padding-small uk-margin-left uk-margin-remove-left" style="background-color: #BC9C91;" >
+                    <p class='uk-text-bold uk-text-lead uk-visible@m' style="color: white;">FAQs</p>
+                    <p class='uk-text-bold uk-hidden@m uk-align-right' style="color: white;">FAQs</p>
+                </div>
+                
+                <div class="uk-width-expand">
+                    <h1 class='uk-text-bold uk-visible@m'>Programme</h1>
+                    <h1 class='uk-text-bold uk-text-lead uk-hidden@m uk-margin-remove-top'>Programme</h1>
+                    <ul uk-accordion>
+                        <li>
+                            <a class="uk-accordion-title uk-background-secondary uk-padding-small uk-light question" href="#">Who are we?</a>
+                            <div class="uk-accordion-content">
+                                <p>The ISYF student organizing committee is made up of 37 friendly, fun and caring facilitators from the Science Student’s Research Council of Hwa Chong Institution, Singapore. We are guided by a team of dedicated teachers from Hwa Chong Institution, and together with our co-organizer, Nanyang Technological University Institute of Advanced Studies (NTU IAS), we’re excited to have you here for our 11th ISYF!</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title uk-background-secondary uk-padding-small uk-light question" href="#">Will I have fun?</a>
+                            <div class="uk-accordion-content">
+                                <p>As your facilitators, we have planned an exciting array of activities including an Amazing Race and cultural hours. In fact, what you have seen in the Programme Overview is just a slight preview of what you can experience here. It is our greatest hope that you’ll not just take away valuable scientific insights from the forum, but also long-lasting friendships with people all over the world.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title uk-background-secondary uk-padding-small uk-light question" href="#">What is a typical day like?</a>
+                            <div class="uk-accordion-content">
+                                <p>We believe the 5 days of ISYF will be an exciting and enriching experience for you. You can look forward to the cultural hour performances, learning and experiencing the vibrant and unique cultures of different countries. In a typical day, you can expect engaging dialogue sessions or lessons with eminent scientists in our Dialogue sessions and Masterclasses, and an opportunity to visit Singapore’s own industries and universities for further insight into the research culture in Singapore. Most importantly, a typical day is best described as the memories and joy you had with all your friends you have made during ISYF!</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h1 class='uk-text-bold uk-visible@m'>Accomodation</h1>
+                    <h1 class='uk-text-bold uk-text-lead uk-hidden@m uk-margin-remove-top'>Accomodation</h1>
+                    <ul uk-accordion>
+                        <li>
+                            <a class="uk-accordion-title uk-background-secondary uk-padding-small uk-light question" href="#">Who are we?</a>
+                            <div class="uk-accordion-content">
+                                <p>The ISYF student organizing committee is made up of 37 friendly, fun and caring facilitators from the Science Student’s Research Council of Hwa Chong Institution, Singapore. We are guided by a team of dedicated teachers from Hwa Chong Institution, and together with our co-organizer, Nanyang Technological University Institute of Advanced Studies (NTU IAS), we’re excited to have you here for our 11th ISYF!</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title uk-background-secondary uk-padding-small uk-light question" href="#">Will I have fun?</a>
+                            <div class="uk-accordion-content">
+                                <p>As your facilitators, we have planned an exciting array of activities including an Amazing Race and cultural hours. In fact, what you have seen in the Programme Overview is just a slight preview of what you can experience here. It is our greatest hope that you’ll not just take away valuable scientific insights from the forum, but also long-lasting friendships with people all over the world.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title uk-background-secondary uk-padding-small uk-light question" href="#">What is a typical day like?</a>
+                            <div class="uk-accordion-content">
+                                <p>We believe the 5 days of ISYF will be an exciting and enriching experience for you. You can look forward to the cultural hour performances, learning and experiencing the vibrant and unique cultures of different countries. In a typical day, you can expect engaging dialogue sessions or lessons with eminent scientists in our Dialogue sessions and Masterclasses, and an opportunity to visit Singapore’s own industries and universities for further insight into the research culture in Singapore. Most importantly, a typical day is best described as the memories and joy you had with all your friends you have made during ISYF!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
+                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                </div> 
+            </div> 
+        </div>
+
+    </body>
+</html> 
