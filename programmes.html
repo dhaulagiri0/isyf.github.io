@@ -14,13 +14,20 @@
             });
         </script>
         <script>
-            function showProfiles() {
+            var navs = ['profilesBar', 'mediaBar']
+            function showProfiles(id) {
                 document.getElementById("top_nav_container").style.backgroundColor = '#404040'
-                document.getElementById('profilesBar').style.visibility = 'visible'
+                document.getElementById(id).style.display = 'block'
+                for (i=0; i < navs.length; i++) {
+                    console.log(navs[i])
+                    if (navs[i] != id) {
+                        document.getElementById(navs[i]).style.display = 'none'
+                    }
+                }
             }
-            function hideProfiles() {
+            function hideProfiles(id) {
                 document.getElementById("top_nav_container").style.backgroundColor = null
-                document.getElementById('profilesBar').style.visibility = 'hidden'
+                document.getElementById(id).style.display = 'none'
             }
         </script>
 
@@ -44,7 +51,7 @@
                 <img style='padding-top: 5px;' data-src='images/logos/logo_blue.png' height='75px' width="75px" uk-img>
             </div>  
             <div class="uk-width-expand uk-position-relative uk-background-cover" style='border-bottom: 0px solid #404040; background-color: #404040;' uk-parallax='bgx: 70'>
-                <div class='uk-visible@l uk-margin-large-top' style="background-color: #404040; height: 16vh; margin-left: -40px"></div>
+                <div class='uk-visible@m uk-margin-medium-top uk-margin-small-left' style="background-color: #404040; height: 15vh; margin-left: -40px"></div>
                 <!-- <img class='uk-position-top uk-overflow-hidden' src='images/frontpic.jpg' style='border-bottom: 20px solid #404040; height: 100%; width: 100%;'/> -->
                 <div id='top_nav_container' class='uk-position-top uk-visible@m'>
                     <nav class='uk-navbar-container uk-navbar-transparent uk-padding uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' uk-navbar>
@@ -53,8 +60,8 @@
                                 <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
                                 <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
                                 <li class='uk-text-bold uk-margin-large-right uk-active'><a style='text-transform: capitalize; border-color: #00b5ff;' href="programmes.html">Programmes</a></li>
-                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html"  onmouseover='showProfiles()'>Profiles</a></li>
-                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="media.html">Media</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html"  onmouseover='showProfiles("profilesBar")'>Profiles</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#" onmouseover='showProfiles("mediaBar")'>Media</a></li>
                                 <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
                             </ul>
                         </div>
@@ -69,7 +76,7 @@
                     </nav>
 
 
-                    <nav id='profilesBar' onmouseleave="hideProfiles()" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' style="visibility: hidden;" uk-navbar>
+                    <nav id='profilesBar' onmouseleave="hideProfiles('profilesBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left  uk-visible@m' style="display: none;" uk-navbar>
                         <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
                             <ul class="uk-nav uk-inline">
                                 <li class='uk-margin-large-right uk-inline'>
@@ -87,6 +94,24 @@
                                 <li class='uk-margin-large-right uk-inline'>
                                     <div>
                                         <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_organising_committee.html">Organising Committee</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <nav id='mediaBar' onmouseleave="hideProfiles('mediaBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' style="display: none;" uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                            <ul class="uk-nav uk-inline">
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Gallery</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Poster Exhibition</a>
                                         <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
                                     </div>
                                 </li>

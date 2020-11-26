@@ -47,19 +47,27 @@
               }
             }, 1000);
         </script>
+        
         <script>
-            function showProfiles() {
+            var navs = ['profilesBar', 'mediaBar']
+            function showProfiles(id) {
                 document.getElementById("top_nav_container").style.backgroundColor = '#404040'
-                document.getElementById('profilesBar').style.visibility = 'visible'
+                document.getElementById(id).style.display = 'block'
                 var c = document.getElementById('icon_list').children;
                 for(i=0; i < c.length; i++) {
                     c[i].children[0].style.backgroundColor = '#BFBFBF'
                     c[i].children[0].style.color = '#404040'
                 }
+                for (i=0; i < navs.length; i++) {
+                    console.log(navs[i])
+                    if (navs[i] != id) {
+                        document.getElementById(navs[i]).style.display = 'none'
+                    }
+                }
             }
-            function hideProfiles() {
+            function hideProfiles(id) {
                 document.getElementById("top_nav_container").style.backgroundColor = null
-                document.getElementById('profilesBar').style.visibility = 'hidden'
+                document.getElementById(id).style.display = 'none'
                 var c = document.getElementById('icon_list').children;
                 for(i=0; i < c.length; i++) {
                     c[i].children[0].style.backgroundColor = '#404040'
@@ -153,8 +161,8 @@
                                 <li class='uk-text-bold uk-active uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
                                 <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
                                 <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="programmes.html">Programmes</a></li>
-                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html"  onmouseover='showProfiles()'>Profiles</a></li>
-                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#">Media</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html"  onmouseover='showProfiles("profilesBar")'>Profiles</a></li>
+                                <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="#" onmouseover='showProfiles("mediaBar")'>Media</a></li>
                                 <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
                             </ul>
                         </div>
@@ -167,7 +175,7 @@
                         </div>
                     </nav>
 
-                    <nav id='profilesBar' onmouseleave="hideProfiles()" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' style="visibility: hidden;" uk-navbar>
+                    <nav id='profilesBar' onmouseleave="hideProfiles('profilesBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left  uk-visible@m' style="display: none;" uk-navbar>
                         <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
                             <ul class="uk-nav uk-inline">
                                 <li class='uk-margin-large-right uk-inline'>
@@ -185,6 +193,24 @@
                                 <li class='uk-margin-large-right uk-inline'>
                                     <div>
                                         <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_organising_committee.html">Organising Committee</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <nav id='mediaBar' onmouseleave="hideProfiles('mediaBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' style="display: none;" uk-navbar>
+                        <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                            <ul class="uk-nav uk-inline">
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Gallery</a>
+                                        <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                    </div>
+                                </li>
+                                <li class='uk-margin-large-right uk-inline'>
+                                    <div>
+                                        <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Poster Exhibition</a>
                                         <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
                                     </div>
                                 </li>

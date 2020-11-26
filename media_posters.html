@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                var mybutton = document.getElementById("js-scroll-up");
+
+                // When the user scrolls down 20px from the top of the document, show the button
+
+                var instance = OverlayScrollbars(document.querySelectorAll("body"), { callbacks : {onScroll : function() {scrollFunction()}}});
+                
+                function scrollFunction() {
+                    console.log(123)
+                    if (instance.scroll().ratio.y > 0.11) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
+                }
+
+
+            //     window.onscroll = function() {
+            //         var h = document.documentElement, 
+            //         b = document.body,
+            //         st = 'scrollTop',
+            //         sh = 'scrollHeight';
+
+            //         var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight);
+            //         if (percent > 0.11) {
+            //             mybutton.style.display = "block";
+            //         } else {
+            //             mybutton.style.display = "none";
+            //         }
+            //     };
+            });
+
+        </script>
+
+        <script>
+            var navs = ['profilesBar', 'mediaBar']
+            function showNav(id) {
+                console.log(id)
+                document.getElementById(id).style.display = 'block'
+                for (i=0; i < navs.length; i++) {
+                    console.log(navs[i])
+                    if (navs[i] != id) {
+                        document.getElementById(navs[i]).style.display = 'none'
+                    }
+                }
+                // var c = document.getElementById('icon_list').children;
+            }
+            function hideNav(id) {
+                document.getElementById(id).style.display = 'none'
+                for (i=0; i< navs.length; i++) {
+                    if (navs[i] != id) {
+                        document.getElementById(navs[i]).style.display = 'block'
+                    }
+                }
+                // var c = document.getElementById('icon_list').children;
+            }
+        </script>
+
+        <style>
+            .disable-select {
+                user-select: none; /* supported by Chrome and Opera */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+            }
+
+            .blacknwhite {
+                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+                filter: grayscale(100%);
+            }
+
+            #js-scroll-up:hover {
+                color:white ;
+                background-color: #FF006E;
+            }
+
+            #js-scroll-up {
+                color: white;
+                background-color: #404040;
+            }
+        </style>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
+    </head>
+    <body class='disable-select'>
+
+        <a id="js-scroll-up" class="uk-position-fixed uk-position-bottom-right uk-margin-bottom uk-margin-right" href="#speakers" style="display: none; z-index: 99; border-radius: 100px; padding: 5px;" uk-scroll uk-icon="icon: chevron-up; ratio: 2;"></a>
+        
+        <div id='top_sec' uk-grid>
+            <div class='uk-width-auto'>
+                <img style='padding-top: 5px;' data-src='images/logos/logo_pink.png' height='75px' width="75px" uk-img>
+            </div>  
+            <div class="uk-width-expand uk-padding-remove-left" style='background-color: #404040;'>
+
+                <nav class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' uk-navbar>
+                    <div class="uk-navbar-left uk-padding-small uk-padding-remove-left">
+                        <ul class="uk-navbar-nav">
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="index.html">Home</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="about.html">About</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="programmes.html">Programmes</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize;' href="profiles_speakers.html" onmouseover='showNav("profilesBar")'>Profiles</a></li>
+                            <li class='uk-text-bold uk-margin-large-right'><a style='text-transform: capitalize; border-color: #FF006E;' href="" onmouseover='showNav("mediaBar")'>Media</a></li>
+                            <li class='uk-text-bold '><a style='text-transform: capitalize;' href="#">Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-right uk-padding-small uk-padding-remove-right">
+                        <ul class="uk-iconnav">
+                            <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                            <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 10px; border-radius: 15px; padding-bottom: 11px; background-color:#BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <nav id='profilesBar' onmouseleave="hideNav('profilesBar')" class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left' style="display: none;" uk-navbar>
+                    <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                        <ul class="uk-nav uk-inline">
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_speakers.html">Invited Speakers</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_participating_schools.html">Participating School</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="profiles_organising_committee.html">Organising Committee</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <nav id='mediaBar' class='uk-navbar-container uk-padding uk-navbar-transparent uk-padding-remove-top uk-padding-remove-bottom uk-margin-small-left uk-visible@m' uk-navbar>
+                    <div class="uk-navbar-left uk-padding-small uk-padding-remove-left uk-margin-bottom">
+                        <ul class="uk-nav uk-inline">
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Gallery</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-margin-large-right uk-inline'>
+                                <div>
+                                    <a class='uk-inline' style='text-transform: capitalize; color: white;' href="">Poster Exhibition</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px; background-color:#FF006E;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <span  href="#offcanvas-slide" class="uk-button uk-hidden@m uk-padding-small" style="color: white; height: fit-content;" uk-toggle uk-icon="icon: menu; ratio: 1.5;"></span>
+
+                <div id="offcanvas-slide" uk-offcanvas>
+                    <div class="uk-offcanvas-bar">
+                        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="index.html">Home</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="about.html">About</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom'>
+                                <div class='uk-inline-block'>
+                                    <a class='uk-inline' style='text-transform: capitalize;' href="programmes.html">Programmes</a>
+                                    <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                </div>
+                            </li>
+                            <li class='uk-text-bold uk-margin-large-right uk-margin-bottom uk-parent'>
+                                <a style='text-transform: capitalize; color: white;' href="#">Profiles</a>
+                                <ul class="uk-nav-sub uk-margin-small-top">
+                                    <li>
+                                        <div class='uk-inline-block'>
+                                            <a href="">Invited Speakers</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href="profiles_participating_schools.html">Participating Schools</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href="profiles_organising_committee.html">Organising Committee</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='uk-text-bold uk-active uk-margin-large-right uk-margin-bottom uk-parent uk-open'>
+                                <a class='uk-inline' style='text-transform: capitalize;' href="">Media</a>
+                                <ul class="uk-nav-sub uk-margin-small-top">
+                                    <li>
+                                        <div class='uk-inline-block'>
+                                            <a href="">Gallery</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class='uk-margin-small-top'>
+                                        <div class='uk-inline-block'>
+                                            <a href="" style="color: white;">Poster Exhibition</a>
+                                            <div class='uk-inline uk-margin-small-left' style="padding: 1px; width: 10px; height: 10px; border-radius: 100px;  background-color: #FF006E"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <ul class="uk-iconnav uk-position-bottom uk-margin-bottom uk-margin-small-left">
+                                <li><a href="https://www.facebook.com/isyf2020/" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="facebook"></a></li>
+                                <li><a href="https://www.instagram.com/isyf.2020/?hl=en" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="instagram"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" class="uk-margin-small-right" style="padding: 5px; border-radius: 15px; background-color:#BFBFBF; color: #404040;" uk-icon="youtube"></a></li>
+                            </ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </body>
+</html> 
