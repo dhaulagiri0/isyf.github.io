@@ -444,11 +444,11 @@
         <div id='body_content_4' class="uk-section uk-padding-remove-bottom">
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
 
-                <div id='icon_left' class='uk-width-auto'>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
                 
-                <div class="uk-grid uk-width-expand uk-padding-remove-left" uk-grid>
+                <div class="uk-grid uk-width-expand uk-padding-remove-left uk-visible@m" uk-grid>
                     <div id='body_content_1_image_column' class='uk-width-1-3@m uk-visible@m uk-padding-remove-left' uk-scrollspy="cls: uk-animation-slide-bottom;">
                         <div class="uk-section uk-padding-remove-top">
                             <div class="uk-inline uk-margin-medium-left uk-margin-medium-right">
@@ -458,7 +458,7 @@
                         </div>
                     </div>
 
-                    <div id='body_content_1_text_column uk-padding-remove-left uk-padding-remove-right' class='uk-width-2-3@m'>
+                    <div id='body_content_1_text_column' class='uk-width-2-3@m'>
                         <div class='uk-container uk-padding-remove-left uk-padding-remove-right'>
                             <div class='uk-margin-bottom uk-margin-right'>
                                 <h2 class='uk-text-bold uk-margin-remove-top'>Participation</h2>
@@ -503,7 +503,53 @@
                     </div>
                 </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
+                <div id='body_content_1_text_column' class='uk-margin-left uk-margin-right uk-hidden@m'>
+                    <div class='uk-container uk-padding-remove-left uk-padding-remove-right'>
+                        <div class='uk-margin-bottom uk-margin-right'>
+                            <h2 class='uk-text-bold uk-margin-remove-top'>Participation</h2>
+                            <p class='uk-text-lead uk-text-bold uk-margin-remove-bottom uk-margin-remove-top uk-text-justify' style="color: #FFB400;">Participation in ISYF is via invitation to selected schools across the globe.</p>
+                        </div>
+                        <div class='uk-grid' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #FFB400; border-radius: 20px; height: 65%; width: 10px;" uk-parallax='y: 100px;'></div>
+                            </div>
+                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <div class='uk-inline-block uk-margin-small-bottom' >
+                                    <img class='uk-inline uk-margin-right' data-src='images/student.png' width='100px' uk-img/>
+                                    <h3 class='uk-inline uk-text-bold uk-margin-remove-bottom uk-margin-small-top'>Students</h3>
+                                </div>
+                                <div>
+                                    <p class='uk-text-justify'>The programme will target top science students from premier schools around the world. The student participants from each school should meet the following criteria: </p>
+                                    <ul style="line-height:200%">
+                                        <li>Be between 16 and 17 years of age as in Jan 2019;</li>
+                                        <li>Have substantial experience in science research or competitions;</li>
+                                        <li>Possess good oral proficiency in English;</li>
+                                        <li>Be academically able and among the top 5% of their cohort; and</li>
+                                        <li>Possess enthusiasm and strong interest in forging ties with fellow students from all over the world.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class='uk-grid' uk-grid>
+                            <div class='uk-width-auto'>
+                                <div style="background-color: #7494FF; border-radius: 20px; height: 65%; width: 10px;" uk-parallax='y: 100px;'></div>
+                            </div>
+                            <div class='uk-width-expand' uk-scrollspy='cls: uk-animation-slide-right;'>
+                                <div class='uk-inline-block uk-margin-small-bottom'>
+                                    <img class='uk-inline uk-margin-right' data-src='images/educator_icon_about.png' width='100px' uk-img/>
+                                    <h3 class='uk-inline uk-text-bold uk-margin-remove-bottom uk-margin-small-top'>Educators</h3>
+                                </div>
+                                <div>
+                                    <p class='uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit. Maecenas fringilla leo eu semper tincidunt. Ut ut imperdiet risus. Suspendisse quis varius tortor. Vivamus at commodo nulla. Mauris tristique sed massa a tincidunt. Sed sit amet neque nec diam pretium consequat ac vel dolor. Maecenas ligula risus, tempus ut lectus blandit, placerat consectetur risus. Maecenas malesuada, ligula vel rutrum tincidunt, leo erat sollicitudin tortor, ac semper lorem nunc in lacus. Vestibulum tincidunt dignissim blandit. Donec nisi ipsum, mattis non lectus ac, ullamcorper egestas leo.</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+                
+
+                <div id='icon_right' class='uk-width-auto uk-padding-remove-left uk-visible@m'>
                     <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
                 </div> 
             </div>
@@ -538,8 +584,8 @@
                                 <div class="uk-inline uk-flex uk-margin-auto-vertical uk-width-auto">
                                     <span class='material-icons' style="color: white;">room</span>
                                 </div>
-                                <div class="uk-inline uk-width-auto">
-                                    <p class='uk-inline uk-light'>661 Bukit Timah Rd, Singapore 269734</p>
+                                <div class="uk-inline uk-width-expand">
+                                    <p class='uk-inline uk-light uk-text-break'>661 Bukit Timah Rd, Singapore 269734</p>
                                 </div>
                             </div>
                         </div>
@@ -548,7 +594,7 @@
                                 <div class="uk-inline uk-flex uk-margin-auto-vertical uk-width-auto">
                                     <span class='material-icons' style="color: white;">call</span>
                                 </div>
-                                <div class="uk-inline uk-width-auto">
+                                <div class="uk-inline uk-width-expand">
                                     <p class='uk-inline uk-light'>+65 6468 3955</p>
                                 </div>
                             </div>
@@ -558,7 +604,7 @@
                                 <div class="uk-inline uk-flex uk-width-auto uk-margin-auto-vertical">
                                     <span class='material-icons' style="color: white;">email</span>
                                 </div>
-                                <div class="uk-inline uk-flex uk-margin-auto-vertical uk-width-auto">
+                                <div class="uk-inline uk-flex uk-margin-auto-vertical uk-width-expand">
                                     <p class='uk-inline uk-light'>reach_isyf@hci.edu.sg</p>
                                 </div>
                             </div>
