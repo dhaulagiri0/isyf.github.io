@@ -61,18 +61,17 @@
 
         <script>
             var colors = [['#b37e00', '#cc9000', '#e6a200', '#ffb400', '#ffbc19', '#ffbc19', '#ffc333', '#ffcb4d', '#ffd266'], ['#800037', '#990042', '#b3004d', '#cc0058', '#e60063', '#ff006e', '#ff197d', '#ff338b', '#ff4d9a', '#ff66a8', '#ff80b7', '#ff99c5', '#ffb8d6'], ['#007f56', '#00aa73', '#00d490', '#33dda6', '#66e5bc', '#99eed3'], ['#004866', '#006d99', '#0091cc', '#00b5ff', '#33c4ff', '#66d3ff', '#99e1ff', '#b3e9ff']]
-            var names = [['Weihan', 'Shao Jun', 'Bernard', 'Sean', 'Jiaqi', 'Jadie', 'Xiao En', 'Jerry'], ['Stephanie', 'See Min', 'Beatrice', 'Celeste', 'Joel', 'Jing Heng', 'Wenhao', 'Wei Sheng', 'Ruoxin', 'Weiting', 'Levina', 'Qiyu'], ['Rachael', 'Alson', 'Zhiheng', ' Huiyan', 'Brandon', 'Xavier'], ['Wei Shuen', 'Yiqin', ' Junwei', 'Mavryk', 'Rae Ann', 'Ee Hseun', 'Nanette', 'Yihan']]
+            var names = [['Weihan', 'Shao Jun', 'Bernard', 'Sean', 'Jiaqi', 'Jadie', 'Xiao En', 'Jerry'], ['Stefanie', 'See Min', 'Beatrice', 'Celeste', 'Joel', 'Jing Heng', 'Wenhao', 'Wei Sheng', 'Ruoxin', 'Weiting', 'Levina', 'Qiyu'], ['Rachael', 'Alson', 'Zhiheng', ' Huiyan', 'Brandon', 'Xavier'], ['Wei Shuen', 'Yiqin', ' Junwei', 'Mavryk', 'Rae Ann', 'Ee Hseun', 'Nanette', 'Yihan']]
+            var facilGroup = [['Equuleus', 'Lyra', 'Hercules', 'Columba', 'Monoceros', 'Orion', 'Pegasus', 'Draco'], ['Monoceros', 'Columba', 'Lyra', 'Hercules', 'Vela', 'Orion', 'Aquila', 'Monoceros', 'Draco', 'Hercules', 'Orion', 'Equuleus'], ['Vela', 'Aquila', 'Pegasus', ' Orion', 'Draco', 'Equuleus'], ['Lyra', 'Pegasus', ' Hercules', 'Monoceros', 'Aquila', 'Vela', 'Columba', 'Equuleus']]
 
             var numCommittees = 4
             var committeeMemCnt = [7, 12, 6, 8]
 
             function loadButtonColors() {
-                console.log('called1')
                 for (i=1; i<=numCommittees; i++) {
                     for(j=1; j<=committeeMemCnt[i - 1]; j++) {
                         var btn = document.getElementById('p_' + i + '_' + j + '_button')
                         btn.style.backgroundColor = colors[i - 1][j - 1]
-                        console.log(btn)
                     }
                 }
             }
@@ -97,8 +96,8 @@
                         dp.style.background = colors[i - 1][j - 1]
 
                         px.childNodes[3].childNodes[1].textContent = names[i - 1][j - 1]
+                        px.childNodes[3].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
 
-                        console.log(px)
                         appendDiv.appendChild(px);
                     }
                 }
@@ -110,7 +109,6 @@
 
                 for (i=1; i<=numCommittees; i++) {
                     for(j=1; j<=committeeMemCnt[i - 1]; j++) {
-                        console.log(i, j)
                         var appendDiv = document.getElementById('p_' + i + '_div_s');
                         var profileTemp = document.getElementById('p_' + i + '_temp_s');
 
@@ -126,8 +124,7 @@
                         dp.style.background = colors[i - 1][j - 1]
 
                         px.childNodes[1].childNodes[3].childNodes[1].childNodes[1].textContent = names[i - 1][j - 1]
-
-                        console.log(px)
+                        px.childNodes[1].childNodes[3].childNodes[1].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
                         appendDiv.appendChild(px);
                     }
                 }
@@ -162,7 +159,6 @@
         <script>
             var navs = ['profilesBar', 'mediaBar']
             function showNav(id) {
-                console.log(id)
                 document.getElementById(id).style.display = 'block'
                 for (i=0; i < navs.length; i++) {
                     if (navs[i] != id) {
@@ -354,7 +350,7 @@
                         <div class='uk-background-secondary uk-hidden@m'>
                             <div class='uk-padding uk-inline'>
                                 <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Activities</h3>
-                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                                <p class='uk-light uk-text-justify'>Welcome to ISYF2021! As the Activities Committee, we do our best to ensure that your ISYF experience is fun, enriching and memorable, even as it has been shifted online! Do look forward to the activities we have in place for you, and see you in ISYF2021!</p>
                             </div>
                         </div>
                         <div class='uk-inline uk-width-expand@m' style="border-bottom: 20px solid #FF006E;">
@@ -388,7 +384,7 @@
                                     </div>
                                 </div>
                                 <h3 class='uk-text-bold uk-margin-remove-top' style="color: white;">Activities</h3>
-                                <p class='uk-light uk-text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus tempus lorem, at ullamcorper orci mattis et. Sed feugiat interdum suscipit.</p>
+                                <p class='uk-light uk-text-justify'>Welcome to ISYF2021! As the Activities Committee, we do our best to ensure that your ISYF experience is fun, enriching and memorable, even as it has been shifted online! Do look forward to the activities we have in place for you, and see you in ISYF2021!</p>
                             </div>
                         </div>
                         <div class='uk-background-secondary uk-hidden@m uk-visible@s uk-margin-remove-top'>
