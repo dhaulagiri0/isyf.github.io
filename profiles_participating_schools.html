@@ -1,69 +1,12 @@
 <!DOCTYPE html>
-<html class="uk-overflow-auto">
+<html class="uk-overflow-hidden">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link rel="stylesheet" href="css/main.css" />
         <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                //The first argument are the elements to which the plugin shall be initialized
-                //The second argument has to be at least a empty object or a object with your desired options
-                OverlayScrollbars(document.querySelectorAll("body"), { });
-            });
-        </script>
-
-        <style>
-            .disable-select {
-                user-select: none; /* supported by Chrome and Opera */
-                -webkit-user-select: none; /* Safari */
-                -khtml-user-select: none; /* Konqueror HTML */
-                -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-            }
-        </style>
-
-        <script>
-            function loadLogos() {
-                var path = './images/school_logos/'
-                var c = 34
-                for(i=2; i<=c; i++) {
-                   var grid = document.getElementById('school_logo_grid')
-                   var logoImg = document.getElementById('logo_1')
-                   var clone = logoImg.cloneNode(true)
-                   clone.style.display = null
-                   clone.children[0].children[0].src = path + i + '.png'
-                   grid.appendChild(clone)
-                }
-            }
-        </script>
-        <script>
-            var navs = ['profilesBar', 'mediaBar']
-            function showNav(id) {
-                console.log(id)
-                document.getElementById(id).style.display = 'block'
-                for (i=0; i < navs.length; i++) {
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'none'
-                    }
-                }
-                // var c = document.getElementById('icon_list').children;
-            }
-            function hideNav(id) {
-                document.getElementById(id).style.display = 'none'
-                for (i=0; i< navs.length; i++) {
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'block'
-                    }
-                }
-                // var c = document.getElementById('icon_list').children;
-            }
-        </script>
-
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
 
     <body class='disable-select' onload='loadLogos()'>
@@ -409,5 +352,19 @@
                 </div>
             </div>
         </div>
+        
+        <script src="js/main.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+            });
+        </script>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </body>
 </html> 

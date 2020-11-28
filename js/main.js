@@ -1,0 +1,194 @@
+var colors = [['#b37e00', '#cc9000', '#e6a200', '#ffb400', '#ffbc19', '#ffbc19', '#ffc333', '#ffcb4d', '#ffd266'], ['#800037', '#990042', '#b3004d', '#cc0058', '#e60063', '#ff006e', '#ff197d', '#ff338b', '#ff4d9a', '#ff66a8', '#ff80b7', '#ff99c5', '#ffb8d6'], ['#007f56', '#00aa73', '#00d490', '#33dda6', '#66e5bc', '#99eed3'], ['#004866', '#006d99', '#0091cc', '#00b5ff', '#33c4ff', '#66d3ff', '#99e1ff', '#b3e9ff']]
+var names = [['Weihan', 'Shao Jun', 'Bernard', 'Sean', 'Jiaqi', 'Jadie', 'Xiao En', 'Jerry'], ['Stefanie', 'See Min', 'Beatrice', 'Celeste', 'Joel', 'Jing Heng', 'Wenhao', 'Wei Sheng', 'Ruoxin', 'Weiting', 'Levina', 'Qiyu'], ['Rachael', 'Alson', 'Zhiheng', ' Huiyan', 'Brandon', 'Xavier'], ['Wei Shuen', 'Yiqin', ' Junwei', 'Mavryk', 'Rae Ann', 'Ee Hseun', 'Nanette', 'Yihan']]
+var facilGroup = [['Equuleus', 'Lyra', 'Hercules', 'Columba', 'Monoceros', 'Orion', 'Pegasus', 'Draco'], ['Monoceros', 'Columba', 'Lyra', 'Hercules', 'Vela', 'Orion', 'Aquila', 'Monoceros', 'Draco', 'Hercules', 'Orion', 'Equuleus'], ['Vela', 'Aquila', 'Pegasus', ' Orion', 'Draco', 'Equuleus'], ['Lyra', 'Pegasus', ' Hercules', 'Monoceros', 'Aquila', 'Vela', 'Columba', 'Equuleus']]
+
+var numCommittees = 4
+var committeeMemCnt = [7, 12, 6, 8]
+
+function setCountDown() {
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 19, 2021").getTime();
+    
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+    // Get today's date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Display the days in the element with id="days"
+    document.getElementById("days").innerHTML = days
+    document.getElementById("hours").innerHTML = hours
+    document.getElementById("minutes").innerHTML = minutes
+
+    document.getElementById("days_").innerHTML = days
+    document.getElementById("hours_").innerHTML = hours
+    document.getElementById("minutes_").innerHTML = minutes
+    
+    }, 1000);
+}
+
+function loadButtonColors() {
+    for (i=1; i<=numCommittees; i++) {
+        for(j=1; j<=committeeMemCnt[i - 1]; j++) {
+            var btn = document.getElementById('p_' + i + '_' + j + '_button')
+            btn.style.backgroundColor = colors[i - 1][j - 1]
+        }
+    }
+}
+
+function loadIndividualProfiles() {
+
+    var path = './images/org/';
+
+    for (i=1; i<=numCommittees; i++) {
+        for(j=1; j<=committeeMemCnt[i - 1]; j++) {
+            var appendDiv = document.getElementById('p_' + i + '_div');
+            var profileTemp = document.getElementById('p_' + i + '_temp');
+            var px = profileTemp.cloneNode(true);
+
+            px.id = 'p_' + i + '_' + j
+
+            // var px = document.getElementById('p_1_' + i);
+
+            var dp = px.childNodes[1]
+            dp.src = path + 'p_' + i + '_' + j + '.png';
+            dp.style.borderColor = colors[i - 1][j - 1]
+            dp.style.background = colors[i - 1][j - 1]
+
+            px.childNodes[3].childNodes[1].textContent = names[i - 1][j - 1]
+            px.childNodes[3].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
+
+            appendDiv.appendChild(px);
+        }
+    }
+}
+
+function loadIndividualProfilesS() {
+
+    var path = './images/org/';
+
+    for (i=1; i<=numCommittees; i++) {
+        for(j=1; j<=committeeMemCnt[i - 1]; j++) {
+            var appendDiv = document.getElementById('p_' + i + '_div_s');
+            var profileTemp = document.getElementById('p_' + i + '_temp_s');
+
+            var px = profileTemp.cloneNode(true);
+            px.id = 'p_' + i + '_' + j + '_s'
+
+            // var px = document.getElementById('p_1_' + i);
+
+            var dp = px.childNodes[1].childNodes[1].childNodes[1]
+
+            dp.src = path + 'p_' + i + '_' + j + '.png';
+            dp.style.borderColor = colors[i - 1][j - 1]
+            dp.style.background = colors[i - 1][j - 1]
+
+            px.childNodes[1].childNodes[3].childNodes[1].childNodes[1].textContent = names[i - 1][j - 1]
+            px.childNodes[1].childNodes[3].childNodes[1].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
+            appendDiv.appendChild(px);
+        }
+    }
+}
+
+function show(obj) {
+    var idEle = obj.id.split("_");
+    var target = 'p_' + idEle[1] + '_' + idEle[2]
+
+    var profile = document.getElementById(target);
+    profile.style.display = 'inline';   
+
+    var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
+
+    var profile = document.getElementById(target);
+    profile.style.display = 'inline';
+}
+
+function hide(obj) {
+    var idEle = obj.id.split("_");
+    var target = 'p_' + idEle[1] + '_' + idEle[2]
+
+    var profile = document.getElementById(target);
+    profile.style.display = 'none';
+
+    var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
+
+    var profile = document.getElementById(target);
+    profile.style.display = 'none';
+}
+
+// used in profiles and media 
+var navs = ['profilesBar', 'mediaBar']
+function showNav(id) {
+    document.getElementById(id).style.display = 'block'
+    for (i=0; i < navs.length; i++) {
+        if (navs[i] != id) {
+            document.getElementById(navs[i]).style.display = 'none'
+        }
+    }
+    // var c = document.getElementById('icon_list').children;
+}
+function hideNav(id) {
+    document.getElementById(id).style.display = 'none'
+    for (i=0; i< navs.length; i++) {
+        if (navs[i] != id) {
+            document.getElementById(navs[i]).style.display = 'block'
+        }
+    }
+    // var c = document.getElementById('icon_list').children;
+}
+
+// used in pages other than profiles and media 
+function showProfiles(id, color=['#BFBFBF', '#404040']) {
+    document.getElementById("top_nav_container").style.backgroundColor = '#404040'
+    document.getElementById(id).style.display = 'block'
+    var c = document.getElementById('icon_list').children;
+    for(i=0; i < c.length; i++) {
+        c[i].children[0].style.backgroundColor = color[0]
+        c[i].children[0].style.color = color[1]
+    }
+    for (i=0; i < navs.length; i++) {
+        if (navs[i] != id) {
+            document.getElementById(navs[i]).style.display = 'none'
+        }
+    }
+}
+function hideProfiles(id, color=['#404040', null]) {
+    document.getElementById("top_nav_container").style.backgroundColor = null
+    document.getElementById(id).style.display = 'none'
+    var c = document.getElementById('icon_list').children;
+    for(i=0; i < c.length; i++) {
+        c[i].children[0].style.backgroundColor = color[0]
+        c[i].children[0].style.color = color[1]
+    }
+}
+
+// used in profiles_speaker.html to show scroll back button
+function scrollFunction(instance, mybutton) {
+    if (instance.scroll().ratio.y > 0.11) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+function loadLogos() {
+    var path = './images/school_logos/'
+    var c = 34
+    for(i=2; i<=c; i++) {
+       var grid = document.getElementById('school_logo_grid')
+       var logoImg = document.getElementById('logo_1')
+       var clone = logoImg.cloneNode(true)
+       clone.style.display = null
+       clone.children[0].children[0].src = path + i + '.png'
+       grid.appendChild(clone)
+    }
+}

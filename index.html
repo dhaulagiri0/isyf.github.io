@@ -1,94 +1,12 @@
 <!DOCTYPE html>
-<html class="uk-overflow-auto">
+<html class="uk-overflow-hidden">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link rel="stylesheet" href="css/main.css" />
         <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                //The first argument are the elements to which the plugin shall be initialized
-                //The second argument has to be at least a empty object or a object with your desired options
-                OverlayScrollbars(document.querySelectorAll("body"), { });
-            });
-
-            // Set the date we're counting down to
-            var countDownDate = new Date("Jan 19, 2021").getTime();
-            
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-            
-              // Get today's date and time
-              var now = new Date().getTime();
-            
-              // Find the distance between now and the count down date
-              var distance = countDownDate - now;
-            
-              // Time calculations for days, hours, minutes and seconds
-              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-              // Display the days in the element with id="days"
-              document.getElementById("days").innerHTML = days
-              document.getElementById("hours").innerHTML = hours
-              document.getElementById("minutes").innerHTML = minutes
-
-              document.getElementById("days_").innerHTML = days
-              document.getElementById("hours_").innerHTML = hours
-              document.getElementById("minutes_").innerHTML = minutes
-            
-              // If the count down is finished, write some text
-              if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "EXPIRED";
-              }
-            }, 1000);
-        </script>
-        
-        <script>
-            var navs = ['profilesBar', 'mediaBar']
-            function showProfiles(id) {
-                document.getElementById("top_nav_container").style.backgroundColor = '#404040'
-                document.getElementById(id).style.display = 'block'
-                var c = document.getElementById('icon_list').children;
-                for(i=0; i < c.length; i++) {
-                    c[i].children[0].style.backgroundColor = '#BFBFBF'
-                    c[i].children[0].style.color = '#404040'
-                }
-                for (i=0; i < navs.length; i++) {
-                    console.log(navs[i])
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'none'
-                    }
-                }
-            }
-            function hideProfiles(id) {
-                document.getElementById("top_nav_container").style.backgroundColor = null
-                document.getElementById(id).style.display = 'none'
-                var c = document.getElementById('icon_list').children;
-                for(i=0; i < c.length; i++) {
-                    c[i].children[0].style.backgroundColor = '#404040'
-                    c[i].children[0].style.color = null
-                }
-            }
-        </script>
-
-        <style>
-            .disable-select {
-                user-select: none; /* supported by Chrome and Opera */
-                -webkit-user-select: none; /* Safari */
-                -khtml-user-select: none; /* Konqueror HTML */
-                -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-            }
-        </style>
-
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
     <body class='disable-select'>
         <div id='top_sec' uk-grid>
@@ -603,5 +521,19 @@
                 </div>
             </div>
         </div>
+
+        <script src='js/main.js'></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+                setCountDown();
+            });
+        </script>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </body>
 </html> 

@@ -1,99 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html class="uk-overflow-hidden">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link rel="stylesheet" href="css/main.css" />
         <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                //The first argument are the elements to which the plugin shall be initialized
-                //The second argument has to be at least a empty object or a object with your desired options
-                var mybutton = document.getElementById("js-scroll-up");
-
-                // When the user scrolls down 20px from the top of the document, show the button
-
-                var instance = OverlayScrollbars(document.querySelectorAll("body"), { callbacks : {onScroll : function() {scrollFunction()}}});
-                
-                function scrollFunction() {
-                    console.log(123)
-                    if (instance.scroll().ratio.y > 0.11) {
-                        mybutton.style.display = "block";
-                    } else {
-                        mybutton.style.display = "none";
-                    }
-                }
-
-
-            //     window.onscroll = function() {
-            //         var h = document.documentElement, 
-            //         b = document.body,
-            //         st = 'scrollTop',
-            //         sh = 'scrollHeight';
-
-            //         var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight);
-            //         if (percent > 0.11) {
-            //             mybutton.style.display = "block";
-            //         } else {
-            //             mybutton.style.display = "none";
-            //         }
-            //     };
-            });
-
-        </script>
-
-        <script>
-            var navs = ['profilesBar', 'mediaBar']
-            function showNav(id) {
-                console.log(id)
-                document.getElementById(id).style.display = 'block'
-                for (i=0; i < navs.length; i++) {
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'none'
-                    }
-                }
-                // var c = document.getElementById('icon_list').children;
-            }
-            function hideNav(id) {
-                document.getElementById(id).style.display = 'none'
-                for (i=0; i< navs.length; i++) {
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'block'
-                    }
-                }
-                // var c = document.getElementById('icon_list').children;
-            }
-        </script>
-
-        <style>
-            .disable-select {
-                user-select: none; /* supported by Chrome and Opera */
-                -webkit-user-select: none; /* Safari */
-                -khtml-user-select: none; /* Konqueror HTML */
-                -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-            }
-
-            .blacknwhite {
-                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-                filter: grayscale(100%);
-            }
-
-            #js-scroll-up:hover {
-                color:white ;
-                background-color: #FF006E;
-            }
-
-            #js-scroll-up {
-                color: white;
-                background-color: #404040;
-            }
-        </style>
-
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
     <body class='disable-select'>
 
@@ -1121,6 +1034,22 @@
                 </div>
             </div>
         </div>
-    
+        <script src='js\main.js'></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                var mybutton = document.getElementById("js-scroll-up");
+
+                // When the user scrolls down 20px from the top of the document, show the button
+
+                var instance = OverlayScrollbars(document.querySelectorAll("body"), { callbacks : {onScroll : function() {scrollFunction(this, mybutton)}}});
+
+            });
+        </script>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </body>
 </html> 

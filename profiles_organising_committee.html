@@ -1,186 +1,12 @@
 <!DOCTYPE html>
-<html class="uk-overflow-auto">
+<html class="uk-overflow-hidden">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.isyf-theme.css" />
+        <link rel="stylesheet" href="css/main.css" />
         <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="node_modules\packery\dist\packery.pkgd.min.js"></script>
-
-        <script>
-
-            document.addEventListener("DOMContentLoaded", function() {
-                //The first argument are the elements to which the plugin shall be initialized
-                //The second argument has to be at least a empty object or a object with your desired options
-                OverlayScrollbars(document.querySelectorAll("body"), { });
-            });
-
-        </script>
-
-        <style>
-            .disable-select {
-                user-select: none; /* supported by Chrome and Opera */
-                -webkit-user-select: none; /* Safari */
-                -khtml-user-select: none; /* Konqueror HTML */
-                -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-            }
-
-            .blacknwhite {
-                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-                filter: grayscale(100%);
-            }
-
-            .pin-button {
-                box-shadow: 1px 1px 3px #404040; 
-                border-radius: 100%; 
-                color: white; 
-                padding: 5px; 
-                width: fit-content; 
-                height: fit-content;
-            }
-
-            .pin-button:hover {
-                padding: 7px; 
-                color: white; 
-            }
-
-            .pin-button:click {
-                padding: 7px; 
-                color: white; 
-            }
-
-            .const:before {
-                content: '■ ';
-                position: relative;
-                bottom: .1em;
-            }
-
-        </style>
-
-        <script>
-            var colors = [['#b37e00', '#cc9000', '#e6a200', '#ffb400', '#ffbc19', '#ffbc19', '#ffc333', '#ffcb4d', '#ffd266'], ['#800037', '#990042', '#b3004d', '#cc0058', '#e60063', '#ff006e', '#ff197d', '#ff338b', '#ff4d9a', '#ff66a8', '#ff80b7', '#ff99c5', '#ffb8d6'], ['#007f56', '#00aa73', '#00d490', '#33dda6', '#66e5bc', '#99eed3'], ['#004866', '#006d99', '#0091cc', '#00b5ff', '#33c4ff', '#66d3ff', '#99e1ff', '#b3e9ff']]
-            var names = [['Weihan', 'Shao Jun', 'Bernard', 'Sean', 'Jiaqi', 'Jadie', 'Xiao En', 'Jerry'], ['Stefanie', 'See Min', 'Beatrice', 'Celeste', 'Joel', 'Jing Heng', 'Wenhao', 'Wei Sheng', 'Ruoxin', 'Weiting', 'Levina', 'Qiyu'], ['Rachael', 'Alson', 'Zhiheng', ' Huiyan', 'Brandon', 'Xavier'], ['Wei Shuen', 'Yiqin', ' Junwei', 'Mavryk', 'Rae Ann', 'Ee Hseun', 'Nanette', 'Yihan']]
-            var facilGroup = [['Equuleus', 'Lyra', 'Hercules', 'Columba', 'Monoceros', 'Orion', 'Pegasus', 'Draco'], ['Monoceros', 'Columba', 'Lyra', 'Hercules', 'Vela', 'Orion', 'Aquila', 'Monoceros', 'Draco', 'Hercules', 'Orion', 'Equuleus'], ['Vela', 'Aquila', 'Pegasus', ' Orion', 'Draco', 'Equuleus'], ['Lyra', 'Pegasus', ' Hercules', 'Monoceros', 'Aquila', 'Vela', 'Columba', 'Equuleus']]
-
-            var numCommittees = 4
-            var committeeMemCnt = [7, 12, 6, 8]
-
-            function loadButtonColors() {
-                for (i=1; i<=numCommittees; i++) {
-                    for(j=1; j<=committeeMemCnt[i - 1]; j++) {
-                        var btn = document.getElementById('p_' + i + '_' + j + '_button')
-                        btn.style.backgroundColor = colors[i - 1][j - 1]
-                    }
-                }
-            }
-
-            function loadIndividualProfiles() {
-
-                var path = './images/org/';
-
-                for (i=1; i<=numCommittees; i++) {
-                    for(j=1; j<=committeeMemCnt[i - 1]; j++) {
-                        var appendDiv = document.getElementById('p_' + i + '_div');
-                        var profileTemp = document.getElementById('p_' + i + '_temp');
-                        var px = profileTemp.cloneNode(true);
-
-                        px.id = 'p_' + i + '_' + j
-
-                        // var px = document.getElementById('p_1_' + i);
-
-                        var dp = px.childNodes[1]
-                        dp.src = path + 'p_' + i + '_' + j + '.png';
-                        dp.style.borderColor = colors[i - 1][j - 1]
-                        dp.style.background = colors[i - 1][j - 1]
-
-                        px.childNodes[3].childNodes[1].textContent = names[i - 1][j - 1]
-                        px.childNodes[3].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
-
-                        appendDiv.appendChild(px);
-                    }
-                }
-            }
-
-            function loadIndividualProfilesS() {
-
-                var path = './images/org/';
-
-                for (i=1; i<=numCommittees; i++) {
-                    for(j=1; j<=committeeMemCnt[i - 1]; j++) {
-                        var appendDiv = document.getElementById('p_' + i + '_div_s');
-                        var profileTemp = document.getElementById('p_' + i + '_temp_s');
-
-                        var px = profileTemp.cloneNode(true);
-                        px.id = 'p_' + i + '_' + j + '_s'
-
-                        // var px = document.getElementById('p_1_' + i);
-
-                        var dp = px.childNodes[1].childNodes[1].childNodes[1]
-
-                        dp.src = path + 'p_' + i + '_' + j + '.png';
-                        dp.style.borderColor = colors[i - 1][j - 1]
-                        dp.style.background = colors[i - 1][j - 1]
-
-                        px.childNodes[1].childNodes[3].childNodes[1].childNodes[1].textContent = names[i - 1][j - 1]
-                        px.childNodes[1].childNodes[3].childNodes[1].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
-                        appendDiv.appendChild(px);
-                    }
-                }
-            }
-
-            function show(obj) {
-                var idEle = obj.id.split("_");
-                var target = 'p_' + idEle[1] + '_' + idEle[2]
-
-                var profile = document.getElementById(target);
-                profile.style.display = 'inline';   
-
-                var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
-
-                var profile = document.getElementById(target);
-                profile.style.display = 'inline';
-            }
-
-            function hide(obj) {
-                var idEle = obj.id.split("_");
-                var target = 'p_' + idEle[1] + '_' + idEle[2]
-
-                var profile = document.getElementById(target);
-                profile.style.display = 'none';
-
-                var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
-
-                var profile = document.getElementById(target);
-                profile.style.display = 'none';
-            }
-        </script>
-        <script>
-            var navs = ['profilesBar', 'mediaBar']
-            function showNav(id) {
-                document.getElementById(id).style.display = 'block'
-                for (i=0; i < navs.length; i++) {
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'none'
-                    }
-                }
-                // var c = document.getElementById('icon_list').children;
-            }
-            function hideNav(id) {
-                document.getElementById(id).style.display = 'none'
-                for (i=0; i< navs.length; i++) {
-                    if (navs[i] != id) {
-                        document.getElementById(navs[i]).style.display = 'block'
-                    }
-                }
-                // var c = document.getElementById('icon_list').children;
-            }
-        </script>
-
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </head>
 
     <body class='disable-select t' onload='loadIndividualProfilesS(), loadIndividualProfiles(), loadButtonColors()'>
@@ -700,9 +526,9 @@
                             <div style="height: 100%;" uk-grid>
                                 <div class="uk-width-1-4" style="height: 100%;">
                                     <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
-                                        <img class="blacknwhite" data-src="images/org/Alson_F.png" width="data-width" height="data-height" uk-img/>
+                                        <img class="blacknwhite" data-src="images/org/Alson_F.png" uk-img/>
                                         <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
-                                            <img class="blacknwhite" data-src="images/org/Alson_IF.png" width="data-width" height="data-height" uk-img/>
+                                            <img class="blacknwhite" data-src="images/org/Alson_IF.png" uk-img/>
                                             <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
                                             <div class='uk-position-top-right uk-overlay' style="padding: 0px; right: 10%; top: 3%; color: white;">
                                                 Alson
@@ -712,7 +538,7 @@
                                 </div>
                                 <div class="uk-width-1-4" style="height: 100%;">
                                     <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
-                                        <img class="blacknwhite" data-src="images/org/RaeAnn_F.png" width="data-width" height="data-height" uk-img/>
+                                        <img class="blacknwhite" data-src="images/org/RaeAnn_F.png" uk-img/>
                                         <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
                                             <img class="blacknwhite" data-src="images/org/RaeAnn_IF.png" uk-img/>
                                             <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
@@ -724,7 +550,7 @@
                                 </div>
                                 <div class="uk-width-1-4" style="height: 100%;">
                                     <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
-                                        <img class="blacknwhite" data-src="images/org/Maegan_F.png" width="data-width" height="data-height" uk-img/>
+                                        <img class="blacknwhite" data-src="images/org/Maegan_F.png" uk-img/>
                                         <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
                                             <img class="blacknwhite" data-src="images/org/Maegan_IF.png" uk-img/>
                                             <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
@@ -736,7 +562,7 @@
                                 </div>
                                 <div class="uk-width-1-4" style="height: 100%;">
                                     <div class='uk-flex uk-flex-center uk-flex-middle uk-inline-clip uk-transition-toggle' tabindex="0" style="height: 100%;">
-                                        <img class="blacknwhite" data-src="images/org/Wenhao_F.png" width="data-width" height="data-height" uk-img/>
+                                        <img class="blacknwhite" data-src="images/org/Wenhao_F.png" uk-img/>
                                         <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right uk-padding-remove-left">
                                             <img class="blacknwhite" data-src="images/org/Wenhao_IF.png" uk-img/>
                                             <div class="uk-overlay uk-position-cover" style="background-color: rgba(255, 0, 110, .2);"></div>
@@ -751,7 +577,7 @@
                         <div class="uk-hidden@m uk-margin-left uk-margin-right">
                             <div style="height: 100%;" uk-grid>
                                 <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
-                                    <img class="blacknwhite" data-src="images/org/Alson_F.png" width="data-width" height="data-height" uk-img/>
+                                    <img class="blacknwhite" data-src="images/org/Alson_F.png" uk-img/>
                                     <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
                                         <div class='uk-overflow-hidden uk-inline-clip'>
                                             <img class="blacknwhite" data-src="images/org/Alson_IF.png" uk-img/>
@@ -763,7 +589,7 @@
                                     </div>
                                 </div>
                                 <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
-                                    <img class="blacknwhite" data-src="images/org/RaeAnn_F.png" width="data-width" height="data-height" uk-img/>
+                                    <img class="blacknwhite" data-src="images/org/RaeAnn_F.png" uk-img/>
                                     <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
                                         <div class='uk-overflow-hidden uk-inline-clip'>
                                             <img class="blacknwhite" data-src="images/org/RaeAnn_IF.png" uk-img/>
@@ -775,7 +601,7 @@
                                     </div>
                                 </div>
                                 <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
-                                    <img class="blacknwhite" data-src="images/org/Maegan_F.png" width="data-width" height="data-height" uk-img/>
+                                    <img class="blacknwhite" data-src="images/org/Maegan_F.png" uk-img/>
                                     <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
                                         <div class='uk-overflow-hidden uk-inline-clip'>
                                             <img class="blacknwhite" data-src="images/org/Maegan_IF.png" uk-img/>
@@ -787,7 +613,7 @@
                                     </div>
                                 </div>
                                 <div class="uk-width-1-4@s uk-width-1-2 uk-inline-clip uk-transition-toggle" tabindex="0">
-                                    <img class="blacknwhite" data-src="images/org/Wenhao_F.png" width="data-width" height="data-height" uk-img/>
+                                    <img class="blacknwhite" data-src="images/org/Wenhao_F.png" uk-img/>
                                     <div class="uk-transition-fade uk-position-center uk-overlay uk-padding-remove-bottom uk-padding-remove-top uk-padding-remove-right">
                                         <div class='uk-overflow-hidden uk-inline-clip'>
                                             <img class="blacknwhite" data-src="images/org/Wenhao_IF.png" uk-img/>
@@ -2179,5 +2005,19 @@
                 </div>
             </div>
         </div>
+        
+        <script src="js\main.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+            });
+        </script>
+
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>
     </body>
 </html> 
