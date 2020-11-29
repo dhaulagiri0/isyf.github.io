@@ -63,3 +63,8 @@
     color: white;
     background-color: #404040;
 }
+
+#frontpic {
+    -webkit-filter: brightness(80%); /* Safari 6.0 - 9.0 */
+    filter: brightness(80%);
+}

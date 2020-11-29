@@ -192,3 +192,13 @@ function loadLogos() {
        grid.appendChild(clone)
     }
 }
+
+function setSize(width) {
+    if (width <= 960 && width > 600) {
+        return 'medium'
+    } else if (width <= 600) {
+        return 'small'
+    } else {
+        return 'large'
+    }
+}
