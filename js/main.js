@@ -196,9 +196,9 @@ function loadLogos() {
 }
 
 function setSize(width) {
-    if (width <= 960 && width > 600) {
+    if (width <= 960 && width > 640) {
         return 'medium'
-    } else if (width <= 600) {
+    } else if (width <= 640) {
         return 'small'
     } else {
         return 'large'
