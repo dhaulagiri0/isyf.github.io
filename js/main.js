@@ -61,12 +61,19 @@ function loadIndividualProfiles() {
             // var px = document.getElementById('p_1_' + i);
 
             var dp = px.childNodes[1]
+            console.log(dp)
+            if(!dp.src) {
+                dp = px.childNodes[3].childNodes[1]
+                var textBox = px.childNodes[1]
+            } else {
+                var textBox = px.childNodes[3]
+            }
             dp.src = path + 'p_' + i + '_' + j + '.png';
             dp.style.borderColor = colors[i - 1][j - 1]
             dp.style.background = colors[i - 1][j - 1]
-
-            px.childNodes[3].childNodes[1].textContent = names[i - 1][j - 1]
-            px.childNodes[3].childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
+            
+            textBox.childNodes[1].textContent = names[i - 1][j - 1]
+            textBox.childNodes[3].textContent = 'Facil Group: ' + facilGroup[i - 1][j - 1]
 
             appendDiv.appendChild(px);
         }
@@ -105,12 +112,12 @@ function show(obj) {
     var target = 'p_' + idEle[1] + '_' + idEle[2]
 
     var profile = document.getElementById(target);
-    profile.style.display = 'inline';   
+    profile.style.display = null;   
 
     var target = 'p_' + idEle[1] + '_' + idEle[2] + '_s'
 
     var profile = document.getElementById(target);
-    profile.style.display = 'inline';
+    profile.style.display = null;
 }
 
 function hide(obj) {
