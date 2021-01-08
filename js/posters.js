@@ -2,7 +2,7 @@ posterData = [
     {
         "no": "No. 1", 
         "title" : "A Machine Learning Based Approach for Prediction of rTMS Treatment Response in  Patients with Drug-resistant Depression Using Magnetoencephalographic Data", 
-        "school" : "Taipei Municipal Jian Guo High School", 
+        "school" : "Taipei Municipal Jianguo High School", 
         "student":["Chia-Wei Chang"], 
         "image":'images/posters/1', 
         "vid":'https://youtu.be/0jZOQoGrJs0'
@@ -26,7 +26,7 @@ posterData = [
     {
         "no": "No. 4", 
         "title" : "Business model for private companies to invest in smart grid electricity system and the utilization of tokenization  (ICO: Initial Coin Offering) as a way to raise fund", 
-        "school" : "Mahidol Wittayanusorn", 
+        "school" : "Mahidol Wittayanusorn School", 
         "student":["Pitchaya Paramavej"], 
         "image":'images/posters/4', 
         "vid":'https://youtu.be/W5w8NjvqPU8'
@@ -42,7 +42,7 @@ posterData = [
     {
         "no": "No. 6", 
         "title" : "Corn Starch Based Bioplastic", 
-        "school" : "SMA Lazuardi GCS", 
+        "school" : "SMA Lazuardi Global Compassionate School", 
         "student":["Fathur Rahmat Syahputra"], 
         "image":'images/posters/6', 
         "vid":'na'
@@ -106,7 +106,7 @@ posterData = [
     {
         "no": "No. 14", 
         "title" : "GTC Treatement", 
-        "school" : "SMJK Chung Ling", 
+        "school" : "Chung Ling High School, Penang", 
         "student":["Tang Yi Ze", "Lim Eugene"], 
         "image":'images/posters/14', 
         "vid":'https://youtu.be/_5St5i7CIhE'
@@ -114,7 +114,7 @@ posterData = [
     {
         "no": "No. 15", 
         "title" : "Handling Plastic Waste in Indonesia", 
-        "school" : "SMA Lazuardi GCS", 
+        "school" : "SMA Lazuardi Global Compassionate School", 
         "student":["Alisha Yahya"], 
         "image":'images/posters/15', 
         "vid":'https://youtu.be/5_6VRkbA0FI'
@@ -122,7 +122,7 @@ posterData = [
     {
         "no": "No. 16", 
         "title" : "Effects of Magnetic Fields on Plant Growth", 
-        "school" : "Nanyang girls high school ", 
+        "school" : "Nanyang Girls’ High School", 
         "student":["Abigail Chin Yanqin"], 
         "image":'images/posters/16', 
         "vid":'https://youtu.be/xIroWD1ROxc'
@@ -218,7 +218,7 @@ posterData = [
     {
         "no": "No. 28", 
         "title" : "Smart Trash Bin as Chopper and Processor Household Organic Waste into Liquid Organic Fertilizer Based on Arduino and EM4", 
-        "school" : "SMA Negeri 4 Denpasar", 
+        "school" : "SMA Negeri 4 Denpasar High School", 
         "student":["I Putu Evan Priya Saguna", "Putu Eka Parmartha Dharma"], 
         "image":'images/posters/28', 
         "vid":'https://youtu.be/EOfQ7ZVKWks'
@@ -242,7 +242,7 @@ posterData = [
     {
         "no": "No. 31", 
         "title" : "Analysis of the Skin Effect and Electronic Corona in High Voltage Long Distance Electricity Transmission", 
-        "school" : "The High School Affiliated to Xian Jiaotong University", 
+        "school" : "The High School Affiliated to Xi'an Jiaotong University", 
         "student":["Qiyuan Wei", "Yuhan Ren"], 
         "image":'images/posters/31', 
         "vid":'https://youtu.be/CHQDM6f5VxQ'
@@ -250,7 +250,7 @@ posterData = [
     {
         "no": "No. 32", 
         "title" : "The Impact of Bushfires on Cyanobacteria Growth", 
-        "school" : "Presbyterian Ladies College Sydney", 
+        "school" : "Presbyterian Ladies' College, Sydney", 
         "student":["Sarah Ge", "Lilian Stock"], 
         "image":'images/posters/32', 
         "vid":'https://youtu.be/2pnS9r1Eia0'
