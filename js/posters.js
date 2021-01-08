@@ -5,7 +5,7 @@ posterData = [
         "school" : "Taipei Municipal Jian Guo High School", 
         "student":["Chia-Wei Chang"], 
         "image":'images/posters/1', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/0jZOQoGrJs0'
     },
     {
         "no": "No. 2", 
@@ -13,7 +13,7 @@ posterData = [
         "school" : "Chung Hwa Middle School, B.S.B. Maktab Sains Paduka Seri Begawan Sultan ", 
         "student":["Kiefer Lim Yi Heng", "Farhanah binti Sufian"], 
         "image":'images/posters/2', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/4MQeivs2d54'
     },
     {
         "no": "No. 3", 
@@ -21,7 +21,7 @@ posterData = [
         "school" : "St Joseph Institution", 
         "student":["Aeden Chng Yu Khye"], 
         "image":'images/posters/3', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/6iFzXK0m-Tc-Tc'
     },
     {
         "no": "No. 4", 
@@ -29,7 +29,7 @@ posterData = [
         "school" : "Mahidol Wittayanusorn", 
         "student":["Pitchaya Paramavej"], 
         "image":'images/posters/4', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/W5w8NjvqPU8'
     },
     {
         "no": "No. 5", 
@@ -37,7 +37,7 @@ posterData = [
         "school" : "Hwa Chong Institution", 
         "student":["Huang Qirui"], 
         "image":'images/posters/5', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/i2RGidu2mdA'
     },
     {
         "no": "No. 6", 
@@ -45,7 +45,7 @@ posterData = [
         "school" : "SMA Lazuardi GCS", 
         "student":["Fathur Rahmat Syahputra"], 
         "image":'images/posters/6', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'na'
     },
     {
         "no": "No. 7", 
@@ -53,7 +53,7 @@ posterData = [
         "school" : "National Junior College", 
         "student":["Mak Zhan Rui Jovan"], 
         "image":'images/posters/7', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/ifnOLo7sqN4'
     },
     {
         "no": "No. 8", 
@@ -61,7 +61,7 @@ posterData = [
         "school" : "River Valley High School", 
         "student":["Chan Kai Sing Natalie"], 
         "image":'images/posters/8', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/DZO4TmCB4OE'
     },
     {
         "no": "No. 9", 
@@ -69,7 +69,7 @@ posterData = [
         "school" : "National Junior College", 
         "student":["Wong Sam Tou", "Chua Zi Xin Rachel"], 
         "image":'images/posters/9', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/SxHoet7pgFA'
     },
     {
         "no": "No. 10", 
@@ -77,7 +77,7 @@ posterData = [
         "school" : "Hwa Chong Institution", 
         "student":["Ng Yan Bin Lucas", "Lucas Koh Eu Jen"], 
         "image":'images/posters/10', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/Wpk6XymREvY'
     },
     {
         "no": "No. 11", 
@@ -85,7 +85,7 @@ posterData = [
         "school" : "Victoria Junior College", 
         "student":["Chng Guang Sen Elijah", "S. Prithika", "Tan Chun Liang"], 
         "image":'images/posters/11', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/4QzgKT9n6SM'
     },
     {
         "no": "No. 12", 
@@ -93,7 +93,7 @@ posterData = [
         "school" : "CHIJ ST. THERESA'S CONVENT", 
         "student":["Bawa Amarnath Sania", "Melody Goh Tze Ning", "Ma Qianjie"], 
         "image":'images/posters/12', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/mTScLu83YDA'
     },
     {
         "no": "No. 13", 
@@ -101,7 +101,7 @@ posterData = [
         "school" : "NUS High School of Mathematics and Science", 
         "student":["Ye Chen Rui", "Prannaya Gupta", "Nallapuraju Ananya"], 
         "image":'images/posters/13', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/jPK4sFYWqSk'
     },
     {
         "no": "No. 14", 
@@ -109,7 +109,7 @@ posterData = [
         "school" : "SMJK Chung Ling", 
         "student":["Tang Yi Ze", "Lim Eugene"], 
         "image":'images/posters/14', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/_5St5i7CIhE'
     },
     {
         "no": "No. 15", 
@@ -117,7 +117,7 @@ posterData = [
         "school" : "SMA Lazuardi GCS", 
         "student":["Alisha Yahya"], 
         "image":'images/posters/15', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/5_6VRkbA0FI'
     },
     {
         "no": "No. 16", 
@@ -125,7 +125,7 @@ posterData = [
         "school" : "Nanyang girls high school ", 
         "student":["Abigail Chin Yanqin"], 
         "image":'images/posters/16', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/xIroWD1ROxc'
     },
     {
         "no": "No. 17", 
@@ -133,7 +133,7 @@ posterData = [
         "school" : "Korea Science Academy of KAIST", 
         "student":["Daechul Kim", "Seungwoo Kim"], 
         "image":'images/posters/17', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/uCpgCXqqBKQ'
     },
     {
         "no": "No. 18", 
@@ -141,7 +141,7 @@ posterData = [
         "school" : "Philippine Science High School - Main Campus", 
         "student":["Clarence Lei B. Bautista", "Chen Adrien Z. Thor"], 
         "image":'images/posters/18', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/_bjR9WNtWuE'
     },
     {
         "no": "No. 19", 
@@ -149,7 +149,7 @@ posterData = [
         "school" : "River Valley High School", 
         "student":["Zhang Yu"], 
         "image":'images/posters/19', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/K_WAwl-dxMk'
     },
     {
         "no": "No. 20", 
@@ -157,7 +157,7 @@ posterData = [
         "school" : "Raffles Institution", 
         "student":["He Jingyang James", "Ian Ng Khai Ven", "Javier Ng Yi Sheng"], 
         "image":'images/posters/20', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/VSd8Vt-aLso'
     },
     {
         "no": "No. 21", 
@@ -165,7 +165,7 @@ posterData = [
         "school" : "Sekolah Sultan Alam Shah, Putrajaya ", 
         "student":["Syaf Aiman Danial bin Syafizal Anuar", "Muhammad Danish bin Azrai Izet "], 
         "image":'images/posters/21', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/lKCJbrMMmq4'
     },
     {
         "no": "No. 22", 
@@ -173,7 +173,7 @@ posterData = [
         "school" : "Temasek Junior College", 
         "student":["Keerthana Kailasam", "Chow Jeng Han", "Angus Yim"], 
         "image":'images/posters/22', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/ROmfsnAQgm0'
     },
     {
         "no": "No. 23", 
@@ -181,7 +181,7 @@ posterData = [
         "school" : "Hwa Chong Institution", 
         "student":["Ong Zhi Xuan", "Tay Shao Yang Joel"], 
         "image":'images/posters/23', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/W2jQd5_0rqc'
     },
     {
         "no": "No. 24", 
@@ -189,7 +189,7 @@ posterData = [
         "school" : "Nanyang Girls’ High School", 
         "student":["Esther Tay Shee Wei"], 
         "image":'images/posters/24', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/MdgZ0pK8EKQ'
     },
     {
         "no": "No. 25", 
@@ -197,7 +197,7 @@ posterData = [
         "school" : "Xinmin Secondary School", 
         "student":["Mu Junrong"], 
         "image":'images/posters/25', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/h-ds7EsljOI'
     },
     {
         "no": "No. 26", 
@@ -205,7 +205,7 @@ posterData = [
         "school" : "Ichinomiya High School", 
         "student":["Mizuno Rio", "Hirao Momona"], 
         "image":'images/posters/26', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/Qhft36YTW0A'
     },
     {
         "no": "No. 27", 
@@ -213,7 +213,7 @@ posterData = [
         "school" : "CHIJ St. Nicholas Girls’ School (Secondary)", 
         "student":["Chin Yan Zi", "Yong Xue Yuan", "Phoon Zi Ling"], 
         "image":'images/posters/27', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/IGNxtE3-wMs'
     },
     {
         "no": "No. 28", 
@@ -221,7 +221,7 @@ posterData = [
         "school" : "SMA Negeri 4 Denpasar", 
         "student":["I Putu Evan Priya Saguna", "Putu Eka Parmartha Dharma"], 
         "image":'images/posters/28', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/EOfQ7ZVKWks'
     },
     {
         "no": "No. 29", 
@@ -229,7 +229,7 @@ posterData = [
         "school" : "The second high school attached to the Beijing Normal University", 
         "student":["Qingyu Liu", "Moqing Liang"], 
         "image":'images/posters/29', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/C-ImD9UDt5k'
     },
     {
         "no": "No. 30", 
@@ -237,7 +237,7 @@ posterData = [
         "school" : "High School for Gifted Students, Hanoi National University of Education THPT chuyên Hà Nội - Amsterdam", 
         "student":["Thai Hoang Son", "Đỗ Quang Minh"], 
         "image":'images/posters/30', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/6UsapiDotFU'
     },
     {
         "no": "No. 31", 
@@ -245,7 +245,7 @@ posterData = [
         "school" : "The High School Affiliated to Xian Jiaotong University", 
         "student":["Qiyuan Wei", "Yuhan Ren"], 
         "image":'images/posters/31', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/CHQDM6f5VxQ'
     },
     {
         "no": "No. 32", 
@@ -253,7 +253,7 @@ posterData = [
         "school" : "Presbyterian Ladies College Sydney", 
         "student":["Sarah Ge", "Lilian Stock"], 
         "image":'images/posters/32', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/2pnS9r1Eia0'
     },
     {
         "no": "No. 33", 
@@ -261,6 +261,6 @@ posterData = [
         "school" : "Nan Chiau High School", 
         "student":["Tan Keng How", "Tan Shu En, Summer", "Dominic Aw Rui De"], 
         "image":'images/posters/33', 
-        "vid":'https://www.youtube.com/embed/dJOT4-SwmUY'
+        "vid":'https://youtu.be/2-vYCXy5OCU'
     }
 ];

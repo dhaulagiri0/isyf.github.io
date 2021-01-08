@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="text/javascript" src="js/posters.js"></script>
     </head>
-    <body class='disable-select'>
+    <body class='disable-select' onload='loadPosters()'>
 
         <!-- <a id="js-scroll-up" class="uk-position-fixed uk-position-bottom-right uk-margin-bottom uk-margin-right" href="#speakers" style="display: none; z-index: 99; border-radius: 100px; padding: 5px;" uk-scroll uk-icon="icon: chevron-up; ratio: 2;"></a> -->
         
@@ -166,26 +166,29 @@
         </div>
 
         
-        <!-- <div style="height: fit-content;" class="uk-margin-large-bottom">
+        <div id='voting' class='uk-section uk-margin-top uk-padding-remove uk-visible@m'>
             <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom' uk-grid>
-                <div id='icon_left' class='uk-width-auto'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
+                <div id='icon_left' class='uk-width-auto uk-visible@m'>
+                    <img style='visibility: hidden;' data-src='images/logos/logo_green.png' height='10px' width="75px" uk-img/>
                 </div> 
                 
-                <div class="uk-grid uk-width-expand" uk-grid>
-                    <p class='uk-heading-small uk-text-bold uk-padding-remove-left'>Coming soon! <br><br> Do check back with us after the event begins!</p>
-                    <p class='uk-text-lead uk-text-bold uk-padding-remove-left' style="color: #B2B2B2;">This page will display posters made by ISYF delegates for their research projects.</p>
+                <div class="uk-width-expand uk-padding-remove-left">
+                    <h3 class='uk-text-bold'>Vote for your favourite posters <a href='https://forms.office.com/Pages/ResponsePage.aspx?id=gm3ENX8QEEawpKTMEfsiQfBURlr0GNxMnUZMSYiH4d1UNUlRVU9FWEY0MzBZOFRIR0FUMVNWRzI0Vi4u' style='color: #C061FD'>here</a>!</h3>
                 </div>
+            </div> 
+        </div>
 
-                <div id='icon_right' class='uk-width-auto uk-padding-remove-left'>
-                    <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img>
-                </div> 
-            </div>
-        </div> -->
+        <div id='voting' class='uk-section uk-margin-top uk-padding-remove uk-hidden@m'>
+            <div class='uk-grid uk-padding uk-padding-remove-bottom' uk-grid>
+                <div class="uk-width-expand">
+                    <h4 class='uk-text-bold'>Vote for your favourite posters <a href='https://forms.office.com/Pages/ResponsePage.aspx?id=gm3ENX8QEEawpKTMEfsiQfBURlr0GNxMnUZMSYiH4d1UNUlRVU9FWEY0MzBZOFRIR0FUMVNWRzI0Vi4u' style='color: #C061FD'>here</a>!</h4>
+                </div>
+            </div> 
+        </div>
 
         <div id='info_div'>
 
-            <div id='body_content_1' class='uk-section uk-margin-top uk-visible@m'>
+            <div id='body_content_1' class='uk-section uk-visible@m uk-padding-remove-top'>
                 <div class='uk-grid uk-padding uk-padding-remove-left uk-padding-remove-right' uk-grid>
                     <div id='icon_left' class='uk-width-auto uk-visible@m'>
                         <img style='padding-top: 5px; visibility: hidden;' data-src='images/logos/logo_green.png' height='75px' width="75px" uk-img/>
@@ -221,7 +224,7 @@
                                     </div>                                
                                 </div>
                                 <div class='uk-grid' uk-grid>
-                                    <iframe class='uk-padding uk-padding-remove-left uk-padding-remove-top poster_vid' src="https://www.youtube-nocookie.com/embed/c2pz2mlSfXA?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="765"　allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen uk-responsive frameborder="0" uk-video='autoplay: false;'></iframe>
+                                    <iframe class='uk-padding uk-padding-remove-left uk-padding-remove-top poster_vid' src="" width="1920" height="765"　allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen uk-responsive frameborder="0" uk-video='autoplay: false;'></iframe>
                                 </div>
                             </div>
                         </div>
@@ -327,71 +330,6 @@
                 //The second argument has to be at least a empty object or a object with your desired options
                 OverlayScrollbars(document.querySelectorAll("body"), { });
             });
-            
-
-            var image_path = './images/posters'
-            for (i=2; i<=posterData.length; i++) {
-                var cloneDiv = document.getElementById('body_content_1')
-                var cloneDivS = document.getElementById('body_content_1_s')
-                var poster = document.getElementById('poster_1')
-
-                var cd = cloneDiv.cloneNode(true);
-                var cds = cloneDivS.cloneNode(true);
-                var pd = poster.cloneNode(true);
-
-                cd.id = 'body_content_' + i
-                cds.id = cd.id + '_s'
-                pd.id = 'poster_' + i
-
-                allInfoDiv = document.getElementById('info_div')
-                allPosterDiv = document.getElementById('poster_div')
-
-                allInfoDiv.append(cd)
-                allInfoDiv.append(cds)
-                allPosterDiv.append(pd)
-            }
-
-            var attributes = ['no', 'title', 'school', 'student', 'image', 'vid']
-
-            posters = document.querySelectorAll('.poster_image_l')
-            for(i=0; i< posters.length;i++) {
-                posters[i].src = posterData[i].image + '.png'
-            }
-
-            for(i=0; i<attributes.length;i++) {
-                posterAtt = document.querySelectorAll('.poster_' + attributes[i])
-                posterAttS = document.querySelectorAll('.poster_' + attributes[i] + '_s')
-
-                for(j=0; j<posterAtt.length;j++) {
-                    pA = posterAtt[j]
-                    pAS = posterAttS[j]
-                    if(attributes[i] != 'image' && attributes[i] != 'vid') {
-                        console.log(attributes[i])
-                        if(attributes[i] == 'student'){
-                            pA.innerHTML = posterData[j][attributes[i]].join("<br>")
-                            pAS.innerHTML = posterData[j][attributes[i]].join("<br>")
-                        } else {
-                            pA.textContent = posterData[j][attributes[i]]
-                            pAS.textContent = posterData[j][attributes[i]]
-                        }
-                    } else if (attributes[i] != 'image') {
-                        pA.src = posterData[j][attributes[i]]
-                        pAS.src = posterData[j][attributes[i]]
-                    } else {
-                        pA.src = posterData[j][attributes[i]] + '.png'
-                        pAS.src = posterData[j][attributes[i]] + '.png'
-                        
-                        let id = j + 1
-                        var eventHandler = function() {
-                            var modal = UIkit.modal('#poster_' + id);
-                            modal.toggle();
-                        }
-                        pA.addEventListener("click", eventHandler.bind(id))
-                        pAS.addEventListener("click", eventHandler.bind(id))
-                    }
-                }
-            }
-
             
         </script>
         <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script>

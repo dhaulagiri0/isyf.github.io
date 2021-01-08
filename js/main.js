@@ -211,3 +211,70 @@ function setSize(width) {
         return 'large'
     }
 }
+
+function loadPosters() {
+    var image_path = './images/posters'
+    for (i=2; i<=posterData.length; i++) {
+        var cloneDiv = document.getElementById('body_content_1')
+        var cloneDivS = document.getElementById('body_content_1_s')
+        var poster = document.getElementById('poster_1')
+
+        var cd = cloneDiv.cloneNode(true);
+        var cds = cloneDivS.cloneNode(true);
+        var pd = poster.cloneNode(true);
+
+        cd.id = 'body_content_' + i
+        cds.id = cd.id + '_s'
+        pd.id = 'poster_' + i
+
+        allInfoDiv = document.getElementById('info_div')
+        allPosterDiv = document.getElementById('poster_div')
+
+        allInfoDiv.append(cd)
+        allInfoDiv.append(cds)
+        allPosterDiv.append(pd)
+    }
+
+    var attributes = ['no', 'title', 'school', 'student', 'image', 'vid']
+
+    posters = document.querySelectorAll('.poster_image_l')
+    for(i=0; i< posters.length;i++) {
+        posters[i].src = posterData[i].image + '.png'
+    }
+
+    for(i=0; i<attributes.length;i++) {
+        posterAtt = document.querySelectorAll('.poster_' + attributes[i])
+        posterAttS = document.querySelectorAll('.poster_' + attributes[i] + '_s')
+
+        for(j=0; j<posterAtt.length;j++) {
+            pA = posterAtt[j]
+            pAS = posterAttS[j]
+            if(attributes[i] != 'image' && attributes[i] != 'vid') {
+                console.log(attributes[i])
+                if(attributes[i] == 'student'){
+                    pA.innerHTML = posterData[j][attributes[i]].join("<br>")
+                    pAS.innerHTML = posterData[j][attributes[i]].join("<br>")
+                } else {
+                    pA.textContent = posterData[j][attributes[i]]
+                    pAS.textContent = posterData[j][attributes[i]]
+                }
+            } else if (attributes[i] != 'image') {
+                parts = posterData[j][attributes[i]].split('/')
+                id = parts[parts.length - 1]
+                pA.src = 'https://youtube.com/embed/' + id
+                pAS.src = 'https://youtube.com/embed/' + id
+            } else {
+                pA.src = posterData[j][attributes[i]] + '.png'
+                pAS.src = posterData[j][attributes[i]] + '.png'
+                
+                let id = j + 1
+                var eventHandler = function() {
+                    var modal = UIkit.modal('#poster_' + id);
+                    modal.toggle();
+                }
+                pA.addEventListener("click", eventHandler.bind(id))
+                pAS.addEventListener("click", eventHandler.bind(id))
+            }
+        }
+    }
+}
