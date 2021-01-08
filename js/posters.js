@@ -1,7 +1,7 @@
 posterData = [
     {
         "no": "No. 1", 
-        "title" : "A machine learning Based Approach for prediction of rTMS treatment response in  patients with drug-resistant depression using magnetoencephalographic data", 
+        "title" : "A Machine Learning Based Approach for Prediction of rTMS Treatment Response in  Patients with Drug-resistant Depression Using Magnetoencephalographic Data", 
         "school" : "Taipei Municipal Jian Guo High School", 
         "student":["Chia-Wei Chang"], 
         "image":'images/posters/1', 
@@ -10,7 +10,7 @@ posterData = [
     {
         "no": "No. 2", 
         "title" : "An indirect experimental method on inactivation of viruses with viral envelope", 
-        "school" : "Chung Hwa Middle School, B.S.B. Maktab Sains Paduka Seri Begawan Sultan ", 
+        "school" : "Ministry of Education, Brunei Darussalam", 
         "student":["Kiefer Lim Yi Heng", "Farhanah binti Sufian"], 
         "image":'images/posters/2', 
         "vid":'https://youtu.be/4MQeivs2d54'
@@ -19,7 +19,7 @@ posterData = [
         "no": "No. 3", 
         "title" : "An Investigation to compare the Vitamin C content of 3 types of berries (Blueberries, Blackberries, Raspeberries)", 
         "school" : "St Joseph Institution", 
-        "student":["Aeden Chng Yu Khye"], 
+        "student":["Aeden Chng Yu Khye", "Marcus Kuan Zhong Wei", "Zhuo Chengsheng"], 
         "image":'images/posters/3', 
         "vid":'https://youtu.be/6iFzXK0m-Tc-Tc'
     },
@@ -90,7 +90,7 @@ posterData = [
     {
         "no": "No. 12", 
         "title" : "Fruits VS Fruit Juices", 
-        "school" : "CHIJ ST. THERESA'S CONVENT", 
+        "school" : "CHIJ St. Theresa’s Convent", 
         "student":["Bawa Amarnath Sania", "Melody Goh Tze Ning", "Ma Qianjie"], 
         "image":'images/posters/12', 
         "vid":'https://youtu.be/mTScLu83YDA'
@@ -193,7 +193,7 @@ posterData = [
     },
     {
         "no": "No. 25", 
-        "title" : "Reccurence relations", 
+        "title" : "Reccurence Relations", 
         "school" : "Xinmin Secondary School", 
         "student":["Mu Junrong"], 
         "image":'images/posters/25', 
@@ -226,7 +226,7 @@ posterData = [
     {
         "no": "No. 29", 
         "title" : "Strangle Locust Plague at Birth", 
-        "school" : "The second high school attached to the Beijing Normal University", 
+        "school" : "The Second High School Attached to the Beijing Normal University", 
         "student":["Qingyu Liu", "Moqing Liang"], 
         "image":'images/posters/29', 
         "vid":'https://youtu.be/C-ImD9UDt5k'
@@ -234,8 +234,8 @@ posterData = [
     {
         "no": "No. 30", 
         "title" : "Synthesis and Characterisation of the TI02 Photocatalyst for Treatment of Polluted Wastewater in Van Phuc Silk Village", 
-        "school" : "High School for Gifted Students, Hanoi National University of Education THPT chuyên Hà Nội - Amsterdam", 
-        "student":["Thai Hoang Son", "Đỗ Quang Minh"], 
+        "school" : "High School for Gifted Students, Hanoi National University of Education & Hanoi-Amsterdam High School for the Gifted", 
+        "student":["Thai Hoang Son", "Do Quang Minh"], 
         "image":'images/posters/30', 
         "vid":'https://youtu.be/6UsapiDotFU'
     },
