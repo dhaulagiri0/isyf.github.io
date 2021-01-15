@@ -21,7 +21,7 @@ posterData = [
         "school" : "St Joseph Institution", 
         "student":["Aeden Chng Yu Khye", "Marcus Kuan Zhong Wei", "Zhuo Chengsheng"], 
         "image":'images/posters/3', 
-        "vid":'https://youtu.be/6iFzXK0m-Tc-Tc'
+        "vid":'https://youtu.be/6iFzXK0m-Tc'
     },
     {
         "no": "No. 4", 
